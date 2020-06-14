@@ -53,7 +53,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="467-gb-GyP">
                                                         <rect key="frame" x="0.0" y="171.66666666666669" width="150" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vI-4i-bLR">
                                                         <rect key="frame" x="51.666666666666657" y="220.66666666666669" width="47" height="30"/>
@@ -63,6 +63,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="467-gb-GyP" firstAttribute="width" secondItem="m9m-yX-He1" secondAttribute="width" id="U3R-Ig-GDu"/>
                                                 </constraints>
@@ -76,6 +77,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="E8A-UT-nOS" firstAttribute="top" secondItem="grB-dn-7vc" secondAttribute="top" id="GwX-cK-6b6"/>
                                     <constraint firstAttribute="bottom" secondItem="E8A-UT-nOS" secondAttribute="bottom" id="ON9-bw-Hmi"/>
@@ -84,9 +86,13 @@
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Ppa-e1-dF3"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="5b5-rb-DMD"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="1I5-YR-PJM" appends="YES" id="M1E-6i-bN9"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="grB-dn-7vc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DaH-Cd-VwN"/>
                             <constraint firstItem="grB-dn-7vc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OZc-A8-wdO"/>
@@ -103,6 +109,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1I5-YR-PJM">
+                    <connections>
+                        <action selector="scrollTapped:" destination="BYZ-38-t0r" id="PVv-eH-SgS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
