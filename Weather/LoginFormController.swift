@@ -14,12 +14,24 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTexField: UITextField!
     
-    @IBAction func signinPressed(_ sender: Any) {
-        if loginTextField.text == "admin" && passwordTexField.text == "admin"{
-            print("Success login")
-        }else{
-            print("Fail login")
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        guard checkUserCredentials() else {
+            showSigninErrorMessage()
+            return false
         }
+        return true
+    }
+    
+    func checkUserCredentials() -> Bool{
+         return loginTextField.text == "user" && passwordTexField.text == "123"
+    }
+    
+    func showSigninErrorMessage() {
+        let alter = UIAlertController(title: "Error", message: "Wrong credentials", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alter.addAction(action)
+        present(alter, animated: true, completion: nil)
     }
     
     
