@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */; };
+		3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD51249E5AB8007CFA6D /* UserListController.swift */; };
+		3489DD55249E5B23007CFA6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD54249E5B23007CFA6D /* User.swift */; };
+		3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD56249E6CF2007CFA6D /* UserPhoto.swift */; };
 		34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6877E24952656009A3B63 /* AppDelegate.swift */; };
 		34D6878124952656009A3B63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6878024952656009A3B63 /* SceneDelegate.swift */; };
 		34D6878624952656009A3B63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D6878424952656009A3B63 /* Main.storyboard */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		3489DD51249E5AB8007CFA6D /* UserListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
+		3489DD54249E5B23007CFA6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3489DD56249E6CF2007CFA6D /* UserPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoto.swift; sourceTree = "<group>"; };
 		34D6877B24952656009A3B63 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D6877E24952656009A3B63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34D6878024952656009A3B63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3489DD53249E5B04007CFA6D /* models */ = {
+			isa = PBXGroup;
+			children = (
+				3489DD54249E5B23007CFA6D /* User.swift */,
+				3489DD56249E6CF2007CFA6D /* UserPhoto.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		34D6877224952656009A3B63 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +118,7 @@
 		34D6877D24952656009A3B63 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				3489DD53249E5B04007CFA6D /* models */,
 				34D687B1249529AC009A3B63 /* LoginFormController.swift */,
 				34D6877E24952656009A3B63 /* AppDelegate.swift */,
 				34D6878024952656009A3B63 /* SceneDelegate.swift */,
@@ -109,6 +127,8 @@
 				34D6878C24952657009A3B63 /* LaunchScreen.storyboard */,
 				34D6878F24952657009A3B63 /* Info.plist */,
 				34D6878724952656009A3B63 /* Weather.xcdatamodeld */,
+				3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */,
+				3489DD51249E5AB8007CFA6D /* UserListController.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -262,10 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */,
 				34D6878924952656009A3B63 /* Weather.xcdatamodeld in Sources */,
 				34D687B2249529AC009A3B63 /* LoginFormController.swift in Sources */,
+				3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */,
 				34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */,
 				34D6878124952656009A3B63 /* SceneDelegate.swift in Sources */,
+				3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */,
+				3489DD55249E5B23007CFA6D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
