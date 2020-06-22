@@ -13,6 +13,10 @@
 		3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD56249E6CF2007CFA6D /* UserPhoto.swift */; };
 		3489DD5A249E8280007CFA6D /* UserPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD59249E8280007CFA6D /* UserPhotosController.swift */; };
 		3489DD5C249E8622007CFA6D /* UserPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */; };
+		3493F5F5249F9AC100318A47 /* AllGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F5F4249F9AC100318A47 /* AllGroupsController.swift */; };
+		3493F5F7249F9C2000318A47 /* VkGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F5F6249F9C2000318A47 /* VkGroup.swift */; };
+		3493F5F9249FA27E00318A47 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F5F8249FA27E00318A47 /* MyGroupsController.swift */; };
+		3493F60224A0D74B00318A47 /* UserGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F60124A0D74B00318A47 /* UserGroupCell.swift */; };
 		34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6877E24952656009A3B63 /* AppDelegate.swift */; };
 		34D6878124952656009A3B63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6878024952656009A3B63 /* SceneDelegate.swift */; };
 		34D6878624952656009A3B63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D6878424952656009A3B63 /* Main.storyboard */; };
@@ -48,6 +52,10 @@
 		3489DD56249E6CF2007CFA6D /* UserPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoto.swift; sourceTree = "<group>"; };
 		3489DD59249E8280007CFA6D /* UserPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotosController.swift; sourceTree = "<group>"; };
 		3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoCell.swift; sourceTree = "<group>"; };
+		3493F5F4249F9AC100318A47 /* AllGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsController.swift; sourceTree = "<group>"; };
+		3493F5F6249F9C2000318A47 /* VkGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkGroup.swift; sourceTree = "<group>"; };
+		3493F5F8249FA27E00318A47 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
+		3493F60124A0D74B00318A47 /* UserGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupCell.swift; sourceTree = "<group>"; };
 		34D6877B24952656009A3B63 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D6877E24952656009A3B63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34D6878024952656009A3B63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,9 +102,20 @@
 			isa = PBXGroup;
 			children = (
 				3489DD54249E5B23007CFA6D /* User.swift */,
+				3493F5F6249F9C2000318A47 /* VkGroup.swift */,
 				3489DD56249E6CF2007CFA6D /* UserPhoto.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		3493F60024A0D25400318A47 /* groups */ = {
+			isa = PBXGroup;
+			children = (
+				3493F5F4249F9AC100318A47 /* AllGroupsController.swift */,
+				3493F5F8249FA27E00318A47 /* MyGroupsController.swift */,
+				3493F60124A0D74B00318A47 /* UserGroupCell.swift */,
+			);
+			path = groups;
 			sourceTree = "<group>";
 		};
 		34D6877224952656009A3B63 = {
@@ -122,6 +141,7 @@
 		34D6877D24952656009A3B63 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				3493F60024A0D25400318A47 /* groups */,
 				3489DD53249E5B04007CFA6D /* models */,
 				34D687B1249529AC009A3B63 /* LoginFormController.swift */,
 				34D6877E24952656009A3B63 /* AppDelegate.swift */,
@@ -290,7 +310,11 @@
 			files = (
 				3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */,
 				34D6878924952656009A3B63 /* Weather.xcdatamodeld in Sources */,
+				3493F5F7249F9C2000318A47 /* VkGroup.swift in Sources */,
+				3493F5F5249F9AC100318A47 /* AllGroupsController.swift in Sources */,
+				3493F5F9249FA27E00318A47 /* MyGroupsController.swift in Sources */,
 				34D687B2249529AC009A3B63 /* LoginFormController.swift in Sources */,
+				3493F60224A0D74B00318A47 /* UserGroupCell.swift in Sources */,
 				3489DD5C249E8622007CFA6D /* UserPhotoCell.swift in Sources */,
 				3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */,
 				34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */,
