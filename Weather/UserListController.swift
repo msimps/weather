@@ -47,11 +47,12 @@ class UserListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         cell.nameLabel.text = userList[indexPath.row].name
-        cell.avatarImage.image = UIImage(named: userList[indexPath.row].avatar)
-        cell.avatarImage.layer.cornerRadius = cell.avatarImage.frame.size.height / 2
-        cell.avatarImage.clipsToBounds = true
+        //cell.avatarImage.image = UIImage(named: userList[indexPath.row].avatar)
+        //cell.avatarImage.layer.cornerRadius = cell.avatarImage.frame.size.height / 2
+        //cell.avatarImage.clipsToBounds = true
         // Configure the cell...
-
+        cell.avatarView.avatarImage = UIImage(named: userList[indexPath.row].avatar)!
+        
         return cell
     }
     

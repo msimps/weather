@@ -134,30 +134,43 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsY-RP-QaW">
-                                            <rect key="frame" x="86" y="13" width="326" height="54"/>
+                                            <rect key="frame" x="100" y="13" width="312" height="54"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eJd-8D-Wou">
-                                            <rect key="frame" x="20" y="11" width="58" height="58"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akD-gz-It0" customClass="AvatarView" customModule="Weather" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="eJd-8D-Wou" secondAttribute="height" id="klj-jl-xHG"/>
+                                                <constraint firstAttribute="width" secondItem="akD-gz-It0" secondAttribute="height" multiplier="1:1" id="1BF-gC-0M9"/>
                                             </constraints>
-                                        </imageView>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowMargin">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="avatarImage" value="Billioners"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="14.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="HsY-RP-QaW" firstAttribute="leading" secondItem="eJd-8D-Wou" secondAttribute="trailing" constant="8" id="Dp3-tc-1GP"/>
-                                        <constraint firstItem="eJd-8D-Wou" firstAttribute="leading" secondItem="p5C-Pd-rDe" secondAttribute="leadingMargin" id="K7B-je-dX6"/>
+                                        <constraint firstItem="akD-gz-It0" firstAttribute="leading" secondItem="p5C-Pd-rDe" secondAttribute="leading" id="6js-3s-niT"/>
                                         <constraint firstAttribute="trailing" secondItem="HsY-RP-QaW" secondAttribute="trailing" constant="2" id="NIK-hJ-E8t"/>
+                                        <constraint firstItem="akD-gz-It0" firstAttribute="top" secondItem="p5C-Pd-rDe" secondAttribute="top" id="ONf-pT-wP6"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="HsY-RP-QaW" secondAttribute="bottom" constant="2" id="S9s-qM-8np"/>
-                                        <constraint firstItem="eJd-8D-Wou" firstAttribute="top" secondItem="p5C-Pd-rDe" secondAttribute="topMargin" id="gFL-RZ-XKw"/>
+                                        <constraint firstItem="HsY-RP-QaW" firstAttribute="leading" secondItem="akD-gz-It0" secondAttribute="trailing" constant="20" id="dHd-Wi-n2l"/>
+                                        <constraint firstAttribute="bottom" secondItem="akD-gz-It0" secondAttribute="bottom" id="fLf-uy-qYL"/>
                                         <constraint firstItem="HsY-RP-QaW" firstAttribute="top" secondItem="p5C-Pd-rDe" secondAttribute="topMargin" constant="2" id="rh8-xO-9QH"/>
-                                        <constraint firstItem="eJd-8D-Wou" firstAttribute="bottom" secondItem="p5C-Pd-rDe" secondAttribute="bottomMargin" id="zFP-oh-JqI"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="avatarImage" destination="eJd-8D-Wou" id="XVZ-Dd-UrD"/>
+                                    <outlet property="avatarView" destination="akD-gz-It0" id="bXy-9f-api"/>
                                     <outlet property="nameLabel" destination="HsY-RP-QaW" id="xZ4-3k-UEs"/>
                                     <segue destination="Xo5-AC-Ux0" kind="show" identifier="ShowUserPhotos" id="iuS-fq-JGj"/>
                                 </connections>
@@ -224,7 +237,6 @@
         <!--My Groups Controller-->
         <scene sceneID="yNd-vN-lZP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jPq-Hk-Fw1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="kcf-8a-FjD" customClass="MyGroupsController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qQa-kN-vlX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
@@ -246,6 +258,7 @@
                         <outlet property="myGroupTableView" destination="qQa-kN-vlX" id="6Tg-mD-wPx"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jPq-Hk-Fw1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3837.68115942029" y="516.84782608695662"/>
         </scene>
@@ -371,6 +384,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Billioners" width="640" height="640"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
     </resources>
