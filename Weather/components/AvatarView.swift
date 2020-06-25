@@ -79,7 +79,7 @@ import UIKit
             shadowView.backgroundColor = .black
             shadowView.clipsToBounds = true
             shadowView.layer.masksToBounds = false
-            shadowView.layer.shadowOffset = CGSize(width: 0, height: 0)
+            shadowView.layer.shadowOffset = CGSize(width: -5, height: 5)
             
             self.addSubview(shadowView)
             self.addSubview(imageView)

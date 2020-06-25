@@ -50,7 +50,8 @@ class AllGroupsController: UITableViewController {
         cell.groupName.text = allGroups[indexPath.row].name
         //cell.imageView?.clipsToBounds = true
         //cell.imageView?.contentMode = .scaleAspectFill
-        cell.groupImage.image = UIImage(named: allGroups[indexPath.row].avatar)
+        let img = UIImage(named: allGroups[indexPath.row].avatar)
+        cell.groupAvatar.avatarImage = img!
         //cell.imageView?.widthAnchor.constraint(equalTo: cell.imageView!.heightAnchor, multiplier: 1.0/1.0).isActive = true
         // Configure the cell...
 

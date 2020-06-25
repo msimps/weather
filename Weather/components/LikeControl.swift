@@ -12,8 +12,8 @@ import UIKit
     
     @IBInspectable var likesCount: Int = 10
     
-    @IBInspectable var unlikedColor: UIColor = UIColor.black
-    @IBInspectable var likedColor: UIColor = UIColor.red
+    @IBInspectable var unlikedColor: UIColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+    @IBInspectable var likedColor: UIColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
     @IBInspectable var liked: Bool = false
     
     private var likeBtn: UIButton = UIButton(type: .system)

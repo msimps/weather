@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34367E5C24A3C71900C26CCE /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34367E5B24A3C71900C26CCE /* LikeControl.swift */; };
+		34367E5E24A48DFB00C26CCE /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */; };
 		3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */; };
 		3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD51249E5AB8007CFA6D /* UserListController.swift */; };
 		3489DD55249E5B23007CFA6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD54249E5B23007CFA6D /* User.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		34367E5B24A3C71900C26CCE /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
+		34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
 		3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		3489DD51249E5AB8007CFA6D /* UserListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
 		3489DD54249E5B23007CFA6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -102,6 +104,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34367E5F24A4950000C26CCE /* components */ = {
+			isa = PBXGroup;
+			children = (
+				3493F60324A3934700318A47 /* AvatarView.swift */,
+				34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */,
+				34367E5B24A3C71900C26CCE /* LikeControl.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		34367E6024A495E000C26CCE /* users */ = {
+			isa = PBXGroup;
+			children = (
+				3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */,
+				3489DD51249E5AB8007CFA6D /* UserListController.swift */,
+				3489DD59249E8280007CFA6D /* UserPhotosController.swift */,
+				3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */,
+			);
+			path = users;
+			sourceTree = "<group>";
+		};
 		3489DD53249E5B04007CFA6D /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,22 +168,18 @@
 		34D6877D24952656009A3B63 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				34367E6024A495E000C26CCE /* users */,
+				34367E5F24A4950000C26CCE /* components */,
 				3493F60024A0D25400318A47 /* groups */,
 				3489DD53249E5B04007CFA6D /* models */,
 				34D687B1249529AC009A3B63 /* LoginFormController.swift */,
 				34D6877E24952656009A3B63 /* AppDelegate.swift */,
 				34D6878024952656009A3B63 /* SceneDelegate.swift */,
 				34D6878424952656009A3B63 /* Main.storyboard */,
-				3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */,
-				3489DD59249E8280007CFA6D /* UserPhotosController.swift */,
 				34D6878A24952657009A3B63 /* Assets.xcassets */,
 				34D6878C24952657009A3B63 /* LaunchScreen.storyboard */,
 				34D6878F24952657009A3B63 /* Info.plist */,
 				34D6878724952656009A3B63 /* Weather.xcdatamodeld */,
-				3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */,
-				3489DD51249E5AB8007CFA6D /* UserListController.swift */,
-				3493F60324A3934700318A47 /* AvatarView.swift */,
-				34367E5B24A3C71900C26CCE /* LikeControl.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -320,6 +339,7 @@
 				3493F5F7249F9C2000318A47 /* VkGroup.swift in Sources */,
 				3493F5F5249F9AC100318A47 /* AllGroupsController.swift in Sources */,
 				3493F5F9249FA27E00318A47 /* MyGroupsController.swift in Sources */,
+				34367E5E24A48DFB00C26CCE /* CustomGradientView.swift in Sources */,
 				34D687B2249529AC009A3B63 /* LoginFormController.swift in Sources */,
 				3493F60224A0D74B00318A47 /* UserGroupCell.swift in Sources */,
 				3489DD5C249E8622007CFA6D /* UserPhotoCell.swift in Sources */,

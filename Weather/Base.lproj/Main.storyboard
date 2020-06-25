@@ -12,7 +12,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginFormController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="CustomGradientView" customModule="Weather" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -27,7 +27,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dp-Dd-47X" customClass="LikeControl" customModule="Weather" customModuleProvider="target">
                                                         <rect key="frame" x="18.666666666666657" y="0.0" width="113" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="8eu-II-ZQy"/>
                                                             <constraint firstAttribute="width" constant="113" id="tBG-ol-ESB"/>
@@ -47,7 +47,7 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="unlikedColor">
-                                                                <color key="value" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
@@ -84,7 +84,9 @@
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vI-4i-bLR">
                                                         <rect key="frame" x="51.666666666666657" y="285.66666666666669" width="47" height="30"/>
-                                                        <state key="normal" title="Sign In"/>
+                                                        <state key="normal" title="Sign In">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <segue destination="e9J-O0-iJ4" kind="show" id="peL-KX-Diw"/>
                                                         </connections>
@@ -96,12 +98,20 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="cPl-Xm-QuT" firstAttribute="centerX" secondItem="E8A-UT-nOS" secondAttribute="centerX" id="57c-4Q-Q4a"/>
                                             <constraint firstAttribute="bottom" secondItem="cPl-Xm-QuT" secondAttribute="bottom" constant="20" id="Alt-ao-bi5"/>
                                             <constraint firstItem="cPl-Xm-QuT" firstAttribute="top" secondItem="E8A-UT-nOS" secondAttribute="top" constant="50" id="lvU-44-UtI"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.0" green="0.48187491127533377" blue="1" alpha="0.47386663732394368" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.10991075284164195" green="0.10637978166795199" blue="0.27009732490103622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <gestureRecognizers/>
@@ -126,6 +136,14 @@
                             <constraint firstItem="grB-dn-7vc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="v4k-ZY-sF2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="0.55416483274647887" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.15765553605920807" green="0.15259072539414278" blue="0.38742650236217613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="Z3k-Na-GDy"/>
                     <connections>
@@ -147,40 +165,40 @@
         <scene sceneID="XSp-PN-wDI">
             <objects>
                 <tableViewController id="sas-xH-Bb1" customClass="UserListController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VzC-E5-YUl">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VzC-E5-YUl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="userCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="w7J-6v-mpQ" customClass="UserTableViewCell" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w7J-6v-mpQ" id="p5C-Pd-rDe">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsY-RP-QaW">
-                                            <rect key="frame" x="100" y="13" width="312" height="54"/>
+                                            <rect key="frame" x="120" y="13" width="292" height="74"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akD-gz-It0" customClass="AvatarView" customModule="Weather" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="akD-gz-It0" secondAttribute="height" multiplier="1:1" id="1BF-gC-0M9"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowMargin">
-                                                    <real key="value" value="15"/>
+                                                    <real key="value" value="8"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="avatarImage" value="Billioners"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="avatarImage" value="Elon Musk/3"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                    <real key="value" value="26.5"/>
+                                                    <real key="value" value="18"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                    <color key="value" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -304,31 +322,44 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hxt-Lt-89a">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="hxt-Lt-89a" secondAttribute="height" multiplier="1:1" id="sEx-91-5vc"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="groupName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xo-gt-f8i">
-                                            <rect key="frame" x="89" y="0.0" width="325" height="70"/>
+                                            <rect key="frame" x="91" y="0.0" width="323" height="70"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abZ-bL-rmb" customClass="AvatarView" customModule="Weather" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="abZ-bL-rmb" secondAttribute="height" multiplier="1:1" id="vpv-zU-rpI"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="avatarImage" value="How to get to Mars"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="14"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowMargin">
+                                                    <real key="value" value="6"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="1xo-gt-f8i" firstAttribute="leading" secondItem="hxt-Lt-89a" secondAttribute="trailing" constant="19" id="GEa-jW-X6J"/>
-                                        <constraint firstItem="hxt-Lt-89a" firstAttribute="top" secondItem="e1a-wd-K77" secondAttribute="top" id="H3l-uP-BAL"/>
+                                        <constraint firstItem="abZ-bL-rmb" firstAttribute="top" secondItem="e1a-wd-K77" secondAttribute="top" id="Afn-f7-vzL"/>
                                         <constraint firstAttribute="trailing" secondItem="1xo-gt-f8i" secondAttribute="trailing" id="HAc-aK-Skh"/>
+                                        <constraint firstItem="1xo-gt-f8i" firstAttribute="leading" secondItem="abZ-bL-rmb" secondAttribute="trailing" constant="21" id="RFm-Ne-ag2"/>
                                         <constraint firstItem="1xo-gt-f8i" firstAttribute="top" secondItem="e1a-wd-K77" secondAttribute="top" id="T4d-tN-mxD"/>
-                                        <constraint firstItem="hxt-Lt-89a" firstAttribute="leading" secondItem="e1a-wd-K77" secondAttribute="leading" id="g3v-fa-0T4"/>
-                                        <constraint firstAttribute="bottom" secondItem="hxt-Lt-89a" secondAttribute="bottom" id="prT-WL-Pwm"/>
+                                        <constraint firstItem="abZ-bL-rmb" firstAttribute="leading" secondItem="e1a-wd-K77" secondAttribute="leading" id="bCD-xw-dkH"/>
                                         <constraint firstAttribute="bottom" secondItem="1xo-gt-f8i" secondAttribute="bottom" id="rkx-ME-LVr"/>
+                                        <constraint firstAttribute="bottom" secondItem="abZ-bL-rmb" secondAttribute="bottom" id="xtW-4f-6Ad"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="groupImage" destination="hxt-Lt-89a" id="Enm-Ya-Ka4"/>
+                                    <outlet property="groupAvatar" destination="abZ-bL-rmb" id="bnD-ds-4LE"/>
                                     <outlet property="groupName" destination="1xo-gt-f8i" id="28A-vH-nKs"/>
                                     <segue destination="ZhX-np-gBU" kind="unwind" unwindAction="addGroupWithSegue:" id="rZa-ZV-R4m"/>
                                 </connections>
@@ -410,7 +441,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Billioners" width="640" height="640"/>
+        <image name="Elon Musk/3" width="3000" height="2050"/>
+        <image name="How to get to Mars" width="1680" height="1120"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
     </resources>
