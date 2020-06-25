@@ -8,6 +8,57 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Table View With Picker Controller-->
+        <scene sceneID="f2G-Hm-xQy">
+            <objects>
+                <viewController id="aOG-6b-0H1" customClass="TableViewWithPickerController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XB4-ZU-Ura">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fop-vh-11O">
+                                <rect key="frame" x="0.0" y="0.0" width="364" height="716"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="UWJ-wT-BAW">
+                                        <rect key="frame" x="0.0" y="28" width="364" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UWJ-wT-BAW" id="7FR-aQ-z1N">
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GI8-0e-jPi">
+                                <rect key="frame" x="364" y="0.0" width="50" height="716"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="nGu-sE-TwP"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Fop-vh-11O" firstAttribute="leading" secondItem="dWl-WC-Ztf" secondAttribute="leading" id="4zy-ok-jk1"/>
+                            <constraint firstItem="Fop-vh-11O" firstAttribute="top" secondItem="dWl-WC-Ztf" secondAttribute="top" id="JWc-IN-dug"/>
+                            <constraint firstItem="GI8-0e-jPi" firstAttribute="top" secondItem="dWl-WC-Ztf" secondAttribute="top" id="TbH-Ug-wA0"/>
+                            <constraint firstItem="dWl-WC-Ztf" firstAttribute="bottom" secondItem="Fop-vh-11O" secondAttribute="bottom" id="jLY-2A-yyw"/>
+                            <constraint firstItem="GI8-0e-jPi" firstAttribute="trailing" secondItem="dWl-WC-Ztf" secondAttribute="trailing" id="jkN-WJ-1Pf"/>
+                            <constraint firstItem="GI8-0e-jPi" firstAttribute="bottom" secondItem="dWl-WC-Ztf" secondAttribute="bottom" id="k5b-Sq-I2C"/>
+                            <constraint firstItem="GI8-0e-jPi" firstAttribute="leading" secondItem="Fop-vh-11O" secondAttribute="trailing" id="lyR-6V-Hek"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dWl-WC-Ztf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lIy-Pk-VTn"/>
+                    <connections>
+                        <outlet property="arrayTableView" destination="Fop-vh-11O" id="lgk-Zc-qpR"/>
+                        <outlet property="letterPicker" destination="GI8-0e-jPi" id="e0M-dO-wjD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bz1-QC-GYR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050.7246376811595" y="-518.47826086956525"/>
+        </scene>
         <!--Login Form Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -20,16 +71,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8A-UT-nOS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="385.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="400.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cPl-Xm-QuT">
-                                                <rect key="frame" x="132" y="50" width="150" height="315.66666666666669"/>
+                                                <rect key="frame" x="132" y="50" width="150" height="330.66666666666669"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dp-Dd-47X" customClass="LikeControl" customModule="Weather" customModuleProvider="target">
-                                                        <rect key="frame" x="18.666666666666657" y="0.0" width="113" height="50"/>
+                                                        <rect key="frame" x="18.666666666666657" y="0.0" width="113" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="8eu-II-ZQy"/>
+                                                            <constraint firstAttribute="height" constant="20" id="8eu-II-ZQy"/>
                                                             <constraint firstAttribute="width" constant="113" id="tBG-ol-ESB"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
@@ -51,20 +102,29 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bES-MB-rMN">
+                                                        <rect key="frame" x="14" y="35" width="122" height="30"/>
+                                                        <state key="normal" title="Table Picker Page">
+                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="aOG-6b-0H1" kind="show" id="JZv-Bu-PLs"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VK Feed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-y8-JMK">
-                                                        <rect key="frame" x="15.33333333333335" y="65" width="119.66666666666669" height="37"/>
+                                                        <rect key="frame" x="15.33333333333335" y="80" width="119.66666666666669" height="37"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdq-NN-vIS">
-                                                        <rect key="frame" x="54" y="117" width="42" height="20.333333333333343"/>
+                                                        <rect key="frame" x="54" y="132" width="42" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="user" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m9m-yX-He1">
-                                                        <rect key="frame" x="0.0" y="152.33333333333334" width="150" height="34"/>
+                                                        <rect key="frame" x="0.0" y="167.33333333333334" width="150" height="34"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Uvz-PZ-4aZ"/>
                                                         </constraints>
@@ -72,18 +132,18 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d22-EN-5u1">
-                                                        <rect key="frame" x="38.33333333333335" y="201.33333333333334" width="73.666666666666686" height="20.333333333333343"/>
+                                                        <rect key="frame" x="38.33333333333335" y="216.33333333333331" width="73.666666666666686" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="467-gb-GyP">
-                                                        <rect key="frame" x="0.0" y="236.66666666666669" width="150" height="34"/>
+                                                        <rect key="frame" x="0.0" y="251.66666666666669" width="150" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vI-4i-bLR">
-                                                        <rect key="frame" x="51.666666666666657" y="285.66666666666669" width="47" height="30"/>
+                                                        <rect key="frame" x="51.666666666666657" y="300.66666666666669" width="47" height="30"/>
                                                         <state key="normal" title="Sign In">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
