@@ -10,4 +10,5 @@ import Foundation
 
 struct UserPhoto {
     let image: String
+    let likes: Int = 0
 }

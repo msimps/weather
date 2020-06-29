@@ -17,23 +17,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fop-vh-11O">
-                                <rect key="frame" x="0.0" y="0.0" width="364" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="379" height="716"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="UWJ-wT-BAW">
-                                        <rect key="frame" x="0.0" y="28" width="364" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="28" width="379" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UWJ-wT-BAW" id="7FR-aQ-z1N">
-                                            <rect key="frame" x="0.0" y="0.0" width="364" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="379" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GI8-0e-jPi">
-                                <rect key="frame" x="364" y="0.0" width="50" height="716"/>
+                                <rect key="frame" x="379" y="0.0" width="35" height="716"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="nGu-sE-TwP"/>
+                                    <constraint firstAttribute="width" constant="35" id="nGu-sE-TwP"/>
                                 </constraints>
                             </pickerView>
                         </subviews>
@@ -221,79 +221,6 @@
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="136.95652173913044"/>
         </scene>
-        <!--User List Controller-->
-        <scene sceneID="XSp-PN-wDI">
-            <objects>
-                <tableViewController id="sas-xH-Bb1" customClass="UserListController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VzC-E5-YUl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="userCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="w7J-6v-mpQ" customClass="UserTableViewCell" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w7J-6v-mpQ" id="p5C-Pd-rDe">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsY-RP-QaW">
-                                            <rect key="frame" x="120" y="13" width="292" height="74"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akD-gz-It0" customClass="AvatarView" customModule="Weather" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="akD-gz-It0" secondAttribute="height" multiplier="1:1" id="1BF-gC-0M9"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowMargin">
-                                                    <real key="value" value="8"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="avatarImage" value="Elon Musk/3"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                    <real key="value" value="18"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="akD-gz-It0" firstAttribute="leading" secondItem="p5C-Pd-rDe" secondAttribute="leading" id="6js-3s-niT"/>
-                                        <constraint firstAttribute="trailing" secondItem="HsY-RP-QaW" secondAttribute="trailing" constant="2" id="NIK-hJ-E8t"/>
-                                        <constraint firstItem="akD-gz-It0" firstAttribute="top" secondItem="p5C-Pd-rDe" secondAttribute="top" id="ONf-pT-wP6"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="HsY-RP-QaW" secondAttribute="bottom" constant="2" id="S9s-qM-8np"/>
-                                        <constraint firstItem="HsY-RP-QaW" firstAttribute="leading" secondItem="akD-gz-It0" secondAttribute="trailing" constant="20" id="dHd-Wi-n2l"/>
-                                        <constraint firstAttribute="bottom" secondItem="akD-gz-It0" secondAttribute="bottom" id="fLf-uy-qYL"/>
-                                        <constraint firstItem="HsY-RP-QaW" firstAttribute="top" secondItem="p5C-Pd-rDe" secondAttribute="topMargin" constant="2" id="rh8-xO-9QH"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="avatarView" destination="akD-gz-It0" id="bXy-9f-api"/>
-                                    <outlet property="nameLabel" destination="HsY-RP-QaW" id="xZ4-3k-UEs"/>
-                                    <segue destination="Xo5-AC-Ux0" kind="show" identifier="ShowUserPhotos" id="iuS-fq-JGj"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="sas-xH-Bb1" id="2dv-6h-Y34"/>
-                            <outlet property="delegate" destination="sas-xH-Bb1" id="Iko-Ph-rmL"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Riy-CA-xfc"/>
-                    <connections>
-                        <outlet property="userTableView" destination="VzC-E5-YUl" id="ViP-Za-zYw"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TaQ-uI-dY5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3837.68115942029" y="-333.42391304347831"/>
-        </scene>
         <!--User Photos Controller-->
         <scene sceneID="tUU-mk-iJq">
             <objects>
@@ -473,7 +400,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="sas-xH-Bb1" kind="relationship" relationship="rootViewController" id="FNQ-Py-B4j"/>
+                        <segue destination="4YW-KI-z4s" kind="relationship" relationship="rootViewController" id="dQB-eF-vcB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0om-x7-87g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -498,6 +425,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKV-9L-rEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2931.8840579710145" y="516.84782608695662"/>
+        </scene>
+        <!--User List Controller-->
+        <scene sceneID="dVP-qq-6C4">
+            <objects>
+                <viewController id="4YW-KI-z4s" customClass="UserListController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uMU-e6-Vro">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jqy-qB-aKc">
+                                <rect key="frame" x="0.0" y="56" width="379" height="611"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="userCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="T0A-zg-YL4" customClass="UserTableViewCell" customModule="Weather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="379" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T0A-zg-YL4" id="bFo-A9-p67">
+                                            <rect key="frame" x="0.0" y="0.0" width="379" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-er-xrc">
+                                                    <rect key="frame" x="120" y="13" width="257" height="74"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRY-Kw-dF6" customClass="AvatarView" customModule="Weather" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="qRY-Kw-dF6" secondAttribute="height" multiplier="1:1" id="tla-gL-jC8"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowMargin">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="avatarImage" value="Elon Musk/3"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="18"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qRY-Kw-dF6" firstAttribute="top" secondItem="bFo-A9-p67" secondAttribute="top" id="2Kg-9n-ub4"/>
+                                                <constraint firstAttribute="trailing" secondItem="dxO-er-xrc" secondAttribute="trailing" constant="2" id="E0p-Wj-1xe"/>
+                                                <constraint firstAttribute="bottom" secondItem="qRY-Kw-dF6" secondAttribute="bottom" id="Pku-g5-Uiy"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dxO-er-xrc" secondAttribute="bottom" constant="2" id="eaf-pk-XC7"/>
+                                                <constraint firstItem="dxO-er-xrc" firstAttribute="leading" secondItem="qRY-Kw-dF6" secondAttribute="trailing" constant="20" id="elp-HW-DDH"/>
+                                                <constraint firstItem="dxO-er-xrc" firstAttribute="top" secondItem="bFo-A9-p67" secondAttribute="topMargin" constant="2" id="f0T-Jv-Fam"/>
+                                                <constraint firstItem="qRY-Kw-dF6" firstAttribute="leading" secondItem="bFo-A9-p67" secondAttribute="leading" id="xMF-pN-iiL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarView" destination="qRY-Kw-dF6" id="e2O-Hl-RO5"/>
+                                            <outlet property="nameLabel" destination="dxO-er-xrc" id="EsA-cd-SDJ"/>
+                                            <segue destination="Xo5-AC-Ux0" kind="show" identifier="ShowUserPhotos" id="Zpf-6n-qY6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTD-Po-ZEg" customClass="LetterPicker" customModule="Weather" customModuleProvider="target">
+                                <rect key="frame" x="379" y="56" width="35" height="611"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="8FB-yM-glH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oZb-cY-V3k" firstAttribute="bottom" secondItem="GTD-Po-ZEg" secondAttribute="bottom" id="6Qr-1U-igM"/>
+                            <constraint firstItem="jqy-qB-aKc" firstAttribute="top" secondItem="oZb-cY-V3k" secondAttribute="top" id="Bu9-9h-4ST"/>
+                            <constraint firstItem="jqy-qB-aKc" firstAttribute="leading" secondItem="oZb-cY-V3k" secondAttribute="leading" id="Sq0-1f-wE1"/>
+                            <constraint firstItem="GTD-Po-ZEg" firstAttribute="trailing" secondItem="oZb-cY-V3k" secondAttribute="trailing" id="b42-Jr-BNo"/>
+                            <constraint firstItem="GTD-Po-ZEg" firstAttribute="leading" secondItem="jqy-qB-aKc" secondAttribute="trailing" id="c1O-lz-zxB"/>
+                            <constraint firstItem="GTD-Po-ZEg" firstAttribute="top" secondItem="oZb-cY-V3k" secondAttribute="top" id="hju-OJ-6kG"/>
+                            <constraint firstItem="oZb-cY-V3k" firstAttribute="bottom" secondItem="jqy-qB-aKc" secondAttribute="bottom" id="xBO-sP-tGC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oZb-cY-V3k"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dOk-xo-9kN"/>
+                    <connections>
+                        <outlet property="letterPicker" destination="GTD-Po-ZEg" id="g4K-UI-nr6"/>
+                        <outlet property="tableView" destination="jqy-qB-aKc" id="ZOy-bq-ZNv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LCQ-vP-dyD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3822" y="-333"/>
         </scene>
     </scenes>
     <resources>

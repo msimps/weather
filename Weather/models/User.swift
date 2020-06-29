@@ -11,6 +11,10 @@ import Foundation
 
 struct User{
     let name: String
-    let avatar: String
+    //let avatar: String
     let userPhoto: [UserPhoto]
+    
+    public var avatar: String {
+        return userPhoto.first != nil ? userPhoto.first!.image : "default_user_avatar"
+    }
 }
