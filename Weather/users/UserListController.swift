@@ -22,7 +22,7 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var letterPicker: LetterPicker!
     
-    var tmpUsers = [ "Bill Gates", "Bill Gates","Bill Gates","Elon Musk","Elon Musk","Elon Musk","Elon Musk","Elon Musk", "Jeff Bezos", "Jeff Bezos", "Jeff Bezos", "Sergey Brin", "Sergey Brin", "Sergey Brin"]
+    var tmpUsers = ["Albert Einstein", "Bill Gates", "Bill Gates","Bill Gates","Elon Musk","Elon Musk","Elon Musk","Elon Musk","Elon Musk", "Jeff Bezos", "Jeff Bezos", "Jeff Bezos", "Sergey Brin", "Sergey Brin", "Sergey Brin"]
     
     
     var userList: [User] = []
@@ -42,11 +42,11 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         for user in tmpUsers.sorted() {
             var userPhoto: [UserPhoto] = []
             for i in 1...3 {
-                userPhoto.append(UserPhoto(image: "\(user)/\(i)"))
+                userPhoto.append(UserPhoto(image: "\(user)/\(i)", likes: Int.random(in: 0...50)))
             }
             userList.append(User(name: user, userPhoto: userPhoto))
         }
-        let default_photos = Array(1...3).map{ _ in UserPhoto(image: "default_user_avatar") }
+        let default_photos = Array(1...3).map{ _ in UserPhoto(image: "default_user_avatar", likes: 0) }
         for i in 1...10 {
             userList.append(User(name: "User\(i)", userPhoto: default_photos))
             tmpUsers.append("User\(i)")

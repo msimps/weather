@@ -1,15 +1,15 @@
 //
-//  LikeControl.swift
+//  LikesView.swift
 //  Weather
 //
-//  Created by Matthew on 24.06.2020.
+//  Created by Matthew on 29.06.2020.
 //  Copyright © 2020 Ostagram Inc. All rights reserved.
 //
 
 import UIKit
 
-@IBDesignable class LikeControl: UIControl {
-    
+@IBDesignable class LikesView: UIView {
+
     @IBInspectable var likesCount: Int = 10
     
     @IBInspectable var unlikedColor: UIColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)

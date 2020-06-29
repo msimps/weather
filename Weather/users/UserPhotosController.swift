@@ -33,6 +33,7 @@ class UserPhotosController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserPhotoCell
         
         cell.userPhoto.image = UIImage(named: user!.userPhoto[indexPath.row].image)
+        cell.likes.likesCount = user!.userPhoto[indexPath.row].likes
         // Configure the cell
     
         return cell

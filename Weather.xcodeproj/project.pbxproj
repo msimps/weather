@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34367E5C24A3C71900C26CCE /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34367E5B24A3C71900C26CCE /* LikeControl.swift */; };
 		34367E5E24A48DFB00C26CCE /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */; };
 		3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */; };
 		3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD51249E5AB8007CFA6D /* UserListController.swift */; };
@@ -30,6 +29,7 @@
 		34D6879924952657009A3B63 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6879824952657009A3B63 /* WeatherTests.swift */; };
 		34D687A424952657009A3B63 /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D687A324952657009A3B63 /* WeatherUITests.swift */; };
 		34D687B2249529AC009A3B63 /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D687B1249529AC009A3B63 /* LoginFormController.swift */; };
+		34DDE03224AA17C000E11CC5 /* LikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DDE03124AA17C000E11CC5 /* LikesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		34367E5B24A3C71900C26CCE /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
 		34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
 		3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		3489DD51249E5AB8007CFA6D /* UserListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		34D687A324952657009A3B63 /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		34D687A524952657009A3B63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34D687B1249529AC009A3B63 /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
+		34DDE03124AA17C000E11CC5 /* LikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +111,8 @@
 			children = (
 				3493F60324A3934700318A47 /* AvatarView.swift */,
 				34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */,
-				34367E5B24A3C71900C26CCE /* LikeControl.swift */,
 				34A70E4A24A52EDE000D1622 /* LetterPicker.swift */,
+				34DDE03124AA17C000E11CC5 /* LikesView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -337,8 +337,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */,
+				34DDE03224AA17C000E11CC5 /* LikesView.swift in Sources */,
 				34D6878924952656009A3B63 /* Weather.xcdatamodeld in Sources */,
-				34367E5C24A3C71900C26CCE /* LikeControl.swift in Sources */,
 				34A70E4B24A52EDE000D1622 /* LetterPicker.swift in Sources */,
 				3493F5F7249F9C2000318A47 /* VkGroup.swift in Sources */,
 				3493F5F5249F9AC100318A47 /* AllGroupsController.swift in Sources */,
