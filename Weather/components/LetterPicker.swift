@@ -10,41 +10,29 @@ import UIKit
 
 
 protocol LetterPickerDelegate: class {
-    func didSelectRow(row: Int)
-    func dataSource() -> [String]
+    func didSelectRow(index: Int)
 }
 
 @IBDesignable class LetterPicker: UIView {
 
-    var letterPikerDelegate: LetterPickerDelegate? {
+    var letterPikerDelegate: LetterPickerDelegate?
+    
+    private var letterPicker: UIPickerView!
+    
+    public var letterArray: [String] = [] {
         didSet {
             updateComponent()
         }
     }
-    private var letterPicker: UIPickerView!
-    
-    private var mainArray: [String] = ["A", "B", "C", "E"]
-    private var letterArray: [String] = []
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         updateComponent()
-        
         // Do any additional setup after loading the view.
     }
-    
-    
-    private func extractUniqLetters(){
-        let s = Set(mainArray .map {String($0.uppercased().first!)})
-        letterArray = Array(s).sorted()
-    }
-  
+
     private func updateComponent(){
         letterPicker.frame = CGRect(x: 0, y: 0, width: 35, height: self.bounds.height)
-        mainArray = letterPikerDelegate?.dataSource() ?? mainArray
-        extractUniqLetters()
         letterPicker.reloadAllComponents()
     }
 
@@ -87,8 +75,7 @@ extension LetterPicker: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let i = mainArray.firstIndex(where: {$0.uppercased().hasPrefix(letterArray[row])}) else { return }
-        letterPikerDelegate?.didSelectRow(row: i)
+        letterPikerDelegate?.didSelectRow(index: row)
     }
     
 }

@@ -9,12 +9,22 @@
 import Foundation
 
 
-struct User{
+class User{
     let name: String
     //let avatar: String
     let userPhoto: [UserPhoto]
     
     public var avatar: String {
         return userPhoto.first != nil ? userPhoto.first!.image : "default_user_avatar"
+    }
+    
+    init(name: String, userPhoto: [UserPhoto]){
+        self.name = name
+        self.userPhoto = userPhoto
+    }
+    
+    static func extractUniqLetters(_ str: [String])-> [String]{
+        let s = Set(str.map {String($0.uppercased().prefix(1))})
+        return Array(s).sorted()
     }
 }
