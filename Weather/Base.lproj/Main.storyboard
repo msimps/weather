@@ -303,6 +303,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="9II-qE-ROa" kind="relationship" relationship="viewControllers" id="nOj-OQ-qug"/>
                         <segue destination="m6t-8W-X1U" kind="relationship" relationship="viewControllers" id="TFs-F6-VSk"/>
                         <segue destination="poD-ku-yRw" kind="relationship" relationship="viewControllers" id="puS-VE-z5F"/>
                     </connections>
@@ -311,11 +312,42 @@
             </objects>
             <point key="canvasLocation" x="1913.0434782608697" y="137.77173913043478"/>
         </scene>
+        <!--Feed View Controller-->
+        <scene sceneID="OpT-pO-Faw">
+            <objects>
+                <viewController id="8gG-aD-rpy" customClass="FeedViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GEL-ci-pVS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cWs-lx-KNI">
+                                <rect key="frame" x="0.0" y="56" width="414" height="611"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cWs-lx-KNI" firstAttribute="top" secondItem="fsO-lZ-sw9" secondAttribute="top" id="LQo-bh-QgO"/>
+                            <constraint firstItem="fsO-lZ-sw9" firstAttribute="bottom" secondItem="cWs-lx-KNI" secondAttribute="bottom" id="fx7-1M-DL5"/>
+                            <constraint firstItem="cWs-lx-KNI" firstAttribute="leading" secondItem="fsO-lZ-sw9" secondAttribute="leading" id="mS7-jV-YHx"/>
+                            <constraint firstItem="fsO-lZ-sw9" firstAttribute="trailing" secondItem="cWs-lx-KNI" secondAttribute="trailing" id="nk5-fT-2eW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fsO-lZ-sw9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dl0-fN-dbP"/>
+                    <connections>
+                        <outlet property="tableView" destination="cWs-lx-KNI" id="JP7-Hh-R0E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kAH-ns-jgb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3844.9275362318845" y="-1003.5326086956522"/>
+        </scene>
         <!--My Friends-->
         <scene sceneID="x2n-vh-Gz9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m6t-8W-X1U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Friends" selectedImage="person" catalog="system" id="UOp-Yq-38V"/>
+                    <tabBarItem key="tabBarItem" title="My Friends" image="person.fill" catalog="system" id="UOp-Yq-38V"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DxQ-7V-d3O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -338,7 +370,7 @@
         <scene sceneID="RWO-b9-ERR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="poD-ku-yRw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Groups" selectedImage="person.3" catalog="system" id="ET3-FJ-MFH"/>
+                    <tabBarItem key="tabBarItem" title="My Groups" image="person.3" catalog="system" id="ET3-FJ-MFH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jp6-lh-2T3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -454,11 +486,31 @@
             </objects>
             <point key="canvasLocation" x="3822" y="-333"/>
         </scene>
+        <!--Feed-->
+        <scene sceneID="1PK-id-vZD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9II-qE-ROa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="rectangle.grid.1x2" catalog="system" id="P6G-fw-WPo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cj7-x7-4LZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8gG-aD-rpy" kind="relationship" relationship="rootViewController" id="Nl1-Ri-u5V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOE-Xk-y3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2937.68115942029" y="-1003.5326086956522"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Elon Musk/3" width="3000" height="2050"/>
         <image name="How to get to Mars" width="1680" height="1120"/>
-        <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="rectangle.grid.1x2" catalog="system" width="128" height="101"/>
     </resources>
 </document>

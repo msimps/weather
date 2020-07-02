@@ -14,6 +14,7 @@
 		3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD56249E6CF2007CFA6D /* UserPhoto.swift */; };
 		3489DD5A249E8280007CFA6D /* UserPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD59249E8280007CFA6D /* UserPhotosController.swift */; };
 		3489DD5C249E8622007CFA6D /* UserPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */; };
+		3491424024ADD2BA0062BB20 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3491423F24ADD2BA0062BB20 /* Post.swift */; };
 		3493F5F5249F9AC100318A47 /* AllGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F5F4249F9AC100318A47 /* AllGroupsController.swift */; };
 		3493F5F7249F9C2000318A47 /* VkGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F5F6249F9C2000318A47 /* VkGroup.swift */; };
 		3493F5F9249FA27E00318A47 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F5F8249FA27E00318A47 /* MyGroupsController.swift */; };
@@ -30,6 +31,9 @@
 		34D687A424952657009A3B63 /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D687A324952657009A3B63 /* WeatherUITests.swift */; };
 		34D687B2249529AC009A3B63 /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D687B1249529AC009A3B63 /* LoginFormController.swift */; };
 		34DDE03224AA17C000E11CC5 /* LikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DDE03124AA17C000E11CC5 /* LikesView.swift */; };
+		34DDE03924ABBD5900E11CC5 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DDE03724ABBD5900E11CC5 /* FeedViewCell.swift */; };
+		34DDE03A24ABBD5900E11CC5 /* FeedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34DDE03824ABBD5900E11CC5 /* FeedViewCell.xib */; };
+		34DDE03C24AD20E100E11CC5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DDE03B24AD20E100E11CC5 /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,7 @@
 		3489DD56249E6CF2007CFA6D /* UserPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoto.swift; sourceTree = "<group>"; };
 		3489DD59249E8280007CFA6D /* UserPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotosController.swift; sourceTree = "<group>"; };
 		3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoCell.swift; sourceTree = "<group>"; };
+		3491423F24ADD2BA0062BB20 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3493F5F4249F9AC100318A47 /* AllGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsController.swift; sourceTree = "<group>"; };
 		3493F5F6249F9C2000318A47 /* VkGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkGroup.swift; sourceTree = "<group>"; };
 		3493F5F8249FA27E00318A47 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
@@ -79,6 +84,9 @@
 		34D687A524952657009A3B63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34D687B1249529AC009A3B63 /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
 		34DDE03124AA17C000E11CC5 /* LikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesView.swift; sourceTree = "<group>"; };
+		34DDE03724ABBD5900E11CC5 /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
+		34DDE03824ABBD5900E11CC5 /* FeedViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewCell.xib; sourceTree = "<group>"; };
+		34DDE03B24AD20E100E11CC5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,8 @@
 				34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */,
 				34A70E4A24A52EDE000D1622 /* LetterPicker.swift */,
 				34DDE03124AA17C000E11CC5 /* LikesView.swift */,
+				34DDE03724ABBD5900E11CC5 /* FeedViewCell.swift */,
+				34DDE03824ABBD5900E11CC5 /* FeedViewCell.xib */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -134,6 +144,7 @@
 				3489DD54249E5B23007CFA6D /* User.swift */,
 				3493F5F6249F9C2000318A47 /* VkGroup.swift */,
 				3489DD56249E6CF2007CFA6D /* UserPhoto.swift */,
+				3491423F24ADD2BA0062BB20 /* Post.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				34D6878424952656009A3B63 /* Main.storyboard */,
+				34DDE03B24AD20E100E11CC5 /* FeedViewController.swift */,
 				34D6878A24952657009A3B63 /* Assets.xcassets */,
 				34367E6024A495E000C26CCE /* users */,
 				34367E5F24A4950000C26CCE /* components */,
@@ -309,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34DDE03A24ABBD5900E11CC5 /* FeedViewCell.xib in Resources */,
 				34D6878E24952657009A3B63 /* LaunchScreen.storyboard in Resources */,
 				34D6878B24952657009A3B63 /* Assets.xcassets in Resources */,
 				34D6878624952656009A3B63 /* Main.storyboard in Resources */,
@@ -338,7 +351,9 @@
 			files = (
 				3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */,
 				34DDE03224AA17C000E11CC5 /* LikesView.swift in Sources */,
+				34DDE03C24AD20E100E11CC5 /* FeedViewController.swift in Sources */,
 				34D6878924952656009A3B63 /* Weather.xcdatamodeld in Sources */,
+				34DDE03924ABBD5900E11CC5 /* FeedViewCell.swift in Sources */,
 				34A70E4B24A52EDE000D1622 /* LetterPicker.swift in Sources */,
 				3493F5F7249F9C2000318A47 /* VkGroup.swift in Sources */,
 				3493F5F5249F9AC100318A47 /* AllGroupsController.swift in Sources */,
@@ -346,6 +361,7 @@
 				34367E5E24A48DFB00C26CCE /* CustomGradientView.swift in Sources */,
 				34D687B2249529AC009A3B63 /* LoginFormController.swift in Sources */,
 				3493F60224A0D74B00318A47 /* UserGroupCell.swift in Sources */,
+				3491424024ADD2BA0062BB20 /* Post.swift in Sources */,
 				3489DD5C249E8622007CFA6D /* UserPhotoCell.swift in Sources */,
 				3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */,
 				34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */,

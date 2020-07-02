@@ -16,6 +16,7 @@ import UIKit
     @IBInspectable var likedColor: UIColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
     @IBInspectable var liked: Bool = false
     
+    
     private var likeBtn: UIButton = UIButton(type: .system)
     
     private var stackView: UIStackView!
@@ -53,6 +54,7 @@ import UIKit
     
     
     private func updateComponent(){
+        likeBtn.titleLabel?.font.withSize(15)
         if liked {
             likeBtn.setTitle(String(likesCount+1), for: .normal)
             likeBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
