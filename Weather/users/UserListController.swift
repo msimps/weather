@@ -113,8 +113,10 @@ extension UserListController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             updateSectionList(userList)
+            letterPicker.letterArray = Array(sectionList.keys).sorted()
         } else {
             updateSectionList(userList.filter {$0.name.contains(searchText)} )
+            letterPicker.letterArray = Array(sectionList.keys).sorted()
         }
         tableView.reloadData()
         print(searchText)
