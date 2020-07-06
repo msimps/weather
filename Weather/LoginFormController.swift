@@ -8,11 +8,13 @@
 
 import UIKit
 
-class LoginFormController: UIViewController {
+class LoginFormController: UIViewController, CAAnimationDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTexField: UITextField!
+    @IBOutlet weak var loadingIndicator: LoadingIndicator!
+    @IBOutlet weak var stackView: UIStackView!
     
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -51,6 +53,21 @@ class LoginFormController: UIViewController {
             name: UIResponder.keyboardDidHideNotification,
             object: nil
         )
+    }
+    @IBAction func LogInClick(_ sender: Any) {
+        guard checkUserCredentials() else {
+            showSigninErrorMessage()
+            return
+        }
+        stackView.isHidden = true
+        loadingIndicator.isHidden = false
+        
+        perform(#selector(successLogin), with: nil, afterDelay: 4)
+        
+    }
+    
+    @objc private func successLogin(){
+        performSegue(withIdentifier: "SuccesLoginSegue", sender: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

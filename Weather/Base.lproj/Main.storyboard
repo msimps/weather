@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tf6-VS-bPR" customClass="LoadingIndicator" customModule="Weather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grB-dn-7vc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
@@ -62,7 +66,7 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="e9J-O0-iJ4" kind="show" id="peL-KX-Diw"/>
+                                                            <action selector="LogInClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1IW-Ta-1TN"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -103,10 +107,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="tf6-VS-bPR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Pr-dM-99c"/>
                             <constraint firstItem="grB-dn-7vc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DaH-Cd-VwN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tf6-VS-bPR" secondAttribute="bottom" id="Ecb-Jr-R9i"/>
+                            <constraint firstItem="tf6-VS-bPR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ljj-t8-b4a"/>
                             <constraint firstItem="grB-dn-7vc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OZc-A8-wdO"/>
                             <constraint firstItem="E8A-UT-nOS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="U8h-Mn-IA0"/>
                             <constraint firstItem="grB-dn-7vc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nx9-oa-fP1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tf6-VS-bPR" secondAttribute="trailing" id="p5F-RO-yyC"/>
                             <constraint firstItem="grB-dn-7vc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="v4k-ZY-sF2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -121,9 +129,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Z3k-Na-GDy"/>
                     <connections>
+                        <outlet property="LoadingIndicator" destination="tf6-VS-bPR" id="FXd-qE-iVU"/>
+                        <outlet property="loadingIndicator" destination="tf6-VS-bPR" id="Orh-Ar-xQE"/>
                         <outlet property="loginTextField" destination="m9m-yX-He1" id="tNz-7o-Nr7"/>
                         <outlet property="passwordTexField" destination="467-gb-GyP" id="z11-70-LDG"/>
                         <outlet property="scrollView" destination="grB-dn-7vc" id="JZQ-jZ-cnD"/>
+                        <outlet property="stackView" destination="cPl-Xm-QuT" id="M39-X1-xEY"/>
+                        <segue destination="e9J-O0-iJ4" kind="show" identifier="SuccesLoginSegue" id="vVw-7F-HhJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
