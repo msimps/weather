@@ -92,7 +92,28 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         cell.nameLabel.text = user.name
         // Configure the cell...
         cell.avatarView.avatarImage = UIImage(named: user.avatar)!
+        //UIView.animate(withDuration: <#T##TimeInterval#>, animations: <#T##() -> Void#>)
+        //updateComponent()
+        //self.layer.opacity = 0
+        /*let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0
+        opacityAnimation.toValue = 1
+        opacityAnimation.duration = 0.5
+        opacityAnimation.repeatCount = 1
         
+        cell.layer.add(opacityAnimation, forKey: nil)*/
+        cell.alpha = 0
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0,
+            options: [],
+            animations: {
+                cell.frame.origin.x -= 50
+                cell.frame.size.width -= CGFloat(50)
+                cell.alpha = 1
+        })
         return cell
     }
     
@@ -126,7 +147,7 @@ extension UserListController: UISearchBarDelegate{
 
 extension UserListController: LetterPickerDelegate{
     func didSelectRow(index: Int) {
-        tableView.scrollToRow(at: IndexPath(row: 0, section: index), at: .top, animated: false)
+        tableView.scrollToRow(at: IndexPath(row: 0, section: index), at: .top, animated: true)
     }
 
 }
