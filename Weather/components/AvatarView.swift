@@ -79,9 +79,6 @@ import UIKit
             imageView.isUserInteractionEnabled = true
             imageView.addGestureRecognizer(tapGestureRecognizer)
             
-
-            
-            
             shadowView.backgroundColor = .black
             shadowView.clipsToBounds = true
             shadowView.layer.masksToBounds = false

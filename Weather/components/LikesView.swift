@@ -52,20 +52,50 @@ import UIKit
         updateComponent()
     }
     
+    private func animateBtn(_ new_value: String){
+        UIView.transition(with: likeBtn.titleLabel!,
+                      duration: 0.5,
+        options: .transitionFlipFromTop,
+        animations: {
+            //self.likeBtn.titleLabel!.text = new_value
+            self.likeBtn.setTitle(new_value, for: .normal)
+        },
+        completion: nil)
+    }
+    
     
     private func updateComponent(){
         likeBtn.titleLabel?.font.withSize(15)
         if liked {
-            likeBtn.setTitle(String(likesCount+1), for: .normal)
+            //likeBtn.setTitle(String(likesCount+1), for: .normal)
             likeBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             likeBtn.tintColor = likedColor
             likeBtn.setTitleColor(likedColor, for: .normal)
+            animateBtn(String(likesCount+1))
         } else {
-            likeBtn.setTitle(String(likesCount), for: .normal)
+            //likeBtn.setTitle(String(likesCount), for: .normal)
             likeBtn.setImage(UIImage(systemName: "heart"), for: .normal)
             likeBtn.tintColor = unlikedColor
             likeBtn.setTitleColor(unlikedColor, for: .normal)
+            animateBtn(String(likesCount))
         }
+        
+        
+        /*
+        let shrink:CGFloat = 10
+        let originRect = likeBtn.titleLabel!.frame
+        let newRect = CGRect(x: originRect.origin.x+shrink, y: originRect.origin.y+shrink, width: originRect.width-2*shrink, height: originRect.height-2*shrink)
+        //likeBtn.titleLabel!.frame = newRect
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            usingSpringWithDamping: 0.2,
+            initialSpringVelocity: 0,
+            options: [],
+            animations: {
+                self.likeBtn.titleLabel?.frame = newRect
+            }
+        )*/
     }
     
     
@@ -81,6 +111,7 @@ import UIKit
         stackView.axis = .horizontal
         stackView.alignment = .leading
         stackView.distribution = .fillEqually
+        likeBtn.setTitle(String(likesCount), for: .normal)
     }
     
     @objc private func clickBtn(_ sender: UIButton){
