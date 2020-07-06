@@ -75,6 +75,12 @@ import UIKit
             imageView = UIImageView(image: avatarImage)
             imageView.contentMode = .scaleAspectFill
             updateComponent()
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+            imageView.isUserInteractionEnabled = true
+            imageView.addGestureRecognizer(tapGestureRecognizer)
+            
+
+            
             
             shadowView.backgroundColor = .black
             shadowView.clipsToBounds = true
@@ -84,6 +90,27 @@ import UIKit
             self.addSubview(shadowView)
             self.addSubview(imageView)
         }
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        let shrink:CGFloat = 10
+        let originRect = imageView.frame
+        let newRect = CGRect(x: originRect.origin.x+shrink, y: originRect.origin.y+shrink, width: originRect.width-2*shrink, height: originRect.height-2*shrink)
+        tappedImage.frame = newRect
+        shadowView.frame = newRect
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            usingSpringWithDamping: 0.2,
+            initialSpringVelocity: 0,
+            options: [],
+            animations: {
+                tappedImage.frame = originRect
+                self.shadowView.frame = originRect
+            }
+        )
     }
 
 }
