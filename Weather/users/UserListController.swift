@@ -13,6 +13,7 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var letterPicker: LetterPicker!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var tmpUsers = ["Albert Einstein", "Bill Gates", "Bill Gates","Bill Gates","Elon Musk","Elon Musk","Elon Musk","Elon Musk","Elon Musk", "Jeff Bezos", "Jeff Bezos", "Jeff Bezos", "Sergey Brin", "Sergey Brin", "Sergey Brin"]
     
@@ -73,6 +74,7 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         letterPicker.letterPikerDelegate = self
         letterPicker.letterArray = Array(sectionList.keys).sorted()
+        searchBar.delegate = self
     }
 
     // MARK: - Table view data source
@@ -92,16 +94,7 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         cell.nameLabel.text = user.name
         // Configure the cell...
         cell.avatarView.avatarImage = UIImage(named: user.avatar)!
-        //UIView.animate(withDuration: <#T##TimeInterval#>, animations: <#T##() -> Void#>)
-        //updateComponent()
-        //self.layer.opacity = 0
-        /*let opacityAnimation = CABasicAnimation(keyPath: "opacity")
-        opacityAnimation.fromValue = 0
-        opacityAnimation.toValue = 1
-        opacityAnimation.duration = 0.5
-        opacityAnimation.repeatCount = 1
-        
-        cell.layer.add(opacityAnimation, forKey: nil)*/
+
         cell.alpha = 0
         UIView.animate(
             withDuration: 1,

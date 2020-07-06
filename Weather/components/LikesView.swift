@@ -79,8 +79,7 @@ import UIKit
             likeBtn.setTitleColor(unlikedColor, for: .normal)
             animateBtn(String(likesCount))
         }
-        
-        
+
         /*
         let shrink:CGFloat = 10
         let originRect = likeBtn.titleLabel!.frame

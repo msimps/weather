@@ -62,7 +62,7 @@ class LoginFormController: UIViewController, CAAnimationDelegate {
         stackView.isHidden = true
         loadingIndicator.isHidden = false
         
-        perform(#selector(successLogin), with: nil, afterDelay: 1)
+        perform(#selector(successLogin), with: nil, afterDelay: 2)
         
     }
     

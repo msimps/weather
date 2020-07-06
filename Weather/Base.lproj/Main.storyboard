@@ -405,20 +405,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vW2-xH-Erz">
+                                <rect key="frame" x="0.0" y="56" width="379" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="m9C-gS-oi6"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jqy-qB-aKc">
-                                <rect key="frame" x="0.0" y="56" width="379" height="611"/>
+                                <rect key="frame" x="0.0" y="105" width="379" height="562"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="7TA-Je-K2Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="379" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="4YW-KI-z4s" id="5bv-8i-Hp6"/>
-                                    </connections>
-                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="userCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="T0A-zg-YL4" customClass="UserTableViewCell" customModule="Weather" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="379" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="379" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T0A-zg-YL4" id="bFo-A9-p67">
                                             <rect key="frame" x="0.0" y="0.0" width="379" height="100"/>
@@ -479,11 +478,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oZb-cY-V3k" firstAttribute="bottom" secondItem="GTD-Po-ZEg" secondAttribute="bottom" id="6Qr-1U-igM"/>
-                            <constraint firstItem="jqy-qB-aKc" firstAttribute="top" secondItem="oZb-cY-V3k" secondAttribute="top" id="Bu9-9h-4ST"/>
+                            <constraint firstItem="GTD-Po-ZEg" firstAttribute="leading" secondItem="vW2-xH-Erz" secondAttribute="trailing" id="QGS-Kf-MJK"/>
+                            <constraint firstItem="vW2-xH-Erz" firstAttribute="leading" secondItem="oZb-cY-V3k" secondAttribute="leading" id="RNI-53-Dwo"/>
                             <constraint firstItem="jqy-qB-aKc" firstAttribute="leading" secondItem="oZb-cY-V3k" secondAttribute="leading" id="Sq0-1f-wE1"/>
+                            <constraint firstItem="vW2-xH-Erz" firstAttribute="top" secondItem="oZb-cY-V3k" secondAttribute="top" id="ZWy-Bz-mrt"/>
                             <constraint firstItem="GTD-Po-ZEg" firstAttribute="trailing" secondItem="oZb-cY-V3k" secondAttribute="trailing" id="b42-Jr-BNo"/>
                             <constraint firstItem="GTD-Po-ZEg" firstAttribute="leading" secondItem="jqy-qB-aKc" secondAttribute="trailing" id="c1O-lz-zxB"/>
                             <constraint firstItem="GTD-Po-ZEg" firstAttribute="top" secondItem="oZb-cY-V3k" secondAttribute="top" id="hju-OJ-6kG"/>
+                            <constraint firstItem="jqy-qB-aKc" firstAttribute="top" secondItem="oZb-cY-V3k" secondAttribute="top" constant="49" id="jb6-he-1VL"/>
                             <constraint firstItem="oZb-cY-V3k" firstAttribute="bottom" secondItem="jqy-qB-aKc" secondAttribute="bottom" id="xBO-sP-tGC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oZb-cY-V3k"/>
@@ -491,12 +493,13 @@
                     <navigationItem key="navigationItem" id="dOk-xo-9kN"/>
                     <connections>
                         <outlet property="letterPicker" destination="GTD-Po-ZEg" id="g4K-UI-nr6"/>
+                        <outlet property="searchBar" destination="vW2-xH-Erz" id="dbB-n4-g8U"/>
                         <outlet property="tableView" destination="jqy-qB-aKc" id="ZOy-bq-ZNv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCQ-vP-dyD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3822" y="-333"/>
+            <point key="canvasLocation" x="3821.739130434783" y="-333.42391304347831"/>
         </scene>
         <!--Feed-->
         <scene sceneID="1PK-id-vZD">
