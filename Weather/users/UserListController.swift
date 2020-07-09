@@ -116,8 +116,8 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let userIndex = tableView.indexPathForSelectedRow else { return }
-        let userPhotosVC = segue.destination as! UserPhotosController
-        userPhotosVC.user = userList[userIndex.row]
+        let userPhotosVC = segue.destination as! PhotoSwiperViewController
+        userPhotosVC.user = sectionList[Array(sectionList.keys).sorted()[userIndex.section]]![userIndex.row]
     }
 
 }
@@ -133,7 +133,7 @@ extension UserListController: UISearchBarDelegate{
             letterPicker.letterArray = Array(sectionList.keys).sorted()
         }
         tableView.reloadData()
-        print(searchText)
+        //print(searchText)
     }
     
 }

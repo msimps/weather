@@ -62,7 +62,7 @@ class LoginFormController: UIViewController, CAAnimationDelegate {
         stackView.isHidden = true
         loadingIndicator.isHidden = false
         
-        perform(#selector(successLogin), with: nil, afterDelay: 2)
+        perform(#selector(successLogin), with: nil, afterDelay: 0.5)
         
     }
     
@@ -89,7 +89,7 @@ class LoginFormController: UIViewController, CAAnimationDelegate {
     }
     
     @IBAction func scrollTapped(_ sender: UITapGestureRecognizer) {
-        print(#function)
+        //print(#function)
         scrollView.endEditing(true)
     }
     

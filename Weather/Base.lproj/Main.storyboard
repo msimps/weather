@@ -147,12 +147,28 @@
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="136.95652173913044"/>
         </scene>
+        <!--Photo Swiper View Controller-->
+        <scene sceneID="3L6-KR-TND">
+            <objects>
+                <viewController id="f92-M7-xAI" customClass="PhotoSwiperViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iZh-WE-Ndy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="IJz-Wu-YpC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GFM-YY-In8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="otb-lA-vRU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4683" y="-325"/>
+        </scene>
         <!--User Photos Controller-->
         <scene sceneID="tUU-mk-iJq">
             <objects>
                 <collectionViewController id="Xo5-AC-Ux0" customClass="UserPhotosController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CGk-hw-nKY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fXk-tN-zHU">
@@ -202,7 +218,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFK-lZ-5zD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4618.840579710145" y="-333.42391304347831"/>
+            <point key="canvasLocation" x="5545" y="-333"/>
         </scene>
         <!--My Groups Controller-->
         <scene sceneID="yNd-vN-lZP">
@@ -462,7 +478,7 @@
                                         <connections>
                                             <outlet property="avatarView" destination="qRY-Kw-dF6" id="e2O-Hl-RO5"/>
                                             <outlet property="nameLabel" destination="dxO-er-xrc" id="EsA-cd-SDJ"/>
-                                            <segue destination="Xo5-AC-Ux0" kind="show" identifier="ShowUserPhotos" id="Zpf-6n-qY6"/>
+                                            <segue destination="f92-M7-xAI" kind="show" id="FpB-3d-T7M"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

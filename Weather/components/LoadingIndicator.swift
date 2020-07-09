@@ -27,7 +27,7 @@ class LoadingIndicator: UIView {
     }
     
     private func createComponent(){
-        print(#function)
+        //print(#function)
         replicatorLayer = CAReplicatorLayer()
         sourceLayer = CALayer()
         
@@ -36,7 +36,7 @@ class LoadingIndicator: UIView {
         
         replicatorLayer.frame = self.bounds
         replicatorLayer.position = self.center
-        print("view center=\(self.center) bounds=\(self.bounds) frame=\(self.frame)")
+        //print("view center=\(self.center) bounds=\(self.bounds) frame=\(self.frame)")
         
         sourceLayer.frame = CGRect(x: 0, y: 0, width: dotSize, height: dotSize)
         sourceLayer.cornerRadius = CGFloat(dotSize)/2

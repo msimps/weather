@@ -21,6 +21,7 @@
 		3493F5F9249FA27E00318A47 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F5F8249FA27E00318A47 /* MyGroupsController.swift */; };
 		3493F60224A0D74B00318A47 /* UserGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F60124A0D74B00318A47 /* UserGroupCell.swift */; };
 		3493F60424A3934700318A47 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F60324A3934700318A47 /* AvatarView.swift */; };
+		349BA12224B61F6D00A10779 /* PhotoSwiperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BA12124B61F6D00A10779 /* PhotoSwiperViewController.swift */; };
 		34A70E4B24A52EDE000D1622 /* LetterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A70E4A24A52EDE000D1622 /* LetterPicker.swift */; };
 		34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6877E24952656009A3B63 /* AppDelegate.swift */; };
 		34D6878124952656009A3B63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6878024952656009A3B63 /* SceneDelegate.swift */; };
@@ -69,6 +70,7 @@
 		3493F5F8249FA27E00318A47 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
 		3493F60124A0D74B00318A47 /* UserGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupCell.swift; sourceTree = "<group>"; };
 		3493F60324A3934700318A47 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		349BA12124B61F6D00A10779 /* PhotoSwiperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSwiperViewController.swift; sourceTree = "<group>"; };
 		34A70E4A24A52EDE000D1622 /* LetterPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterPicker.swift; sourceTree = "<group>"; };
 		34D6877B24952656009A3B63 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D6877E24952656009A3B63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */,
 				3489DD51249E5AB8007CFA6D /* UserListController.swift */,
 				3489DD59249E8280007CFA6D /* UserPhotosController.swift */,
+				349BA12124B61F6D00A10779 /* PhotoSwiperViewController.swift */,
 				3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */,
 			);
 			path = users;
@@ -369,6 +372,7 @@
 				3489DD5C249E8622007CFA6D /* UserPhotoCell.swift in Sources */,
 				3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */,
 				34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */,
+				349BA12224B61F6D00A10779 /* PhotoSwiperViewController.swift in Sources */,
 				34D6878124952656009A3B63 /* SceneDelegate.swift in Sources */,
 				3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */,
 				3489DD5A249E8280007CFA6D /* UserPhotosController.swift in Sources */,
