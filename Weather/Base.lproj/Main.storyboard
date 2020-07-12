@@ -374,7 +374,7 @@
         <!--My Friends-->
         <scene sceneID="x2n-vh-Gz9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m6t-8W-X1U" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m6t-8W-X1U" customClass="CustomNavigationController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Friends" image="person.fill" catalog="system" id="UOp-Yq-38V"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DxQ-7V-d3O">
@@ -397,7 +397,7 @@
         <!--My Groups-->
         <scene sceneID="RWO-b9-ERR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="poD-ku-yRw" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="poD-ku-yRw" customClass="CustomNavigationController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Groups" image="person.3" catalog="system" id="ET3-FJ-MFH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jp6-lh-2T3">
