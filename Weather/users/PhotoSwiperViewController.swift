@@ -70,7 +70,7 @@ class PhotoSwiperViewController: UIViewController {
         
         switch recognizer.state {
         case .began:
-            print("began")
+            
             let translation = recognizer.translation(in: self.view)
             let direction:CGFloat = translation.x > 0 ? 1 : -1
             
@@ -87,7 +87,7 @@ class PhotoSwiperViewController: UIViewController {
             self.nextImageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             self.nextImageView.layer.opacity = 0
             
-            print("translation = \(translation) direction = \(direction)")
+            //print("translation = \(translation) direction = \(direction)")
             interactiveAnimator =  UIViewPropertyAnimator(
                 duration: 0.5,
                 dampingRatio: 0.5,
@@ -108,15 +108,15 @@ class PhotoSwiperViewController: UIViewController {
             interactiveAnimator.pauseAnimation()
         case .changed:
             let translation = recognizer.translation(in: self.view)
-            interactiveAnimator.fractionComplete = fabs(translation.x) / self.view.bounds.width
+            interactiveAnimator.fractionComplete = abs(translation.x) / self.view.bounds.width
             
         case .ended:
-            print("ended")
+            //print("ended")
             interactiveAnimator.stopAnimation(true)
             let translation = recognizer.translation(in: self.view)
             let direction:CGFloat = translation.x > 0 ? 1 : -1
-            let ratio = fabs(translation.x) / self.view.bounds.width
-            print("ratio = \(ratio)")
+            let ratio = abs(translation.x) / self.view.bounds.width
+            //print("ratio = \(ratio)")
             if ( ratio < swipeRatioForAction ){
                 interactiveAnimator.addAnimations {
                     self.currentImageView.transform = .identity
@@ -138,9 +138,8 @@ class PhotoSwiperViewController: UIViewController {
                 
                 
                 interactiveAnimator.addCompletion{ position in
-                    switch position {
-                    case .end:
-                        print("end")
+                    if  position == .end {
+                        //print("end")
                         
                         self.currentImageView.image = self.nextImageView.image
                         self.currentImageView.transform = .identity
@@ -162,8 +161,6 @@ class PhotoSwiperViewController: UIViewController {
                          self.interactiveAnimator.fractionComplete = 0
                          
                          self.interactiveAnimator.stopAnimation(true)*/
-                    @unknown default:
-                        print("unknown")
                     }
                 }
                 
