@@ -44,9 +44,6 @@ import UIKit
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        //updateComponent()
-        //print(#function)
-        // Drawing code
     }
     
     

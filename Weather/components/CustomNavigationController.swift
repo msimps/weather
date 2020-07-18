@@ -93,11 +93,6 @@ final class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         transitionContext.containerView.addSubview(destination.view)
         transitionContext.containerView.sendSubviewToBack(destination.view)
-           
-        /*destination.view.frame = source.view.frame
-        destination.view.layer.anchorPoint = CGPoint(x: 1, y: 0)
-        destination.view.center = CGPoint(x: source.view.bounds.width, y: 0.0)
-        destination.view.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)*/
         
         source.view.layer.anchorPoint = CGPoint(x: 1.0, y: 0.0)
         source.view.center = CGPoint(x: source.view.bounds.width, y: 0.0)
@@ -139,16 +134,11 @@ class CustomInteractiveTransition: UIPercentDrivenInteractiveTransition {
     var shouldFinish: Bool = false
 
     @objc func handleScreenEdgeGesture(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        print(#function)
         switch recognizer.state {
         case .began:
-            print("begun")
             self.hasStarted = true
-            //self.viewController?.navigationController?.popViewController(animated: true)
             self.viewController?.navigationController?.popViewController(animated: true)
-            //self.viewController?.dismiss(animated: true, completion: nil)
         case .changed:
-            print("changed")
             let translation = recognizer.translation(in: recognizer.view)
             let relativeTranslation = translation.y / (recognizer.view?.bounds.height ?? 1)
             let progress = max(0, min(1, relativeTranslation))
@@ -157,11 +147,9 @@ class CustomInteractiveTransition: UIPercentDrivenInteractiveTransition {
 
             self.update(progress)
         case .ended:
-            print("ended")
             self.hasStarted = false
             self.shouldFinish ? self.finish() : self.cancel()
         case .cancelled:
-            print("cancelled")
             self.hasStarted = false
             self.cancel()
         default: return

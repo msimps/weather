@@ -80,21 +80,6 @@ import UIKit
             animateBtn(String(likesCount))
         }
 
-        /*
-        let shrink:CGFloat = 10
-        let originRect = likeBtn.titleLabel!.frame
-        let newRect = CGRect(x: originRect.origin.x+shrink, y: originRect.origin.y+shrink, width: originRect.width-2*shrink, height: originRect.height-2*shrink)
-        //likeBtn.titleLabel!.frame = newRect
-        UIView.animate(
-            withDuration: 1,
-            delay: 0,
-            usingSpringWithDamping: 0.2,
-            initialSpringVelocity: 0,
-            options: [],
-            animations: {
-                self.likeBtn.titleLabel?.frame = newRect
-            }
-        )*/
     }
     
     

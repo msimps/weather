@@ -64,21 +64,12 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        //tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "UserCell")
 
         tableView.dataSource = self
         tableView.delegate = self
         letterPicker.letterPikerDelegate = self
         letterPicker.letterArray = Array(sectionList.keys).sorted()
         searchBar.delegate = self
-        
-        
     }
 
     // MARK: - Table view data source
@@ -137,7 +128,6 @@ extension UserListController: UISearchBarDelegate{
             letterPicker.letterArray = Array(sectionList.keys).sorted()
         }
         tableView.reloadData()
-        //print(searchText)
     }
     
 }

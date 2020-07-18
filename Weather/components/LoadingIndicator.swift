@@ -44,8 +44,6 @@ class LoadingIndicator: UIView {
         sourceLayer.position = self.center
         sourceLayer.anchorPoint = CGPoint(x: 2, y: 5)
         runAnimation()
-        
-        
     }
     
     func runAnimation(){

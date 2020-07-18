@@ -29,8 +29,6 @@ class UserTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //print(nameLabel.text)
-        
     }
     
 

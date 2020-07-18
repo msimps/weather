@@ -81,7 +81,6 @@ class FeedViewCell: UITableViewCell {
 
         // Figure out what our orientation is, and use that to form the rectangle
         let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
-        //print("tw = \(targetWidth) iw = \(size.width) ih = \(size.height) r = \(ratio) nw = \(newSize.width) nh = \(newSize.height)")
         
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
         image.draw(in: CGRect(origin: .zero, size: newSize))
