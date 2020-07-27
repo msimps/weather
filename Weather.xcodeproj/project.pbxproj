@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34367E5E24A48DFB00C26CCE /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */; };
+		346D164E24CEE79800523826 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D164D24CEE79800523826 /* Session.swift */; };
 		347AD7FF24B1D0A20049BCA9 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347AD7FE24B1D0A20049BCA9 /* LoadingIndicator.swift */; };
 		3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */; };
 		3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD51249E5AB8007CFA6D /* UserListController.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
+		346D164D24CEE79800523826 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		347AD7FE24B1D0A20049BCA9 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		3489DD51249E5AB8007CFA6D /* UserListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				3493F5F6249F9C2000318A47 /* VkGroup.swift */,
 				3489DD56249E6CF2007CFA6D /* UserPhoto.swift */,
 				3491423F24ADD2BA0062BB20 /* Post.swift */,
+				346D164D24CEE79800523826 /* Session.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				3493F5F7249F9C2000318A47 /* VkGroup.swift in Sources */,
 				3493F5F5249F9AC100318A47 /* AllGroupsController.swift in Sources */,
 				3493F5F9249FA27E00318A47 /* MyGroupsController.swift in Sources */,
+				346D164E24CEE79800523826 /* Session.swift in Sources */,
 				34367E5E24A48DFB00C26CCE /* CustomGradientView.swift in Sources */,
 				34D687B2249529AC009A3B63 /* LoginFormController.swift in Sources */,
 				34BD30DD24C30E2900BD22E4 /* CustomNavigationController.swift in Sources */,

@@ -26,7 +26,10 @@ class LoginFormController: UIViewController, CAAnimationDelegate {
     }
     
     func checkUserCredentials() -> Bool{
-         return loginTextField.text == "user" && passwordTexField.text == "123"
+        Session.currentUser.name = "Pavel Durov"
+        Session.currentUser.token = "2a4f2325a12b"
+        Session.currentUser.userId = 1
+        return loginTextField.text == "user" && passwordTexField.text == "123"
     }
     
     func showSigninErrorMessage() {
@@ -35,6 +38,8 @@ class LoginFormController: UIViewController, CAAnimationDelegate {
         alter.addAction(action)
         present(alter, animated: true, completion: nil)
     }
+    
+    
     
     
     override func viewWillAppear(_ animated: Bool) {

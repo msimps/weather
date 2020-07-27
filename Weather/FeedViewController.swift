@@ -46,6 +46,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         // Do any additional setup after loading the view.
+        showHelloMessage()
+    }
+    
+    
+    func showHelloMessage() {
+        let alter = UIAlertController(title: "Wow!", message: "Hi, \(Session.currentUser.name)! How are you?", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Great!", style: .cancel, handler: nil)
+        alter.addAction(action)
+        present(alter, animated: true, completion: nil)
     }
     
 
