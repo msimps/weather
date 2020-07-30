@@ -46,7 +46,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         // Do any additional setup after loading the view.
+        let vkApi = VkApi()
+        vkApi.getProfileInfo()
+        vkApi.getFriendIds()
+        vkApi.getPhotosAll()
+        vkApi.getGroups()
+        vkApi.searchGroups(query: "apple")
         showHelloMessage()
+        
+        
     }
     
     

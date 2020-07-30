@@ -28,7 +28,7 @@ class LoginFormController: UIViewController, CAAnimationDelegate {
     func checkUserCredentials() -> Bool{
         Session.currentUser.name = "Pavel Durov"
         Session.currentUser.token = "2a4f2325a12b"
-        Session.currentUser.userId = 1
+        Session.currentUser.userId = "1"
         return loginTextField.text == "user" && passwordTexField.text == "123"
     }
     
