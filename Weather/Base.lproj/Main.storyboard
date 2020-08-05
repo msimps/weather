@@ -352,7 +352,7 @@
                     </view>
                     <connections>
                         <outlet property="webview" destination="qsF-TO-efW" id="jsp-ru-Jhb"/>
-                        <segue destination="e9J-O0-iJ4" kind="show" identifier="LoginSegue" id="i2z-xJ-stC"/>
+                        <segue destination="e9J-O0-iJ4" kind="show" identifier="LoginSegue" id="cAu-59-n2t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDk-Ww-DxY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -578,7 +578,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="i2z-xJ-stC"/>
+        <segue reference="cAu-59-n2t"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Elon Musk/3" width="3000" height="2050"/>

@@ -16,15 +16,22 @@ class LoginVKViewController: UINavigationController {
     var webview: WKWebView?{
         didSet{
             print(#function)
-            webview!.navigationDelegate = self
+            webview?.navigationDelegate = self
             
-            loadVKLoginPage()
+            if webview != nil  {
+                loadVKLoginPage()
+            }
         }
     }
     
     @objc func successLogin(_ notification: Notification){
-        print(#function)
-        self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+        
+        DispatchQueue.main.async {
+            
+            self.webview?.removeFromSuperview()
+            self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+        }
+        
     }
     
     func cleanWebViewCookies()  {

@@ -12,13 +12,13 @@ import Foundation
 class User{
     let name: String
     //let avatar: String
-    let userPhoto: [UserPhoto]
+    let userPhoto: [Photo]
     
     public var avatar: String {
         return userPhoto.first != nil ? userPhoto.first!.image : "default_user_avatar"
     }
     
-    init(name: String, userPhoto: [UserPhoto]){
+    init(name: String, userPhoto: [Photo]){
         self.name = name
         self.userPhoto = userPhoto
     }

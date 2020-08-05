@@ -40,13 +40,13 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     private func generate_tmp_user(){
         //Fill tmp users
         for user in tmpUsers.sorted() {
-            var userPhoto: [UserPhoto] = []
+            var userPhoto: [Photo] = []
             for i in 1...3 {
-                userPhoto.append(UserPhoto(image: "\(user)/\(i)", likes: Int.random(in: 0...50)))
+                //userPhoto.append(Photo(image: "\(user)/\(i)", likes: Int.random(in: 0...50)))
             }
             userList.append(User(name: user, userPhoto: userPhoto))
         }
-        let default_photos = Array(1...3).map{ _ in UserPhoto(image: "default_user_avatar", likes: 0) }
+        let default_photos:[Photo] = [] //Array(1...3).map{ _ in Photo(image: "default_user_avatar", likes: 0) }
         for i in 1...10 {
             userList.append(User(name: "User\(i)", userPhoto: default_photos))
             tmpUsers.append("User\(i)")

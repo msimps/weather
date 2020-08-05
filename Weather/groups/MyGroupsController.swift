@@ -7,31 +7,39 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MyGroupsController: UITableViewController {
     
     @IBOutlet var myGroupTableView: UITableView!
-    var myGroups: [VkGroup] = []
+    var myGroups: [Group] = []
+    lazy var service = VkApi()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UserGroupCell.self, forCellReuseIdentifier: "UserGroupCell")
         
+        service.getGroups { groups in
+            self.myGroups = groups
+            self.tableView.reloadData()
+            
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
     
     @IBAction func addGroup(segue: UIStoryboardSegue){
         guard let allGroupsController = segue.source as? AllGroupsController,
               let index = allGroupsController.tableView.indexPathForSelectedRow
         else { return }
-        let group = allGroupsController.allGroups[index.row]
-        guard !myGroups.contains(group) else { return }
+        //let group = allGroupsController.allGroups[index.row]
+        //guard !myGroups.contains(group) else { return }
         
-        myGroups.append(group)
+        //myGroups.append(group)
         tableView.reloadData()
     }
 
@@ -45,7 +53,16 @@ class MyGroupsController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroupCell", for: indexPath) as! UserGroupCell
         //cell.groupName.text = "asd"//myGroups[indexPath.row].name
         cell.textLabel?.text = myGroups[indexPath.row].name
-        cell.imageView?.image = UIImage(named: myGroups[indexPath.row].avatar)
+        if let imageUrl = myGroups[indexPath.row].avatar, let url = URL(string: imageUrl) {
+            cell.imageView?.kf.setImage(with: ImageResource(downloadURL: url), placeholder: nil, options: nil, progressBlock: nil) {
+                (image, error, cacheType, URL) in
+                cell.setNeedsLayout()
+            }
+        } else {
+            cell.imageView?.image = UIImage(named: "default_user_avatar")
+        }
+        
+        //image = UIImage(named: myGroups[indexPath.row].avatar)
         // Configure the cell...
 
         return cell

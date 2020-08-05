@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		341BF63E24D828F700E3503C /* VkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BF63D24D828F700E3503C /* VkResponse.swift */; };
 		34367E5E24A48DFB00C26CCE /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */; };
+		3443E54924D9ECA9006B418E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3443E54824D9ECA9006B418E /* Kingfisher */; };
 		346D164E24CEE79800523826 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D164D24CEE79800523826 /* Session.swift */; };
 		346D165024D1F03B00523826 /* LoginVKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D164F24D1F03B00523826 /* LoginVKViewController.swift */; };
 		347AD7FF24B1D0A20049BCA9 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347AD7FE24B1D0A20049BCA9 /* LoadingIndicator.swift */; };
 		3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */; };
 		3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD51249E5AB8007CFA6D /* UserListController.swift */; };
 		3489DD55249E5B23007CFA6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD54249E5B23007CFA6D /* User.swift */; };
-		3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD56249E6CF2007CFA6D /* UserPhoto.swift */; };
+		3489DD57249E6CF2007CFA6D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD56249E6CF2007CFA6D /* Photo.swift */; };
 		3489DD5A249E8280007CFA6D /* UserPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD59249E8280007CFA6D /* UserPhotosController.swift */; };
 		3489DD5C249E8622007CFA6D /* UserPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */; };
 		3491424024ADD2BA0062BB20 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3491423F24ADD2BA0062BB20 /* Post.swift */; };
@@ -62,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		341BF63D24D828F700E3503C /* VkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkResponse.swift; sourceTree = "<group>"; };
 		34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
 		346D164D24CEE79800523826 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		346D164F24D1F03B00523826 /* LoginVKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVKViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +72,7 @@
 		3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		3489DD51249E5AB8007CFA6D /* UserListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
 		3489DD54249E5B23007CFA6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		3489DD56249E6CF2007CFA6D /* UserPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoto.swift; sourceTree = "<group>"; };
+		3489DD56249E6CF2007CFA6D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		3489DD59249E8280007CFA6D /* UserPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotosController.swift; sourceTree = "<group>"; };
 		3489DD5B249E8622007CFA6D /* UserPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoCell.swift; sourceTree = "<group>"; };
 		3491423F24ADD2BA0062BB20 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3443E54924D9ECA9006B418E /* Kingfisher in Frameworks */,
 				34FBD51524D2BFB200D64160 /* WebKit.framework in Frameworks */,
 				34FBD50F24D206A800D64160 /* Alamofire in Frameworks */,
 			);
@@ -163,7 +167,7 @@
 			children = (
 				3489DD54249E5B23007CFA6D /* User.swift */,
 				3493F5F6249F9C2000318A47 /* VkGroup.swift */,
-				3489DD56249E6CF2007CFA6D /* UserPhoto.swift */,
+				3489DD56249E6CF2007CFA6D /* Photo.swift */,
 				3491423F24ADD2BA0062BB20 /* Post.swift */,
 				346D164D24CEE79800523826 /* Session.swift */,
 			);
@@ -245,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				34FBD51124D2098600D64160 /* VkApi.swift */,
+				341BF63D24D828F700E3503C /* VkResponse.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			name = Weather;
 			packageProductDependencies = (
 				34FBD50E24D206A800D64160 /* Alamofire */,
+				3443E54824D9ECA9006B418E /* Kingfisher */,
 			);
 			productName = Weather;
 			productReference = 34D6877B24952656009A3B63 /* Weather.app */;
@@ -350,6 +356,7 @@
 			mainGroup = 34D6877224952656009A3B63;
 			packageReferences = (
 				34FBD50D24D206A800D64160 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3443E54724D9ECA9006B418E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 34D6877C24952656009A3B63 /* Products */;
 			projectDirPath = "";
@@ -414,10 +421,11 @@
 				3493F60224A0D74B00318A47 /* UserGroupCell.swift in Sources */,
 				3491424024ADD2BA0062BB20 /* Post.swift in Sources */,
 				3489DD5C249E8622007CFA6D /* UserPhotoCell.swift in Sources */,
-				3489DD57249E6CF2007CFA6D /* UserPhoto.swift in Sources */,
+				3489DD57249E6CF2007CFA6D /* Photo.swift in Sources */,
 				34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */,
 				349BA12224B61F6D00A10779 /* PhotoSwiperViewController.swift in Sources */,
 				34D6878124952656009A3B63 /* SceneDelegate.swift in Sources */,
+				341BF63E24D828F700E3503C /* VkResponse.swift in Sources */,
 				3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */,
 				3489DD5A249E8280007CFA6D /* UserPhotosController.swift in Sources */,
 				3493F60424A3934700318A47 /* AvatarView.swift in Sources */,
@@ -752,6 +760,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3443E54724D9ECA9006B418E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.14.1;
+			};
+		};
 		34FBD50D24D206A800D64160 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -763,6 +779,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3443E54824D9ECA9006B418E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3443E54724D9ECA9006B418E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		34FBD50E24D206A800D64160 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 34FBD50D24D206A800D64160 /* XCRemoteSwiftPackageReference "Alamofire" */;
