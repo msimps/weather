@@ -9,7 +9,7 @@
 import UIKit
 
 struct PostDataSource{
-    let user: User
+    let user: FakeUser
     let post: Post
 }
 

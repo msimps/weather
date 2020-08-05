@@ -34,35 +34,45 @@ class VkApi {
         }
     }
     
-    func getFriendIds() {
+    func getFriend(completion: @escaping ([User]) -> Void ) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
-            "user_id": Session.currentUser.userId
+            "user_id": Session.currentUser.userId,
+            "fields": "nickname, photo_200_orig"
         ]
         AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseJSON { response in
             print(response)
         }
+        AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseData { response in
+            if let data = response.value {
+                do {
+                    let users = try JSONDecoder().decode(VkResponse<User>.self, from: data).items
+                    print(users)
+                    completion(users)
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
     
-    func getPhotosAll() {
+    func getPhotosAll(userId: Int, completion: @escaping ([Photo]) -> Void) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
-            "owner_id": Session.currentUser.userId,
+            "owner_id": userId,
             "extended": 1
         ]
         
         AF.request(vkEndpoint + "/photos.getAll", parameters: parameters).responseData { response in
-        
             if let data = response.value {
                 do {
                     let photo = try JSONDecoder().decode(VkResponse<Photo>.self, from: data).items
                       print(photo)
-                    
+                      completion(photo)
                 } catch {
                     print(error)
-                    
                 }
             }
         }

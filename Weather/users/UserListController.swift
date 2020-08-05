@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,45 +18,48 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     
-    var tmpUsers = ["Albert Einstein", "Bill Gates", "Bill Gates","Bill Gates","Elon Musk","Elon Musk","Elon Musk","Elon Musk","Elon Musk", "Jeff Bezos", "Jeff Bezos", "Jeff Bezos", "Sergey Brin", "Sergey Brin", "Sergey Brin"]
+    //var tmpUsers = ["Albert Einstein", "Bill Gates", "Bill Gates","Bill Gates","Elon Musk","Elon Musk","Elon Musk","Elon Musk","Elon Musk", "Jeff Bezos", "Jeff Bezos", "Jeff Bezos", "Sergey Brin", "Sergey Brin", "Sergey Brin"]
     
     
     var userList: [User] = []
     
     var sectionList: [String: [User]] = [:]
+    lazy var service = VkApi()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        generate_tmp_user()
-        updateSectionList(userList)
+        //generate_tmp_user()//
+        //updateSectionList(userList)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        generate_tmp_user()
-        updateSectionList(userList)
+        //generate_tmp_user()
+        
+        
+        
         
     }
     
-    private func generate_tmp_user(){
+    /*private func generate_tmp_user(){
         //Fill tmp users
         for user in tmpUsers.sorted() {
             var userPhoto: [Photo] = []
             for i in 1...3 {
                 //userPhoto.append(Photo(image: "\(user)/\(i)", likes: Int.random(in: 0...50)))
             }
-            userList.append(User(name: user, userPhoto: userPhoto))
+            userList.append(FakeUser(name: user, userPhoto: userPhoto))
         }
         let default_photos:[Photo] = [] //Array(1...3).map{ _ in Photo(image: "default_user_avatar", likes: 0) }
         for i in 1...10 {
-            userList.append(User(name: "User\(i)", userPhoto: default_photos))
+            userList.append(FakeUser(name: "User\(i)", userPhoto: default_photos))
             tmpUsers.append("User\(i)")
         }
-    }
+    }*/
     
     func updateSectionList(_ users: [User]){
         sectionList = [:]
-        let firstLetters = User.extractUniqLetters(users.map {$0.name})
+        let firstLetters = FakeUser.extractUniqLetters(users.map {$0.name})
         firstLetters.forEach({(letter: String) in
             sectionList[letter] = users.filter { $0.name.hasPrefix(letter)}
         })
@@ -64,11 +68,16 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        service.getFriend() { users in
+          self.userList = users
+          self.updateSectionList(self.userList)
+          self.tableView.reloadData()
+          self.letterPicker.letterArray = Array(self.sectionList.keys).sorted()
+        }
         tableView.dataSource = self
         tableView.delegate = self
         letterPicker.letterPikerDelegate = self
-        letterPicker.letterArray = Array(sectionList.keys).sorted()
+        
         searchBar.delegate = self
     }
 
@@ -88,8 +97,15 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         let user = sectionList[Array(sectionList.keys).sorted()[indexPath.section]]![indexPath.row]
         cell.nameLabel.text = user.name
         // Configure the cell...
-        cell.avatarView.avatarImage = UIImage(named: user.avatar)!
-
+        //cell.avatarView.avatarImage = UIImage(named: user.avatar)!
+        if let imageUrl = user.avatar, let url = URL(string: imageUrl) {
+            cell.avatarView.imageView.kf.setImage(with: ImageResource(downloadURL: url), placeholder: nil, options: nil, progressBlock: nil) {
+                   (image, error, cacheType, URL) in
+                   cell.setNeedsLayout()
+               }
+           } else {
+               cell.imageView?.image = UIImage(named: "default_user_avatar")
+           }
         cell.alpha = 0
         UIView.animate(
             withDuration: 1,

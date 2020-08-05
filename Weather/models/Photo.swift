@@ -9,10 +9,8 @@
 import Foundation
 
 class Photo: Decodable {
-    dynamic var image: String = ""
+    dynamic var image: String?
     dynamic var likes: Int = 0
-    
-    dynamic var city = ""
     
     enum CodingKeys: String, CodingKey {
         case image = "photo_604"

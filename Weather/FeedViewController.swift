@@ -48,6 +48,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view.
         
         //let vkApi = VkApi()
+        //vkApi.getFriend()
         //vkApi.getProfileInfo()
         //vkApi.getFriendIds()
         //vkApi.getPhotosAll()

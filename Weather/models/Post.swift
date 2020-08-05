@@ -10,7 +10,7 @@ import Foundation
 
 
 class Post{
-    let user: User
+    let user: FakeUser
     let created_at: String
     let text: String
     let image: String
@@ -19,7 +19,7 @@ class Post{
     var repostsCount: Int
     var viewsCount: Int
     
-    init(user: User,
+    init(user: FakeUser,
          created_at: String,
          text: String,
          image: String,

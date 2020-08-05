@@ -22,24 +22,11 @@ class MyGroupsController: UITableViewController {
         service.getGroups { groups in
             self.myGroups = groups
             self.tableView.reloadData()
-            
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
     }
     
     @IBAction func addGroup(segue: UIStoryboardSegue){
-        guard let allGroupsController = segue.source as? AllGroupsController,
-              let index = allGroupsController.tableView.indexPathForSelectedRow
-        else { return }
-        //let group = allGroupsController.allGroups[index.row]
-        //guard !myGroups.contains(group) else { return }
-        
-        //myGroups.append(group)
+        //guard let allGroupsController = segue.source as? AllGroupsController, let index = allGroupsController.tableView.indexPathForSelectedRow else { return }
         tableView.reloadData()
     }
 
@@ -51,7 +38,6 @@ class MyGroupsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroupCell", for: indexPath) as! UserGroupCell
-        //cell.groupName.text = "asd"//myGroups[indexPath.row].name
         cell.textLabel?.text = myGroups[indexPath.row].name
         if let imageUrl = myGroups[indexPath.row].avatar, let url = URL(string: imageUrl) {
             cell.imageView?.kf.setImage(with: ImageResource(downloadURL: url), placeholder: nil, options: nil, progressBlock: nil) {
@@ -61,10 +47,6 @@ class MyGroupsController: UITableViewController {
         } else {
             cell.imageView?.image = UIImage(named: "default_user_avatar")
         }
-        
-        //image = UIImage(named: myGroups[indexPath.row].avatar)
-        // Configure the cell...
-
         return cell
     }
     
@@ -75,11 +57,9 @@ class MyGroupsController: UITableViewController {
             // Delete the row from the data source
             myGroups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
         }
     }
-    
-    
+
 
     /*
     // Override to support conditional editing of the table view.

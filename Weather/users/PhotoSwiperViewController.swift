@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoSwiperViewController: UIViewController {
     
+    lazy var service = VkApi()
     var user: User?
+    var userPhoto: [Photo] = []
+    
     var currentImageView: UIImageView = UIImageView()
     var nextImageView: UIImageView =  UIImageView()
     var currentIndex: Int = 0
@@ -32,7 +36,19 @@ class PhotoSwiperViewController: UIViewController {
         currentImageView.contentMode = .scaleAspectFit
         currentImageView.frame = self.view.bounds
         currentImageView.frame.origin.x = 0
-        currentImageView.image =  UIImage(named: user!.userPhoto[currentIndex].image)
+        
+        //currentImageView.image =  UIImage(named: user!.userPhoto[currentIndex].image)
+        
+        service.getPhotosAll(userId: user!.id) {
+            photos in
+            self.userPhoto = photos
+            if let imageUrl = self.userPhoto[self.currentIndex].image, let url = URL(string: imageUrl) {
+                self.currentImageView.kf.setImage(with: ImageResource(downloadURL: url))
+            }
+            
+        }
+        
+        
         currentImageView.tag = 1
         
         
@@ -44,6 +60,8 @@ class PhotoSwiperViewController: UIViewController {
         
     }
     
+    
+    
     @objc func onSwipe(_ recognizer: UIPanGestureRecognizer){
         
         switch recognizer.state {
@@ -54,12 +72,17 @@ class PhotoSwiperViewController: UIViewController {
             
             nextIndex = currentIndex + Int(direction)
             if nextIndex < 0 {
-                nextIndex = user!.userPhoto.count - 1
+                nextIndex = userPhoto.count - 1
             }
-            if nextIndex > user!.userPhoto.count - 1{
+            if nextIndex > userPhoto.count - 1{
                 nextIndex = 0
             }
-            nextImageView.image = UIImage(named: user!.userPhoto[nextIndex].image)
+            //nextImageView.image = UIImage(named: user!.userPhoto[nextIndex].image)
+            
+            if let imageUrl = userPhoto[nextIndex].image, let url = URL(string: imageUrl) {
+              nextImageView.kf.setImage(with: ImageResource(downloadURL: url))
+            }
+            
             self.nextImageView.frame.origin.x = 0// -self.view.bounds.width
             self.nextImageView.transform = .identity
             self.nextImageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)

@@ -11,33 +11,17 @@ import Kingfisher
 
 class AllGroupsController: UITableViewController {
     
-    let tmpGroups = ["Billioners", "How to make money", "How to get to Mars", "How to repair Tesla"]
-    
     var allGroups: [Group] = []
     lazy var service = VkApi()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         //Fill tmp Vk Groups
-        
         service.searchGroups(query: " ") { groups in
             self.allGroups = groups
             self.tableView.reloadData()
-            
         }
-        /*for name in tmpGroups {
-            allGroups.append(VkGroup(name: name, avatar: name))
-        }*/
     }
-    
-    
 
     // MARK: - Table view data source
 
@@ -55,12 +39,7 @@ class AllGroupsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroupCell", for: indexPath) as! UserGroupCell
         cell.groupName.text = allGroups[indexPath.row].name
-        //cell.imageView?.clipsToBounds = true
-        //cell.imageView?.contentMode = .scaleAspectFill
-        //let img = UIImage(named: allGroups[indexPath.row].avatar)
-        //cell.groupAvatar.avatarImage = img!
-        
-        
+
         if let imageUrl = allGroups[indexPath.row].avatar, let url = URL(string: imageUrl) {
             cell.groupAvatar.imageView.kf.setImage(with: ImageResource(downloadURL: url), placeholder: nil, options: nil, progressBlock: nil) {
                 (image, error, cacheType, URL) in
@@ -69,8 +48,6 @@ class AllGroupsController: UITableViewController {
         } else {
             cell.imageView?.image = UIImage(named: "default_user_avatar")
         }
-        //cell.imageView?.widthAnchor.constraint(equalTo: cell.imageView!.heightAnchor, multiplier: 1.0/1.0).isActive = true
-        // Configure the cell...
 
         return cell
     }
