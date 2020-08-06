@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 
 class FakeUser{
@@ -30,14 +31,14 @@ class FakeUser{
     }
 }
 
-class User: Decodable{
+final class User: Object, Decodable{
     var name: String {
         return firstName + " " + lastName
     }
-    dynamic var id: Int
-    dynamic var firstName: String
-    dynamic var lastName: String
-    dynamic var avatar: String?
+    @objc dynamic var id: Int
+    @objc dynamic var firstName: String
+    @objc dynamic var lastName: String
+    @objc dynamic var avatar: String?
     
     
     enum CodingKeys: String, CodingKey {

@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Photo: Decodable {
-    dynamic var image: String?
-    dynamic var likes: Int = 0
+final class Photo: Object, Decodable {
+    @objc dynamic var image: String?
+    @objc dynamic var likes: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case image = "photo_604"

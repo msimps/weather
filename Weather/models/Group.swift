@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Group: Equatable, Decodable{
-    dynamic var name: String = ""
-    dynamic var avatar: String? = ""
+final class Group: Object, Decodable{
+    @objc dynamic var name: String = ""
+    @objc dynamic var avatar: String? = ""
     
     
     enum CodingKeys: String, CodingKey {
@@ -18,7 +19,7 @@ class Group: Equatable, Decodable{
       case name
     }
     
-    static func == (lhs: Group, rhs: Group) -> Bool {
-        return lhs.name == rhs.name
-    }
+    //static func == (lhs: Group, rhs: Group) -> Bool {
+    //    return lhs.name == rhs.name
+    //}
 }
