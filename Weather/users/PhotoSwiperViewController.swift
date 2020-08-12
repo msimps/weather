@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class PhotoSwiperViewController: UIViewController {
     
@@ -39,15 +40,8 @@ class PhotoSwiperViewController: UIViewController {
         
         //currentImageView.image =  UIImage(named: user!.userPhoto[currentIndex].image)
         
-        service.getPhotosAll(userId: user!.id) {
-            photos in
-            self.userPhoto = photos
-            if let imageUrl = self.userPhoto[self.currentIndex].image, let url = URL(string: imageUrl) {
-                self.currentImageView.kf.setImage(with: ImageResource(downloadURL: url))
-            }
-            
-        }
         
+        //updateFromDB()
         
         currentImageView.tag = 1
         
@@ -58,9 +52,38 @@ class PhotoSwiperViewController: UIViewController {
         nextImageView.tag = 3
         nextImageView.layer.opacity = 0
         
+         
+        self.userPhoto = user!.photos
+        
+        if self.userPhoto.isEmpty {
+            service.getPhotosAll(userId: user!.id) {[weak self]
+                photos in
+                let realm = try! Realm()
+                //let friend = self?.user
+                //friend?.photos.append(objectsIn: photos)
+                try! realm.write {
+                    //realm.add(friend!, update: .modified)
+                    realm.add(photos, update: .modified)
+                }
+                self?.updateFromDB()
+            }
+            
+        } else {
+            updateFromDB()
+        }
     }
     
+    func updateFromDB(){
+        self.userPhoto = user!.photos
+        updateImage(index: self.currentIndex, imageView: self.currentImageView)
+    }
     
+    func updateImage(index: Int, imageView: UIImageView){
+        if let imageUrl = self.userPhoto[self.currentIndex].image, let url = URL(string: imageUrl) {
+            imageView.kf.setImage(with: ImageResource(downloadURL: url))
+        }
+    }
+
     
     @objc func onSwipe(_ recognizer: UIPanGestureRecognizer){
         

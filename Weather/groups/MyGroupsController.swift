@@ -32,8 +32,13 @@ class MyGroupsController: UITableViewController {
     }
     
     func updateFromDB(){
-        let realm = try! Realm()
-        self.myGroups = Array(realm.objects(Group.self))
+        do {
+            let realm = try Realm()
+            self.myGroups = Array(realm.objects(Group.self))
+        }catch{
+            print(error)
+        }
+        
         self.tableView.reloadData()
     }
     

@@ -77,13 +77,6 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         searchBar.delegate = self
         
         updateFromDB()
-        service.getGroups {[weak self] groups in
-            let realm = try! Realm()
-            try! realm.write {
-                realm.add(groups, update: .modified)
-            }
-            self?.updateFromDB()
-        }
         
         service.getFriend() {[weak self] users in
           let realm = try! Realm()

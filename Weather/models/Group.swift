@@ -15,6 +15,7 @@ final class Group: Object, Decodable{
     @objc dynamic var avatar: String? = ""
     
     
+    
     enum CodingKeys: String, CodingKey {
       case id
       case avatar = "photo_200"

@@ -39,6 +39,11 @@ final class User: Object, Decodable{
     @objc dynamic var firstName: String
     @objc dynamic var lastName: String
     @objc dynamic var avatar: String?
+    var photos: [Photo] {
+        return Array(try! Realm().objects(Photo.self).filter("userId== %@", self.id))
+    }
+    //let groups = List<Group>()
+    //let photos = List<Photo>()
     
     
     enum CodingKeys: String, CodingKey {
@@ -52,9 +57,19 @@ final class User: Object, Decodable{
         return "id"
     }
     
+    override static func indexedProperties() -> [String] {
+        return ["name"]
+    }
+
+    
     static func extractUniqLetters(_ str: [String])-> [String]{
         let s = Set(str.map {String($0.uppercased().prefix(1))})
         return Array(s).sorted()
     }
+    
+    //override static func ignoredProperties() -> [String] {
+    //    return ["photos"]
+    //}
+
 }
 
