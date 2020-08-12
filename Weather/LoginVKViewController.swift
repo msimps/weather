@@ -50,13 +50,19 @@ class LoginVKViewController: UINavigationController {
         super.viewDidLoad()
         print(#function)
         NotificationCenter.default.addObserver(self, selector: #selector(successLogin), name: Notification.Name("SuccessLogin"), object: nil)
-        cleanWebViewCookies()
-        webview = WKWebView()
-        webview!.frame = view.bounds
-        view.addSubview(webview!)
+        if Session.validate(){
+            NotificationCenter.default.post(Notification(name: Notification.Name("SuccessLogin")))
+        } else {
+            cleanWebViewCookies()
+            webview = WKWebView()
+            webview!.frame = view.bounds
+            view.addSubview(webview!)
+        }
         
         // Do any additional setup after loading the view.
     }
+    
+    
     
     func loadVKLoginPage() {
         var urlComponents = URLComponents()
@@ -113,6 +119,10 @@ extension LoginVKViewController: WKNavigationDelegate {
             let userId = params["user_id"]{
             Session.currentUser.token = token
             Session.currentUser.userId = userId
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(userId, forKey: "userId")
+            userDefaults.set(token, forKey: "token")
+            
             decisionHandler(.cancel)
             
             NotificationCenter.default.post(Notification(name: Notification.Name("SuccessLogin")))
