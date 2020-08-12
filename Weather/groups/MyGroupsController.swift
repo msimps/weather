@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class MyGroupsController: UITableViewController {
     
@@ -19,10 +20,21 @@ class MyGroupsController: UITableViewController {
         super.viewDidLoad()
         self.tableView.register(UserGroupCell.self, forCellReuseIdentifier: "UserGroupCell")
         
-        service.getGroups { groups in
-            self.myGroups = groups
-            self.tableView.reloadData()
+        
+        updateFromDB()
+        service.getGroups {[weak self] groups in
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(groups, update: .modified)
+            }
+            self?.updateFromDB()
         }
+    }
+    
+    func updateFromDB(){
+        let realm = try! Realm()
+        self.myGroups = Array(realm.objects(Group.self))
+        self.tableView.reloadData()
     }
     
     @IBAction func addGroup(segue: UIStoryboardSegue){
