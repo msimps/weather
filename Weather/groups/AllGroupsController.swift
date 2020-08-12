@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class AllGroupsController: UITableViewController {
+class AllGroupsController: UITableViewController, UISearchBarDelegate{
     
     var allGroups: [Group] = []
     lazy var service = VkApi()
@@ -17,10 +17,22 @@ class AllGroupsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Fill tmp Vk Groups
-        service.searchGroups(query: " ") { groups in
+        service.searchGroups(query: "apple") { groups in
             self.allGroups = groups
             self.tableView.reloadData()
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let search = searchText.isEmpty ? "apple" : searchText
+        service.searchGroups(query: search ) { groups in
+            self.allGroups = groups
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
     // MARK: - Table view data source
