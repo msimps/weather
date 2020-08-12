@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class UserListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -68,18 +69,40 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        service.getFriend() { users in
-          self.userList = users
-          self.updateSectionList(self.userList)
-          self.tableView.reloadData()
-          self.letterPicker.letterArray = Array(self.sectionList.keys).sorted()
-        }
+        
         tableView.dataSource = self
         tableView.delegate = self
         letterPicker.letterPikerDelegate = self
         
         searchBar.delegate = self
+        
+        updateFromDB()
+        service.getGroups {[weak self] groups in
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(groups, update: .modified)
+            }
+            self?.updateFromDB()
+        }
+        
+        service.getFriend() {[weak self] users in
+          let realm = try! Realm()
+          try! realm.write {
+              realm.add(users, update: .modified)
+          }
+          self?.updateFromDB()
+        }
     }
+
+    func updateFromDB(){
+        let realm = try! Realm()
+        let users = Array(realm.objects(User.self))
+        self.userList = users
+        self.updateSectionList(self.userList)
+        self.tableView.reloadData()
+        self.letterPicker.letterArray = Array(self.sectionList.keys).sorted()
+    }
+    
 
     // MARK: - Table view data source
     

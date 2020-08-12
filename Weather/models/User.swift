@@ -42,12 +42,15 @@ final class User: Object, Decodable{
     
     
     enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case id
         case firstName = "first_name"
         case lastName = "last_name"
         case avatar = "photo_200_orig"
     }
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
     static func extractUniqLetters(_ str: [String])-> [String]{
         let s = Set(str.map {String($0.uppercased().prefix(1))})
