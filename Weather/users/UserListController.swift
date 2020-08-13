@@ -78,19 +78,13 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         
         updateFromDB()
         
-        service.getFriend() {[weak self] users in
-          let realm = try! Realm()
-          try! realm.write {
-              realm.add(users, update: .modified)
-          }
+        service.getFriend() {[weak self] _ in
           self?.updateFromDB()
         }
     }
 
     func updateFromDB(){
-        let realm = try! Realm()
-        let users = Array(realm.objects(User.self))
-        self.userList = users
+        self.userList = Repository.realm.load()
         self.updateSectionList(self.userList)
         self.tableView.reloadData()
         self.letterPicker.letterArray = Array(self.sectionList.keys).sorted()

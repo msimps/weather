@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
 class VkApi {
     let vkEndpoint = "https://api.vk.com/method"
@@ -41,14 +42,12 @@ class VkApi {
             "user_id": Session.currentUser.userId,
             "fields": "nickname, photo_200_orig"
         ]
-        AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseJSON { response in
-            print(response)
-        }
-        AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseData { response in
+        AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseData { [weak self] response in
             if let data = response.value {
                 do {
                     let users = try JSONDecoder().decode(VkResponse<User>.self, from: data).items
                     print(users)
+                    Repository.realm.save(users)
                     completion(users)
                 } catch {
                     print(error)
@@ -65,12 +64,13 @@ class VkApi {
             "extended": 1
         ]
         
-        AF.request(vkEndpoint + "/photos.getAll", parameters: parameters).responseData { response in
+        AF.request(vkEndpoint + "/photos.getAll", parameters: parameters).responseData { [weak self] response in
             if let data = response.value {
                 do {
-                    let photo = try JSONDecoder().decode(VkResponse<Photo>.self, from: data).items
-                      print(photo)
-                      completion(photo)
+                    let photos = try JSONDecoder().decode(VkResponse<Photo>.self, from: data).items
+                    print(photos)
+                    Repository.realm.save(photos)
+                    completion(photos)
                 } catch {
                     print(error)
                 }
@@ -86,11 +86,12 @@ class VkApi {
             "extended": 1
         ]
         
-        AF.request(vkEndpoint + "/groups.get", parameters: parameters).responseData { response in
+        AF.request(vkEndpoint + "/groups.get", parameters: parameters).responseData { [weak self] response in
             if let data = response.value {
                 do {
                     let groups = try JSONDecoder().decode(VkResponse<Group>.self, from: data).items
                     print(groups)
+                    Repository.realm.save(groups)
                     completion(groups)
                 } catch {
                     print(error)

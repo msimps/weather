@@ -56,15 +56,7 @@ class PhotoSwiperViewController: UIViewController {
         self.userPhoto = user!.photos
         
         if self.userPhoto.isEmpty {
-            service.getPhotosAll(userId: user!.id) {[weak self]
-                photos in
-                let realm = try! Realm()
-                //let friend = self?.user
-                //friend?.photos.append(objectsIn: photos)
-                try! realm.write {
-                    //realm.add(friend!, update: .modified)
-                    realm.add(photos, update: .modified)
-                }
+            service.getPhotosAll(userId: user!.id) {[weak self] _ in
                 self?.updateFromDB()
             }
             

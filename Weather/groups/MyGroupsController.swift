@@ -20,25 +20,14 @@ class MyGroupsController: UITableViewController {
         super.viewDidLoad()
         self.tableView.register(UserGroupCell.self, forCellReuseIdentifier: "UserGroupCell")
         
-        
         updateFromDB()
-        service.getGroups {[weak self] groups in
-            let realm = try! Realm()
-            try! realm.write {
-                realm.add(groups, update: .modified)
-            }
+        service.getGroups {[weak self] _ in
             self?.updateFromDB()
         }
     }
     
     func updateFromDB(){
-        do {
-            let realm = try Realm()
-            self.myGroups = Array(realm.objects(Group.self))
-        }catch{
-            print(error)
-        }
-        
+        self.myGroups = Repository.realm.load()
         self.tableView.reloadData()
     }
     
