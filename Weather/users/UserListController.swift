@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import RealmSwift
 
-class UserListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserListController: UIViewController, UITableViewDelegate, UITableViewDataSource, BindRealmToTableView {
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -22,9 +22,10 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     //var tmpUsers = ["Albert Einstein", "Bill Gates", "Bill Gates","Bill Gates","Elon Musk","Elon Musk","Elon Musk","Elon Musk","Elon Musk", "Jeff Bezos", "Jeff Bezos", "Jeff Bezos", "Sergey Brin", "Sergey Brin", "Sergey Brin"]
     
     
-    var userList: [User] = []
-    
+    var userList: Results<User> = Repository.realm._load()
     var sectionList: [String: [User]] = [:]
+    
+    var notificationToken: NotificationToken?
     lazy var service = VkApi()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -35,11 +36,7 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        //generate_tmp_user()
-        
-        
-        
-        
+        //generate_tmp_user()]
     }
     
     /*private func generate_tmp_user(){
@@ -76,16 +73,26 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         
         searchBar.delegate = self
         
-        updateFromDB()
+        notificationToken = userList.observe { (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial:
+                self.updateTable()
+            case .update(_, let deletions, let insertions, let modifications):
+                self.updateTable()
+            case .error(let error):
+                fatalError("\(error)")
+            } 
+        }
         
         service.getFriend() {[weak self] _ in
-          self?.updateFromDB()
+          //self?.updateFromDB()
         }
     }
 
-    func updateFromDB(){
-        self.userList = Repository.realm.load()
-        self.updateSectionList(self.userList)
+    func updateTable(){
+        //self.userList = Repository.realm.load()
+        
+        self.updateSectionList(Array(self.userList))
         self.tableView.reloadData()
         self.letterPicker.letterArray = Array(self.sectionList.keys).sorted()
     }
@@ -147,7 +154,7 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
 extension UserListController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            updateSectionList(userList)
+            updateSectionList(Array(userList))
             letterPicker.letterArray = Array(sectionList.keys).sorted()
         } else {
             updateSectionList(userList.filter {$0.name.contains(searchText)} )

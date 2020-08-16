@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import UIKit
 
 class Repository{
     private let _realm = try! Realm()
@@ -21,11 +22,43 @@ class Repository{
         }
     }
     
-    func load<T: Object>(_ filter: String = "select *")-> [T]{
-      return Array(_realm.objects(T.self).filter(filter))
+    func load<T: Object>(_ filter: String = "id !=0")-> [T]{
+        return Array(_load(filter))
+    }
+    
+    func _load<T: Object>(_ filter: String = "id != 0")-> Results<T>{
+      return _realm.objects(T.self).filter(filter)
     }
 }
 
+protocol BindRealmToTableView{
+    func bindRealmToTableView<T>(tableView: UITableView, results: Results<T>) -> NotificationToken
+}
+
+extension BindRealmToTableView{
+    
+    func bindRealmToTableView<T>(tableView: UITableView, results: Results<T>) -> NotificationToken{
+        let notificationToken = results.observe { (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+            
+        }
+        return notificationToken
+    }
+}
 
 
 

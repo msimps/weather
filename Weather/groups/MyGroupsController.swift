@@ -10,26 +10,24 @@ import UIKit
 import Kingfisher
 import RealmSwift
 
-class MyGroupsController: UITableViewController {
+class MyGroupsController: UITableViewController, BindRealmToTableView {
     
     @IBOutlet var myGroupTableView: UITableView!
-    var myGroups: [Group] = []
+    //var myGroups: [Group] = []
+    var myGroups: Results<Group> = Repository.realm._load()
     lazy var service = VkApi()
+    var notificationToken: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UserGroupCell.self, forCellReuseIdentifier: "UserGroupCell")
         
-        updateFromDB()
+        notificationToken = bindRealmToTableView(tableView: myGroupTableView, results: myGroups)
         service.getGroups {[weak self] _ in
-            self?.updateFromDB()
+            //self?.updateFromDB()
         }
     }
     
-    func updateFromDB(){
-        self.myGroups = Repository.realm.load()
-        self.tableView.reloadData()
-    }
     
     @IBAction func addGroup(segue: UIStoryboardSegue){
         //guard let allGroupsController = segue.source as? AllGroupsController, let index = allGroupsController.tableView.indexPathForSelectedRow else { return }
@@ -61,7 +59,8 @@ class MyGroupsController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            myGroups.remove(at: indexPath.row)
+            //myGroups.remove(at: indexPath.row)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
