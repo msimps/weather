@@ -21,8 +21,8 @@ class Repository{
         }
     }
     
-    func load<T: Object>()-> [T]{
-        return Array(_realm.objects(T.self))
+    func load<T: Object>(_ filter: String = "select *")-> [T]{
+      return Array(_realm.objects(T.self).filter(filter))
     }
 }
 

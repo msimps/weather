@@ -32,15 +32,17 @@ class FakeUser{
 }
 
 final class User: Object, Decodable{
-    var name: String {
-        return firstName + " " + lastName
-    }
     @objc dynamic var id: Int
     @objc dynamic var firstName: String
     @objc dynamic var lastName: String
     @objc dynamic var avatar: String?
+    
+    var name: String {
+        return firstName + " " + lastName
+    }
+    
     var photos: [Photo] {
-        return Array(try! Realm().objects(Photo.self).filter("userId== %@", self.id))
+        return  Repository.realm.load("userId== \(self.id)")
     }
     //let groups = List<Group>()
     //let photos = List<Photo>()
