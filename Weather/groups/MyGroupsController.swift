@@ -13,7 +13,6 @@ import RealmSwift
 class MyGroupsController: UITableViewController, BindRealmToTableView {
     
     @IBOutlet var myGroupTableView: UITableView!
-    //var myGroups: [Group] = []
     var myGroups: Results<Group> = Repository.realm._load()
     lazy var service = VkApi()
     var notificationToken: NotificationToken?
@@ -23,14 +22,12 @@ class MyGroupsController: UITableViewController, BindRealmToTableView {
         self.tableView.register(UserGroupCell.self, forCellReuseIdentifier: "UserGroupCell")
         
         notificationToken = bindRealmToTableView(tableView: myGroupTableView, results: myGroups)
-        service.getGroups {[weak self] _ in
-            //self?.updateFromDB()
-        }
+        service.getGroups()
     }
     
     
     @IBAction func addGroup(segue: UIStoryboardSegue){
-        //guard let allGroupsController = segue.source as? AllGroupsController, let index = allGroupsController.tableView.indexPathForSelectedRow else { return }
+
         tableView.reloadData()
     }
 

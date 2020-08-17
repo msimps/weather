@@ -11,49 +11,17 @@ import Kingfisher
 import RealmSwift
 
 class UserListController: UIViewController, UITableViewDelegate, UITableViewDataSource, BindRealmToTableView {
-    
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var letterPicker: LetterPicker!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    
-    
-    //var tmpUsers = ["Albert Einstein", "Bill Gates", "Bill Gates","Bill Gates","Elon Musk","Elon Musk","Elon Musk","Elon Musk","Elon Musk", "Jeff Bezos", "Jeff Bezos", "Jeff Bezos", "Sergey Brin", "Sergey Brin", "Sergey Brin"]
-    
-    
+ 
     var userList: Results<User> = Repository.realm._load()
     var sectionList: [String: [User]] = [:]
     
     var notificationToken: NotificationToken?
     lazy var service = VkApi()
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        //generate_tmp_user()//
-        //updateSectionList(userList)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        //generate_tmp_user()]
-    }
-    
-    /*private func generate_tmp_user(){
-        //Fill tmp users
-        for user in tmpUsers.sorted() {
-            var userPhoto: [Photo] = []
-            for i in 1...3 {
-                //userPhoto.append(Photo(image: "\(user)/\(i)", likes: Int.random(in: 0...50)))
-            }
-            userList.append(FakeUser(name: user, userPhoto: userPhoto))
-        }
-        let default_photos:[Photo] = [] //Array(1...3).map{ _ in Photo(image: "default_user_avatar", likes: 0) }
-        for i in 1...10 {
-            userList.append(FakeUser(name: "User\(i)", userPhoto: default_photos))
-            tmpUsers.append("User\(i)")
-        }
-    }*/
+
     
     func updateSectionList(_ users: [User]){
         sectionList = [:]
@@ -61,7 +29,6 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         firstLetters.forEach({(letter: String) in
             sectionList[letter] = users.filter { $0.name.hasPrefix(letter)}
         })
-        //sectionList.count
     }
     
     override func viewDidLoad() {
@@ -81,17 +48,13 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
                 self.updateTable()
             case .error(let error):
                 fatalError("\(error)")
-            } 
+            }
         }
         
-        service.getFriend() {[weak self] _ in
-          //self?.updateFromDB()
-        }
+        service.getFriend()
     }
 
     func updateTable(){
-        //self.userList = Repository.realm.load()
-        
         self.updateSectionList(Array(self.userList))
         self.tableView.reloadData()
         self.letterPicker.letterArray = Array(self.sectionList.keys).sorted()

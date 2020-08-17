@@ -14,13 +14,16 @@ class VkApi {
     let vkEndpoint = "https://api.vk.com/method"
     let apiVersion = "5.52"
     
-    func getInfo() {
+    func getInfo(comletition: @escaping (_ response: AFDataResponse<Any>)->Void) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token
         ]
+        
         AF.request(vkEndpoint + "/account.getInfo", parameters: parameters).responseJSON { response in
             print(response)
+            //print(response["error"])
+            comletition(response)
         }
     }
     
@@ -35,20 +38,20 @@ class VkApi {
         }
     }
     
-    func getFriend(completion: @escaping ([User]) -> Void ) {
+    func getFriend(completion: (([User]) -> Void)? = nil ) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
             "user_id": Session.currentUser.userId,
             "fields": "nickname, photo_200_orig"
         ]
-        AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseData { [weak self] response in
+        AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseData { response in
             if let data = response.value {
                 do {
                     let users = try JSONDecoder().decode(VkResponse<User>.self, from: data).items
                     print(users)
                     Repository.realm.save(users)
-                    completion(users)
+                    completion?(users)
                 } catch {
                     print(error)
                 }
@@ -56,7 +59,7 @@ class VkApi {
         }
     }
     
-    func getPhotosAll(userId: Int, completion: @escaping ([Photo]) -> Void) {
+    func getPhotosAll(userId: Int, completion: (([Photo]) -> Void)? ) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
@@ -64,13 +67,13 @@ class VkApi {
             "extended": 1
         ]
         
-        AF.request(vkEndpoint + "/photos.getAll", parameters: parameters).responseData { [weak self] response in
+        AF.request(vkEndpoint + "/photos.getAll", parameters: parameters).responseData { response in
             if let data = response.value {
                 do {
                     let photos = try JSONDecoder().decode(VkResponse<Photo>.self, from: data).items
                     print(photos)
                     Repository.realm.save(photos)
-                    completion(photos)
+                    completion?(photos)
                 } catch {
                     print(error)
                 }
@@ -78,7 +81,7 @@ class VkApi {
         }
     }
     
-    func getGroups(completion: @escaping ([Group]) -> Void ) {
+    func getGroups(completion: (([Group]) -> Void)? = nil) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
@@ -86,13 +89,13 @@ class VkApi {
             "extended": 1
         ]
         
-        AF.request(vkEndpoint + "/groups.get", parameters: parameters).responseData { [weak self] response in
+        AF.request(vkEndpoint + "/groups.get", parameters: parameters).responseData { response in
             if let data = response.value {
                 do {
                     let groups = try JSONDecoder().decode(VkResponse<Group>.self, from: data).items
                     print(groups)
                     Repository.realm.save(groups)
-                    completion(groups)
+                    completion?(groups)
                 } catch {
                     print(error)
                 }
@@ -100,7 +103,7 @@ class VkApi {
         }
     }
     
-    func searchGroups(query: String, sort: Int = 0, completion: @escaping ([Group]) -> Void) {
+    func searchGroups(query: String, sort: Int = 0, completion: (([Group]) -> Void)? ) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
@@ -116,7 +119,7 @@ class VkApi {
                 do {
                     let groups = try JSONDecoder().decode(VkResponse<Group>.self, from: data).items
                     print(groups)
-                    completion(groups)
+                    completion?(groups)
                 } catch {
                     print(error)
                 }

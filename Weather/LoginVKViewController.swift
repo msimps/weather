@@ -50,14 +50,18 @@ class LoginVKViewController: UINavigationController {
         super.viewDidLoad()
         print(#function)
         NotificationCenter.default.addObserver(self, selector: #selector(successLogin), name: Notification.Name("SuccessLogin"), object: nil)
-        if Session.validate(){
-            NotificationCenter.default.post(Notification(name: Notification.Name("SuccessLogin")))
-        } else {
-            cleanWebViewCookies()
-            webview = WKWebView()
-            webview!.frame = view.bounds
-            view.addSubview(webview!)
+        Session.validate{ [weak self] _valid in
+            if _valid {
+                NotificationCenter.default.post(Notification(name: Notification.Name("SuccessLogin")))
+            } else {
+                self?.cleanWebViewCookies()
+                self?.webview = WKWebView()
+                self?.webview!.frame = self!.view.bounds
+                self?.view.addSubview(self!.webview!)
+            }
         }
+        
+        
         
         // Do any additional setup after loading the view.
     }
