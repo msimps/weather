@@ -10,11 +10,12 @@ import UIKit
 import Kingfisher
 import RealmSwift
 
-class PhotoSwiperViewController: UIViewController {
+class PhotoSwiperViewController: UIViewController  {
     
     lazy var service = VkApi()
     var user: User?
     var userPhoto: [Photo] = []
+    var notificationToken: NotificationToken?
     
     var currentImageView: UIImageView = UIImageView()
     var nextImageView: UIImageView =  UIImageView()
@@ -38,31 +39,28 @@ class PhotoSwiperViewController: UIViewController {
         currentImageView.frame = self.view.bounds
         currentImageView.frame.origin.x = 0
         
-        //currentImageView.image =  UIImage(named: user!.userPhoto[currentIndex].image)
-        
-        
-        //updateFromDB()
-        
         currentImageView.tag = 1
-        
-        
+
         nextImageView.contentMode = .scaleAspectFit
         nextImageView.frame = self.view.bounds
         //nextImageView.frame.origin.x = self.view.bounds.width
         nextImageView.tag = 3
         nextImageView.layer.opacity = 0
-        
+        currentIndex = 0
          
         self.userPhoto = user!.photos
         
-        if self.userPhoto.isEmpty {
-            service.getPhotosAll(userId: user!.id) {[weak self] _ in
-                self?.updateFromDB()
+        let result:Results<Photo> = Repository.realm._load("userId== \(user!.id)")
+        notificationToken = result.observe { (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial, .update:
+                self.updateFromDB()
+            case .error(let error):
+                fatalError("\(error)")
             }
-            
-        } else {
-            updateFromDB()
         }
+        //updateFromDB()
+        service.getPhotosAll(userId: user!.id)
     }
     
     func updateFromDB(){
@@ -71,6 +69,8 @@ class PhotoSwiperViewController: UIViewController {
     }
     
     func updateImage(index: Int, imageView: UIImageView){
+        guard index >= 0 else {return }
+        guard index < userPhoto.count else {return }
         if let imageUrl = self.userPhoto[self.currentIndex].image, let url = URL(string: imageUrl) {
             imageView.kf.setImage(with: ImageResource(downloadURL: url))
         }
@@ -94,9 +94,10 @@ class PhotoSwiperViewController: UIViewController {
             }
             //nextImageView.image = UIImage(named: user!.userPhoto[nextIndex].image)
             
-            if let imageUrl = userPhoto[nextIndex].image, let url = URL(string: imageUrl) {
+            /*if let imageUrl = userPhoto[nextIndex].image, let url = URL(string: imageUrl) {
               nextImageView.kf.setImage(with: ImageResource(downloadURL: url))
-            }
+            }*/
+            updateImage(index: nextIndex, imageView: nextImageView)
             
             self.nextImageView.frame.origin.x = 0// -self.view.bounds.width
             self.nextImageView.transform = .identity

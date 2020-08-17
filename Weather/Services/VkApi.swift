@@ -91,7 +91,7 @@ class VkApi {
         }
     }
     
-    func getPhotosAll(userId: Int, completion: (([Photo]) -> Void)? ) {
+    func getPhotosAll(userId: Int, completion: (([Photo]) -> Void)? = nil ) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
