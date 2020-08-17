@@ -173,7 +173,6 @@
 				3493F5F6249F9C2000318A47 /* Group.swift */,
 				3489DD56249E6CF2007CFA6D /* Photo.swift */,
 				3491423F24ADD2BA0062BB20 /* Post.swift */,
-				346D164D24CEE79800523826 /* Session.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -255,6 +254,7 @@
 				34FBD51124D2098600D64160 /* VkApi.swift */,
 				341BF63D24D828F700E3503C /* VkResponse.swift */,
 				34C6036924E519A500C6A703 /* Repository.swift */,
+				346D164D24CEE79800523826 /* Session.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

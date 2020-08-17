@@ -16,6 +16,21 @@ class Session{
     static let currentUser = Session()
     private init() {}
     
+    func save(_ userId: String, _ token: String){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(userId, forKey: "userId")
+        userDefaults.set(token, forKey: "token")
+    }
+    func load() -> Bool{
+        let userDefaults = UserDefaults.standard
+        guard userDefaults.string(forKey: "userId") != nil else {
+            return false
+        }
+        userId = userDefaults.string(forKey: "userId")! as String
+        token = userDefaults.string(forKey: "token")! as String
+        return true
+    }
+    
     static func validate(_ clousure: @escaping ((_ result: Bool) -> Void)){
 
         let userDefaults = UserDefaults.standard
@@ -26,7 +41,7 @@ class Session{
         currentUser.userId = userDefaults.string(forKey: "userId")! as String
         currentUser.token = userDefaults.string(forKey: "token")! as String
     
-        VkApi().getInfo { (response) in
+        /*VkApi().getInfo { (response) in
             
             switch response.result{
             case .success(let json):
@@ -42,6 +57,7 @@ class Session{
                 clousure(false)
                 
             }
-        }
+        }*/
+        
     }
 }

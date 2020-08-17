@@ -14,6 +14,39 @@ class VkApi {
     let vkEndpoint = "https://api.vk.com/method"
     let apiVersion = "5.52"
     
+    
+    func validateToken(_ clousure: @escaping ((_ result: Bool) -> Void)) {
+        
+        guard Session.currentUser.load() else {
+            clousure(false)
+            return
+        }
+        
+        let parameters: Parameters = [
+            "v": apiVersion ,
+            "access_token": Session.currentUser.token
+        ]
+        
+        AF.request(vkEndpoint + "/account.getInfo", parameters: parameters).responseJSON { response in
+            print(response)
+            switch response.result{
+            case .success(let json):
+                let error = json as? [String: Any]
+                //print(error)
+                print(error?["error"] )
+                if error?["error"] == nil {
+                    clousure(true)
+                } else {
+                    clousure(false)
+                }
+            case .failure:
+                clousure(false)
+
+            }
+            
+        }
+    }
+    
     func getInfo(comletition: @escaping (_ response: AFDataResponse<Any>)->Void) {
         let parameters: Parameters = [
             "v": apiVersion ,
@@ -26,7 +59,6 @@ class VkApi {
             comletition(response)
         }
     }
-    
     
     func getProfileInfo() {
         let parameters: Parameters = [

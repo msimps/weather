@@ -27,7 +27,6 @@ class LoginVKViewController: UINavigationController {
     @objc func successLogin(_ notification: Notification){
         
         DispatchQueue.main.async {
-            
             self.webview?.removeFromSuperview()
             self.performSegue(withIdentifier: "LoginSegue", sender: nil)
         }
@@ -50,7 +49,7 @@ class LoginVKViewController: UINavigationController {
         super.viewDidLoad()
         print(#function)
         NotificationCenter.default.addObserver(self, selector: #selector(successLogin), name: Notification.Name("SuccessLogin"), object: nil)
-        Session.validate{ [weak self] _valid in
+        VkApi().validateToken { [weak self] _valid in
             if _valid {
                 NotificationCenter.default.post(Notification(name: Notification.Name("SuccessLogin")))
             } else {
@@ -60,10 +59,7 @@ class LoginVKViewController: UINavigationController {
                 self?.view.addSubview(self!.webview!)
             }
         }
-        
-        
-        
-        // Do any additional setup after loading the view.
+
     }
     
     
@@ -121,11 +117,9 @@ extension LoginVKViewController: WKNavigationDelegate {
         print(params)
         if let token = params["access_token"],
             let userId = params["user_id"]{
-            Session.currentUser.token = token
-            Session.currentUser.userId = userId
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(userId, forKey: "userId")
-            userDefaults.set(token, forKey: "token")
+            //Session.currentUser.token = token
+            //Session.currentUser.userId = userId
+            Session.currentUser.save(userId, token)
             
             decisionHandler(.cancel)
             
