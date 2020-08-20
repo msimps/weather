@@ -40,24 +40,6 @@ class Session{
         }
         currentUser.userId = userDefaults.string(forKey: "userId")! as String
         currentUser.token = userDefaults.string(forKey: "token")! as String
-    
-        /*VkApi().getInfo { (response) in
-            
-            switch response.result{
-            case .success(let json):
-                let error = json as? [String: Any]
-                //print(error)
-                print(error?["error"] )
-                if error?["error"] == nil {
-                    clousure(true)
-                } else {
-                    clousure(false)
-                }
-            case .failure(let _):
-                clousure(false)
-                
-            }
-        }*/
         
     }
 }

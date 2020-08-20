@@ -17,6 +17,7 @@ class FirebaseRepository{
         //let user = [userId: ["groups": Array<Int>()]]
         //ref.setValue(user)
         userRef = ref.child(userId)
+        userRef?.child("id").setValue(userId)
     }
     
     func addGroup(_ groupId: String, _ name: String){

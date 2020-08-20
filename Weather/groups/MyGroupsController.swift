@@ -36,6 +36,7 @@ class MyGroupsController: UITableViewController, BindRealmToTableView {
         
         //myGroups.append(group)
         Repository.firebase.addGroup(String(group.id), group.name)
+        
         tableView.reloadData()
     }
 
