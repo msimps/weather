@@ -28,6 +28,7 @@ class LoginVKViewController: UINavigationController {
         
         DispatchQueue.main.async {
             self.webview?.removeFromSuperview()
+            Repository.firebase.setUserRef(Session.currentUser.userId)
             self.performSegue(withIdentifier: "LoginSegue", sender: nil)
         }
         
@@ -117,10 +118,8 @@ extension LoginVKViewController: WKNavigationDelegate {
         print(params)
         if let token = params["access_token"],
             let userId = params["user_id"]{
-            //Session.currentUser.token = token
-            //Session.currentUser.userId = userId
-            Session.currentUser.save(userId, token)
             
+            Session.currentUser.save(userId, token)
             decisionHandler(.cancel)
             
             NotificationCenter.default.post(Notification(name: Notification.Name("SuccessLogin")))
