@@ -36,8 +36,8 @@ class UserPhotosController: UICollectionViewController {
         
         //cell.userPhoto.image = UIImage(named: user!.userPhoto[indexPath.row].image)
         if let imageUrl = userPhoto[indexPath.row].image, let url = URL(string: imageUrl) {
-            cell.userPhoto.kf.setImage(with: ImageResource(downloadURL: url), placeholder: nil, options: nil, progressBlock: nil) {
-                       (image, error, cacheType, URL) in
+            cell.userPhoto.kf.setImage(with: ImageResource(downloadURL: url)) {
+                       _ in
                        cell.setNeedsLayout()
                    }
                }

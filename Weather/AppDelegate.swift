@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
         print(Realm.Configuration.defaultConfiguration.fileURL)
+        FirebaseApp.configure()
         // Override point for customization after application launch.
         return true
     }

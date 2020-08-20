@@ -32,9 +32,9 @@ class FakeUser{
 }
 
 final class User: Object, Decodable{
-    @objc dynamic var id: Int
-    @objc dynamic var firstName: String
-    @objc dynamic var lastName: String
+    @objc dynamic var id: Int = 0
+    @objc dynamic var firstName: String = ""
+    @objc dynamic var lastName: String = ""
     @objc dynamic var avatar: String?
     
     var name: String {
@@ -45,7 +45,7 @@ final class User: Object, Decodable{
         return  Repository.realm.load("userId== \(self.id)")
     }
     //let groups = List<Group>()
-    //let photos = List<Photo>()
+    //let photos2 = List<Photo>()
     
     
     enum CodingKeys: String, CodingKey {
