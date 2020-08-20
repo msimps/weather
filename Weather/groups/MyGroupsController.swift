@@ -28,6 +28,14 @@ class MyGroupsController: UITableViewController, BindRealmToTableView {
     
     @IBAction func addGroup(segue: UIStoryboardSegue){
 
+        guard let allGroupsController = segue.source as? AllGroupsController,
+              let index = allGroupsController.tableView.indexPathForSelectedRow
+        else { return }
+        let group = allGroupsController.allGroups[index.row]
+        //guard !myGroups.contains(group) else { return }
+        
+        //myGroups.append(group)
+        Repository.firebase.addGroup(String(group.id), group.name)
         tableView.reloadData()
     }
 
@@ -41,8 +49,7 @@ class MyGroupsController: UITableViewController, BindRealmToTableView {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroupCell", for: indexPath) as! UserGroupCell
         cell.textLabel?.text = myGroups[indexPath.row].name
         if let imageUrl = myGroups[indexPath.row].avatar, let url = URL(string: imageUrl) {
-            cell.imageView?.kf.setImage(with: ImageResource(downloadURL: url), placeholder: nil, options: nil, progressBlock: nil) {
-                (image, error, cacheType, URL) in
+            cell.imageView?.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
                 cell.setNeedsLayout()
             }
         } else {
