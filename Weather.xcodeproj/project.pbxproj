@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		232DD1E494A80960A963AD67 /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF24B6C5E9A70D965BF0DE7 /* Pods_WeatherTests.framework */; };
+		34006627250116420016BA14 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34006625250116420016BA14 /* PostViewCell.swift */; };
+		34006628250116420016BA14 /* PostViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34006626250116420016BA14 /* PostViewCell.xib */; };
 		341BF63E24D828F700E3503C /* VkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BF63D24D828F700E3503C /* VkResponse.swift */; };
 		34293B0224EE53B300B593C6 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34293B0124EE53B300B593C6 /* FirebaseRepository.swift */; };
 		34293B0424EE54D700B593C6 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34293B0324EE54D700B593C6 /* RealmRepository.swift */; };
@@ -30,6 +32,7 @@
 		3493F60224A0D74B00318A47 /* UserGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F60124A0D74B00318A47 /* UserGroupCell.swift */; };
 		3493F60424A3934700318A47 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493F60324A3934700318A47 /* AvatarView.swift */; };
 		349BA12224B61F6D00A10779 /* PhotoSwiperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BA12124B61F6D00A10779 /* PhotoSwiperViewController.swift */; };
+		34A59E2F2501152E001A2156 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A59E2E2501152E001A2156 /* Feed.swift */; };
 		34A70E4B24A52EDE000D1622 /* LetterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A70E4A24A52EDE000D1622 /* LetterPicker.swift */; };
 		34BD30DD24C30E2900BD22E4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BD30DC24C30E2900BD22E4 /* CustomNavigationController.swift */; };
 		34C6036A24E519A500C6A703 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C6036924E519A500C6A703 /* Repository.swift */; };
@@ -74,6 +77,8 @@
 /* Begin PBXFileReference section */
 		1369863FC8B9BD1BCDC2DDA7 /* Pods-WeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		28AF3AD492A6233322CF8E05 /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		34006625250116420016BA14 /* PostViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewCell.swift; sourceTree = "<group>"; };
+		34006626250116420016BA14 /* PostViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewCell.xib; sourceTree = "<group>"; };
 		341BF63D24D828F700E3503C /* VkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkResponse.swift; sourceTree = "<group>"; };
 		34293B0124EE53B300B593C6 /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
 		34293B0324EE54D700B593C6 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
@@ -94,6 +99,7 @@
 		3493F60124A0D74B00318A47 /* UserGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupCell.swift; sourceTree = "<group>"; };
 		3493F60324A3934700318A47 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		349BA12124B61F6D00A10779 /* PhotoSwiperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSwiperViewController.swift; sourceTree = "<group>"; };
+		34A59E2E2501152E001A2156 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		34A70E4A24A52EDE000D1622 /* LetterPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterPicker.swift; sourceTree = "<group>"; };
 		34BD30DC24C30E2900BD22E4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		34C6036924E519A500C6A703 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 		34367E5F24A4950000C26CCE /* components */ = {
 			isa = PBXGroup;
 			children = (
+				34A59E292500EC8A001A2156 /* feed */,
 				347AD7FE24B1D0A20049BCA9 /* LoadingIndicator.swift */,
 				3493F60324A3934700318A47 /* AvatarView.swift */,
 				34367E5D24A48DFB00C26CCE /* CustomGradientView.swift */,
@@ -194,6 +201,7 @@
 				3493F5F6249F9C2000318A47 /* Group.swift */,
 				3489DD56249E6CF2007CFA6D /* Photo.swift */,
 				3491423F24ADD2BA0062BB20 /* Post.swift */,
+				34A59E2E2501152E001A2156 /* Feed.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -206,6 +214,15 @@
 				3493F60124A0D74B00318A47 /* UserGroupCell.swift */,
 			);
 			path = groups;
+			sourceTree = "<group>";
+		};
+		34A59E292500EC8A001A2156 /* feed */ = {
+			isa = PBXGroup;
+			children = (
+				34006625250116420016BA14 /* PostViewCell.swift */,
+				34006626250116420016BA14 /* PostViewCell.xib */,
+			);
+			path = feed;
 			sourceTree = "<group>";
 		};
 		34D6877224952656009A3B63 = {
@@ -427,6 +444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34006628250116420016BA14 /* PostViewCell.xib in Resources */,
 				34DDE03A24ABBD5900E11CC5 /* FeedViewCell.xib in Resources */,
 				34D6878E24952657009A3B63 /* LaunchScreen.storyboard in Resources */,
 				34C6036E24EDB4A900C6A703 /* GoogleService-Info.plist in Resources */,
@@ -562,7 +580,9 @@
 				34293B0224EE53B300B593C6 /* FirebaseRepository.swift in Sources */,
 				347AD7FF24B1D0A20049BCA9 /* LoadingIndicator.swift in Sources */,
 				346D165024D1F03B00523826 /* LoginVKViewController.swift in Sources */,
+				34006627250116420016BA14 /* PostViewCell.swift in Sources */,
 				3489DD52249E5AB8007CFA6D /* UserListController.swift in Sources */,
+				34A59E2F2501152E001A2156 /* Feed.swift in Sources */,
 				34DDE03224AA17C000E11CC5 /* LikesView.swift in Sources */,
 				34DDE03C24AD20E100E11CC5 /* FeedViewController.swift in Sources */,
 				34293B0424EE54D700B593C6 /* RealmRepository.swift in Sources */,

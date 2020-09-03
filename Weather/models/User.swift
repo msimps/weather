@@ -13,14 +13,13 @@ import RealmSwift
 class FakeUser{
     let name: String
     //let avatar: String
-    let userPhoto: [Photo]
+    let userPhoto: [FakePhoto]
     
     public var avatar: String {
-        //return userPhoto.first != nil ? userPhoto.first!.image : "default_user_avatar"
-        return "default_user_avatar"
+        return userPhoto.first != nil ? userPhoto.first!.image : "default_user_avatar"
     }
     
-    init(name: String, userPhoto: [Photo]){
+    init(name: String, userPhoto: [FakePhoto]){
         self.name = name
         self.userPhoto = userPhoto
     }

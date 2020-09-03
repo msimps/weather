@@ -48,3 +48,8 @@ final class Photo: Object, Decodable {
     }
 }
 
+struct FakePhoto{
+    let image: String
+    let likes: Int
+}
+
