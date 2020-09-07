@@ -27,7 +27,7 @@ class PostViewCell: UITableViewCell {
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var viewsCountBtn: UIButton!
     @IBOutlet weak var postText: UITextView!
-    @IBOutlet weak var contentAreaView: UIView!
+
     
     private var post: FakePost!
     private var screenWidth: CGFloat = 0
@@ -57,28 +57,23 @@ class PostViewCell: UITableViewCell {
         viewsCountBtn.titleLabel?.text = String(post.viewsCount)
         
         if post.contentType == .text{
+            postText.text = (post.content as! TextPostContent).text
+            
             postImage.image = nil
+            postText.isHidden = false
             postImage.isHidden = true
-            //postImage.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-            
-            //postText.text
-            //let text = (post.content as! TextPostContent).text
-            
-            let textContentView = TextPostContentView()
-            textContentView.setup(content: post.content as! TextPostContent)
-            contentAreaView.addSubview(textContentView)
-            textContentView.frame = contentAreaView.bounds
-            
-            
-            
         }
         
         if post.contentType == .photo{
+            
+            //postImage.isHidden = false
             postImage.image = UIImage(named: (post.content as! PhotoPostContent).image)!
             //postImage.image = resizeImage(image: image, targetWidth: screenWidth)
             //postImage.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
             postText.text = ""
             postText.isHidden = true
+            postImage.isHidden = false
+            
         }
         
 

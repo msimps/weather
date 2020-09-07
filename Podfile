@@ -6,8 +6,8 @@ target 'Weather' do
   use_frameworks!
 
   # Pods for Weather
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Database'
+  #pod 'Firebase/Firestore'
+  #pod 'Firebase/Database'
   target 'WeatherTests' do
     inherit! :search_paths
     # Pods for testing

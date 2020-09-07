@@ -7,21 +7,22 @@
 //
 
 import Foundation
-import FirebaseDatabase
+//import FirebaseDatabase
 
 class FirebaseRepository{
-    var userRef: DatabaseReference?
+    //var userRef: DatabaseReference?
     
     func setUserRef(_ userId: String){
+        /*
         let ref = Database.database().reference(withPath: "users")
         //let user = [userId: ["groups": Array<Int>()]]
         //ref.setValue(user)
         userRef = ref.child(userId)
-        userRef?.child("id").setValue(userId)
+        userRef?.child("id").setValue(userId)*/
     }
     
     func addGroup(_ groupId: String, _ name: String){
-        userRef?.child("groups").child(groupId).setValue(name)
+        /*userRef?.child("groups").child(groupId).setValue(name)*/
     }
     
 }

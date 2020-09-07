@@ -32,7 +32,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             commentsCount: 29,
             repostsCount: 4,
             viewsCount: 243),
-        /*FakePost(
+        FakePost(
             user: FakeUser(name: "Albert Einstein",
                            userPhoto: [FakePhoto(image: "Albert Einstein/1", likes: 63)]),
             created_at: "5 hours ago",
@@ -41,7 +41,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             likesCount: 22,
             commentsCount: 29,
             repostsCount: 4,
-            viewsCount: 243),*/
+            viewsCount: 243),
         FakePost(
             user: FakeUser(name: "Sergey Brin",
                            userPhoto: [FakePhoto(image: "Sergey Brin/1", likes: 63)]),

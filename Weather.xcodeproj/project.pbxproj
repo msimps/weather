@@ -10,8 +10,6 @@
 		232DD1E494A80960A963AD67 /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF24B6C5E9A70D965BF0DE7 /* Pods_WeatherTests.framework */; };
 		34006627250116420016BA14 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34006625250116420016BA14 /* PostViewCell.swift */; };
 		34006628250116420016BA14 /* PostViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34006626250116420016BA14 /* PostViewCell.xib */; };
-		3400662E25011E0F0016BA14 /* TextPostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3400662D25011E0F0016BA14 /* TextPostContentView.swift */; };
-		3400663025011E560016BA14 /* TextPostContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3400662F25011E560016BA14 /* TextPostContentView.xib */; };
 		341BF63E24D828F700E3503C /* VkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BF63D24D828F700E3503C /* VkResponse.swift */; };
 		34293B0224EE53B300B593C6 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34293B0124EE53B300B593C6 /* FirebaseRepository.swift */; };
 		34293B0424EE54D700B593C6 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34293B0324EE54D700B593C6 /* RealmRepository.swift */; };
@@ -81,8 +79,6 @@
 		28AF3AD492A6233322CF8E05 /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34006625250116420016BA14 /* PostViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewCell.swift; sourceTree = "<group>"; };
 		34006626250116420016BA14 /* PostViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewCell.xib; sourceTree = "<group>"; };
-		3400662D25011E0F0016BA14 /* TextPostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPostContentView.swift; sourceTree = "<group>"; };
-		3400662F25011E560016BA14 /* TextPostContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPostContentView.xib; sourceTree = "<group>"; };
 		341BF63D24D828F700E3503C /* VkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkResponse.swift; sourceTree = "<group>"; };
 		34293B0124EE53B300B593C6 /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
 		34293B0324EE54D700B593C6 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
@@ -225,8 +221,6 @@
 			children = (
 				34006625250116420016BA14 /* PostViewCell.swift */,
 				34006626250116420016BA14 /* PostViewCell.xib */,
-				3400662D25011E0F0016BA14 /* TextPostContentView.swift */,
-				3400662F25011E560016BA14 /* TextPostContentView.xib */,
 			);
 			path = feed;
 			sourceTree = "<group>";
@@ -451,7 +445,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34006628250116420016BA14 /* PostViewCell.xib in Resources */,
-				3400663025011E560016BA14 /* TextPostContentView.xib in Resources */,
 				34DDE03A24ABBD5900E11CC5 /* FeedViewCell.xib in Resources */,
 				34D6878E24952657009A3B63 /* LaunchScreen.storyboard in Resources */,
 				34C6036E24EDB4A900C6A703 /* GoogleService-Info.plist in Resources */,
@@ -615,7 +608,6 @@
 				341BF63E24D828F700E3503C /* VkResponse.swift in Sources */,
 				3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */,
 				3489DD5A249E8280007CFA6D /* UserPhotosController.swift in Sources */,
-				3400662E25011E0F0016BA14 /* TextPostContentView.swift in Sources */,
 				3493F60424A3934700318A47 /* AvatarView.swift in Sources */,
 				3489DD55249E5B23007CFA6D /* User.swift in Sources */,
 			);
