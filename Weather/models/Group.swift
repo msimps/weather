@@ -9,7 +9,12 @@
 import Foundation
 import RealmSwift
 
-final class Group: Object, Decodable{
+protocol HeaderStruct {
+    var name: String { get }
+    var avatar: String? { get }
+}
+
+final class Group: Object, Decodable, HeaderStruct{
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var avatar: String? = ""

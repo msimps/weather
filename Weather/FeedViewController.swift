@@ -10,6 +10,7 @@ import UIKit
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var newsfeed: VkNewsfeed!
     let postList: [FakePost] = []
         /*[FakePost(
             user: FakeUser(name: "Bill Gates",
@@ -74,14 +75,21 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     ]*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postList.count
+        return newsfeed.posts.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as! PostViewCell
-        let post = postList[indexPath.row]
-        cell.set(post: post, screenWidth: tableView.frame.width)
+        let post = newsfeed.posts[indexPath.row]
+        
+        if post.source_id > 0 {
+            cell.set(post: post, user: newsfeed.users[post.source_id]!, screenWidth: tableView.frame.width)
+        } else {
+            cell.set(post: post, user: newsfeed.groups[abs(post.source_id)]!, screenWidth: tableView.frame.width)
+        }
+        
+        
         return cell
     }
    
@@ -91,13 +99,20 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "PostViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
-        tableView.dataSource = self
-        tableView.delegate = self
-        VkApi().getNewsfeed()
+        
+        VkApi().getNewsfeed { (newsfeed: VkNewsfeed) in
+            
+            print(newsfeed)
+            self.newsfeed = newsfeed
+            self.tableView.dataSource = self
+            self.tableView.delegate = self
+            self.tableView.reloadData()
+        }
         
         
         
     }
+    
     
     
     func showHelloMessage() {

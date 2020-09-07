@@ -10,21 +10,64 @@ import Foundation
 
 
 
+
+struct VkFeedUsersResponse: Decodable{
+    var items: [User]
+    
+    enum CodingKeys: String, CodingKey {
+        case response
+        case items = "profiles"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let topContainer = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try topContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)
+        self.items = try container.decode([User].self, forKey: .items)
+    }
+}
+
+struct VkFeedGroupsResponse: Decodable{
+    var items: [Group]
+    
+    enum CodingKeys: String, CodingKey {
+        case response
+        case items = "groups"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let topContainer = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try topContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)
+        self.items = try container.decode([Group].self, forKey: .items)
+    }
+}
+
+
+struct VkNewsfeed{
+    var posts: [Post] = []
+    var groups: [Int: Group] = [:]
+    var users: [Int: User] = [:]
+}
+
 enum PostContentType{
     case text
     case photo
 }
 
-
 class PostContent: Decodable{
 }
 
 class TextPostContent: PostContent{
-    let text: String = ""
+    var text: String = ""
     
     
     enum CodingKeys: String, CodingKey {
       case text
+    }
+    
+    convenience required init(from decoder: Decoder) throws {
+        self.init()
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.text = try values.decode(String.self, forKey: .text)
     }
 
 }
@@ -33,14 +76,21 @@ class PhotoPostContent: PostContent{
     var image: [Photo] = []
     
     enum CodingKeys: String, CodingKey {
-      case items
+      //case items
       case photos
 
     }
+    
+    enum PhotoKeys: String, CodingKey {
+      case items
+      //case photos
+
+    }
     convenience required init(from decoder: Decoder) throws {
+        
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let photos = try values.nestedContainer(keyedBy: CodingKeys.self, forKey: .photos)
+        let photos = try values.nestedContainer(keyedBy: PhotoKeys.self, forKey: .photos)
         self.image = try photos.decode([Photo].self, forKey: .items)
     }
 }
@@ -87,20 +137,26 @@ class Post: Decodable{
         self.source_id = try values.decode(Int.self, forKey: .source_id)
         self.date = try values.decode(Int.self, forKey: .date)
         
-        let likesValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likesCount)
-        self.likesCount = try likesValues.decode(Int.self, forKey: .likes)
+        
+        if values.contains(.likesCount) {
+          let likesValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likesCount)
+          self.likesCount = try likesValues.decode(Int.self, forKey: .likes)
         
         let commentsValues = try values.nestedContainer(keyedBy: CommentsKeys.self, forKey: .commentsCount)
         self.commentsCount = try commentsValues.decode(Int.self, forKey: .comments)
         
         let repostsValues = try values.nestedContainer(keyedBy: RepostsKeys.self, forKey: .repostsCount)
         self.repostsCount = try repostsValues.decode(Int.self, forKey: .reposts)
+        }
+
         
         let contentType = try values.decode(String.self, forKey: .type)
+        print(contentType)
         if contentType == "post" {
             self.type = .text
             self.content = try TextPostContent(from: decoder)
         } else {
+            
             self.type = .photo
             self.content = try PhotoPostContent(from: decoder)
         }

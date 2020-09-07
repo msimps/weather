@@ -15,28 +15,48 @@ class VkApi {
     let apiVersion = "5.52"
     
     
-    func getNewsfeed(completion: (([Group]) -> Void)? = nil) {
+    func getNewsfeed(completion: ((VkNewsfeed) -> Void)? = nil) {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
-            "filter": "post"
+            "filters": "post, wall_photo"
         ]
         
-        AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseJSON { response in
+        /*AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseJSON { response in
             //print(response)
-        }
+        }*/
         
         AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseData { response in
+        
             if let data = response.value {
-                do {
-                    let posts = try JSONDecoder().decode(VkResponse<Post>.self, from: data).items
-                    print(posts)
-                    
-                    //completion?(users)
-                } catch {
-                    print(error)
+    
+                var newsfeed = VkNewsfeed()
+                
+                let dispatchGroup = DispatchGroup()
+                
+                
+                DispatchQueue.global().async(group: dispatchGroup) {
+                    let users = try? JSONDecoder().decode(VkFeedUsersResponse.self, from: data).items
+                    users?.forEach { newsfeed.users[$0.id] = $0 }
                 }
-            }
+                
+                DispatchQueue.global().async(group: dispatchGroup) {
+                   let groups = try? JSONDecoder().decode(VkFeedGroupsResponse.self, from: data).items
+                    groups?.forEach { newsfeed.groups[$0.id] = $0 }
+               }
+                
+                
+                DispatchQueue.global().async(group: dispatchGroup){
+                    let posts = try? JSONDecoder().decode(VkResponse<Post>.self, from: data).items
+                    newsfeed.posts = posts ?? []
+                }
+        
+                dispatchGroup.notify(queue: DispatchQueue.main) {
+                    //print(newsfeed)
+                    completion?(newsfeed)
+                }
+
+            } 
         }
     }
     

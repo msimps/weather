@@ -30,7 +30,10 @@ class FakeUser{
     }
 }
 
-final class User: Object, Decodable{
+
+ 
+
+final class User: Object, Decodable, HeaderStruct{
     @objc dynamic var id: Int = 0
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""
@@ -51,7 +54,7 @@ final class User: Object, Decodable{
         case id
         case firstName = "first_name"
         case lastName = "last_name"
-        case avatar = "photo_200_orig"
+        case avatar = "photo_100"
     }
     
     override static func primaryKey() -> String? {

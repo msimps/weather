@@ -7,10 +7,7 @@
 //
 
 import UIKit
-
-
-
-
+import Kingfisher
 
 
 class PostViewCell: UITableViewCell {
@@ -29,7 +26,8 @@ class PostViewCell: UITableViewCell {
     @IBOutlet weak var postText: UITextView!
 
     
-    private var post: FakePost!
+    private var post: Post!
+    private var user: HeaderStruct!
     private var screenWidth: CGFloat = 0
     
     
@@ -49,14 +47,19 @@ class PostViewCell: UITableViewCell {
     
     private func updateComponent(){
         // fill common fields
-        /*avatar.avatarImage = UIImage(named: post.user.avatar)!
-        userName.text = post!.user.name
-        postCreatedAt.text = post!.created_at
-        likesBtn.likesCount = post!.likesCount
+        if let imageUrl = user.avatar, let url = URL(string: imageUrl) {
+            avatar.imageView.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
+                self.setNeedsLayout()
+            }
+        }
+
+        userName.text = user.name
+        postCreatedAt.text = String(post.date)
+        likesBtn.likesCount = post.likesCount
         commentsBtn.titleLabel?.text = String(post.commentsCount)
         viewsCountBtn.titleLabel?.text = String(post.viewsCount)
         
-        if post.contentType == .text{
+        if post.type == .text{
             postText.text = (post.content as! TextPostContent).text
             
             postImage.image = nil
@@ -64,17 +67,23 @@ class PostViewCell: UITableViewCell {
             postImage.isHidden = true
         }
         
-        if post.contentType == .photo{
+        if post.type == .photo{
             
             //postImage.isHidden = false
-            postImage.image = UIImage(named: (post.content as! PhotoPostContent).image)!
+            //postImage.image = UIImage(named: (post.content as! PhotoPostContent).image.first!.image!)!
             //postImage.image = resizeImage(image: image, targetWidth: screenWidth)
             //postImage.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+            if let imageUrl = (post.content as! PhotoPostContent).image.first!.image, let url = URL(string: imageUrl) {
+                postImage.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
+                    self.setNeedsLayout()
+                }
+            }
+
             postText.text = ""
             postText.isHidden = true
             postImage.isHidden = false
             
-        }*/
+        }
         
 
     }
@@ -102,8 +111,9 @@ class PostViewCell: UITableViewCell {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    func set(post: FakePost, screenWidth: CGFloat){
+    func set(post: Post, user: HeaderStruct, screenWidth: CGFloat){
         self.post = post
+        self.user = user
         self.screenWidth = screenWidth
         updateComponent()
     }

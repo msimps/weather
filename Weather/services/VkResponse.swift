@@ -22,3 +22,5 @@ struct VkResponse<T: Decodable>: Decodable{
         self.items = try container.decode([T].self, forKey: .items)
     }
 }
+
+
