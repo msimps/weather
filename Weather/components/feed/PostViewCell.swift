@@ -49,7 +49,7 @@ class PostViewCell: UITableViewCell {
     
     private func updateComponent(){
         // fill common fields
-        avatar.avatarImage = UIImage(named: post.user.avatar)!
+        /*avatar.avatarImage = UIImage(named: post.user.avatar)!
         userName.text = post!.user.name
         postCreatedAt.text = post!.created_at
         likesBtn.likesCount = post!.likesCount
@@ -74,7 +74,7 @@ class PostViewCell: UITableViewCell {
             postText.isHidden = true
             postImage.isHidden = false
             
-        }
+        }*/
         
 
     }

@@ -15,6 +15,32 @@ class VkApi {
     let apiVersion = "5.52"
     
     
+    func getNewsfeed(completion: (([Group]) -> Void)? = nil) {
+        let parameters: Parameters = [
+            "v": apiVersion ,
+            "access_token": Session.currentUser.token,
+            "filter": "post"
+        ]
+        
+        AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseJSON { response in
+            //print(response)
+        }
+        
+        AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseData { response in
+            if let data = response.value {
+                do {
+                    let posts = try JSONDecoder().decode(VkResponse<Post>.self, from: data).items
+                    print(posts)
+                    
+                    //completion?(users)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    
     func validateToken(_ clousure: @escaping ((_ result: Bool) -> Void)) {
         
         guard Session.currentUser.load() else {

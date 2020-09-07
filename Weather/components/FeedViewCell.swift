@@ -46,7 +46,8 @@ class FeedViewCell: UITableViewCell {
     }
     
     private func updateComponent(){
-        avatar.avatarImage = UIImage(named: post!.user.avatar)!
+        /*avatar.avatarImage = UIImage(named: post!.user.avatar)!
+        
         userName.text = post!.user.name
         postCreatedAt.text = post!.created_at
         likesBtn.likesCount = post!.likesCount
@@ -63,7 +64,7 @@ class FeedViewCell: UITableViewCell {
             let image = UIImage(named: post!.image)!
             postImage.image = resizeImage(image: image, targetWidth: screenWidth)
             postImage.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        }
+        }*/
     }
 
     override func prepareForReuse() {

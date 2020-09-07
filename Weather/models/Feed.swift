@@ -8,29 +8,6 @@
 
 import UIKit
 
-enum PostContentType{
-    case text
-    case photo
-}
-
-
-class PostContent{
-}
-
-class TextPostContent: PostContent{
-    let text: String
-    
-    init(text: String) {
-        self.text = text
-    }
-}
-
-class PhotoPostContent: PostContent{
-    let image: String
-    init(image: String){
-        self.image = image
-    }
-}
 
 
 class FakePost{
