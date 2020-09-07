@@ -27,6 +27,7 @@ class PostViewCell: UITableViewCell {
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var viewsCountBtn: UIButton!
     @IBOutlet weak var postText: UITextView!
+    @IBOutlet weak var contentAreaView: UIView!
     
     private var post: FakePost!
     private var screenWidth: CGFloat = 0
@@ -60,7 +61,16 @@ class PostViewCell: UITableViewCell {
             postImage.isHidden = true
             //postImage.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
             
-            postText.text = (post.content as! TextPostContent).text
+            //postText.text
+            //let text = (post.content as! TextPostContent).text
+            
+            let textContentView = TextPostContentView()
+            textContentView.setup(content: post.content as! TextPostContent)
+            contentAreaView.addSubview(textContentView)
+            textContentView.frame = contentAreaView.bounds
+            
+            
+            
         }
         
         if post.contentType == .photo{

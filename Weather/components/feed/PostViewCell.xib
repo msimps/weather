@@ -158,6 +158,7 @@
             <connections>
                 <outlet property="avatar" destination="7my-KK-e5c" id="uRG-Z9-ZLe"/>
                 <outlet property="commentsBtn" destination="4rb-8L-zqm" id="Lil-t8-YIh"/>
+                <outlet property="contentView" destination="6Bx-rP-tg8" id="b6c-Qb-VWe"/>
                 <outlet property="likesBtn" destination="kVe-1v-ANX" id="8YM-nc-hHF"/>
                 <outlet property="postCreatedAt" destination="dIx-fM-DGf" id="WkA-Vl-lza"/>
                 <outlet property="postImage" destination="qOJ-Qj-kV4" id="qgM-Hd-mFK"/>
