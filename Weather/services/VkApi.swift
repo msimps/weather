@@ -167,18 +167,21 @@ class VkApi {
             "extended": 1
         ]
         
-        AF.request(vkEndpoint + "/groups.get", parameters: parameters).responseData { response in
-            if let data = response.value {
-                do {
-                    let groups = try JSONDecoder().decode(VkResponse<Group>.self, from: data).items
-                    print(groups)
-                    Repository.realm.save(groups)
-                    completion?(groups)
-                } catch {
-                    print(error)
-                }
-            }
-        }
+        let request = AF.request(vkEndpoint + "/groups.get", parameters: parameters)
+        
+        let opq = OperationQueue()
+        
+        let getDataOperation = GetDataOperation(request: request)
+        opq.addOperation(getDataOperation)
+        
+        let parseData = ParseData()
+        parseData.addDependency(getDataOperation)
+        opq.addOperation(parseData)
+        
+        let saveToRealm = SaveToRealm(completion);
+        saveToRealm.addDependency(parseData)
+        OperationQueue.main.addOperation(saveToRealm)
+        
     }
     
     func searchGroups(query: String, sort: Int = 0, completion: (([Group]) -> Void)? ) {
@@ -207,3 +210,105 @@ class VkApi {
     
     
 }
+
+
+class AsyncOperation: Operation {
+    enum State: String {
+        case ready, executing, finished
+        fileprivate var keyPath: String {
+            return "is" + rawValue.capitalized
+        }
+    }
+    
+    var state = State.ready {
+        willSet {
+            willChangeValue(forKey: state.keyPath)
+            willChangeValue(forKey: newValue.keyPath)
+        }
+        didSet {
+            didChangeValue(forKey: state.keyPath)
+            didChangeValue(forKey: oldValue.keyPath)
+        }
+    }
+    
+    override var isAsynchronous: Bool {
+        return true
+    }
+    
+    override var isReady: Bool {
+        return super.isReady && state == .ready
+    }
+    
+    override var isExecuting: Bool {
+        return state == .executing
+    }
+    override var isFinished: Bool {
+        return state == .finished
+    }
+    override func start() {
+        if isCancelled {
+            state = .finished
+        } else {
+            main()
+            state = .executing
+        }
+    }
+    override func cancel() {
+        super.cancel()
+        state = .finished
+    }
+}
+
+
+class GetDataOperation: AsyncOperation{
+    private var request: DataRequest
+    var data: Data?
+    
+    init(request: DataRequest) {
+        self.request = request
+    }
+    
+    override func cancel(){
+        request.cancel()
+        super.cancel()
+    }
+    
+    override func main(){
+        request.responseData { [weak self] response in
+            self?.data = response.data
+            self?.state = .finished
+        }
+    }
+}
+
+class ParseData: Operation{
+    var outputData: [Group]? = []
+    
+    override func main() {
+        guard
+            let getDataOperation = dependencies.first as? GetDataOperation,
+            let data = getDataOperation.data else { return }
+        do {
+            outputData = try JSONDecoder().decode(VkResponse<Group>.self, from: data).items
+        } catch {
+            print(error)
+        }
+    }
+}
+
+class SaveToRealm: Operation{
+    var completion: (([Group]) -> Void)? = nil
+    
+    override func main() {
+        guard
+            let parseData = dependencies.first as? ParseData,
+            let groups = parseData.outputData else { return }
+        Repository.realm.save(groups)
+        completion?(groups)
+    }
+    
+    init(_ completion: (([Group]) -> Void)?){
+        self.completion = completion
+    }
+}
+
