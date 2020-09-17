@@ -54,7 +54,8 @@ final class User: Object, Decodable, HeaderStruct{
         case id
         case firstName = "first_name"
         case lastName = "last_name"
-        case avatar = "photo_100"
+        //case avatar = "photo_100"
+        case avatar = "photo_200_orig"
     }
     
     override static func primaryKey() -> String? {

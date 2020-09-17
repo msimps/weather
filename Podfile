@@ -8,6 +8,8 @@ target 'Weather' do
   # Pods for Weather
   #pod 'Firebase/Firestore'
   #pod 'Firebase/Database'
+  pod 'PromiseKit'
+  pod 'PromiseKit/Alamofire'
   target 'WeatherTests' do
     inherit! :search_paths
     # Pods for testing

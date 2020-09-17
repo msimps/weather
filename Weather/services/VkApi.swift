@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import RealmSwift
+import PromiseKit
 
 class VkApi {
     let vkEndpoint = "https://api.vk.com/method"
@@ -123,18 +124,41 @@ class VkApi {
             "user_id": Session.currentUser.userId,
             "fields": "nickname, photo_200_orig"
         ]
-        AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseData { response in
-            if let data = response.value {
-                do {
-                    let users = try JSONDecoder().decode(VkResponse<User>.self, from: data).items
-                    print(users)
-                    Repository.realm.save(users)
-                    completion?(users)
-                } catch {
-                    print(error)
+        
+        //AF.request(vkEndpoint + "/friends.get", parameters: parameters).responseDecodable(VkResponse<User>.self)
+        firstly {
+            promiseRequest(parameters: parameters, url: vkEndpoint + "/friends.get")
+        }
+            .map{ data in
+                return  try JSONDecoder().decode(VkResponse<User>.self, from: data).items
+        }
+            .tap {
+                print($0)
+        }
+            .get { users in
+                Repository.realm.save(users)
+        }
+            .done{ users in
+                completion?(users)
+        }
+            .catch{ error in
+                print(error)
+        }
+        
+    }
+    
+    func promiseRequest(parameters: Parameters, url: String ) -> Promise<Data>{
+        
+        return Promise { resolver in
+            AF.request(url, parameters: parameters).responseData { response in
+                if let data = response.value {
+                    resolver.fulfill(data)
+                } else {
+                    resolver.reject(response.error as! Error)
                 }
             }
         }
+        
     }
     
     func getPhotosAll(userId: Int, completion: (([Photo]) -> Void)? = nil ) {
@@ -144,6 +168,9 @@ class VkApi {
             "owner_id": userId,
             "extended": 1
         ]
+        
+        
+       
         
         AF.request(vkEndpoint + "/photos.getAll", parameters: parameters).responseData { response in
             if let data = response.value {
@@ -158,6 +185,9 @@ class VkApi {
             }
         }
     }
+    
+
+
     
     func getGroups(completion: (([Group]) -> Void)? = nil) {
         let parameters: Parameters = [
