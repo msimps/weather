@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+//import Kingfisher
 
 private let reuseIdentifier = "CustomUserPhotoCell"
 
@@ -15,9 +15,12 @@ class UserPhotosController: UICollectionViewController {
     
     var user: User?
     var userPhoto: [Photo] = []
+    
+    var photoService: PhotoService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        photoService = PhotoService(container: self.collectionView)
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -36,10 +39,11 @@ class UserPhotosController: UICollectionViewController {
         
         //cell.userPhoto.image = UIImage(named: user!.userPhoto[indexPath.row].image)
         if let imageUrl = userPhoto[indexPath.row].image, let url = URL(string: imageUrl) {
-            cell.userPhoto.kf.setImage(with: ImageResource(downloadURL: url)) {
+            cell.userPhoto.image = photoService?.photo(atIndexpath: indexPath, byUrl: imageUrl)
+            /*cell.userPhoto.kf.setImage(with: ImageResource(downloadURL: url)) {
                        _ in
                        cell.setNeedsLayout()
-                   }
+                   }*/
                }
         cell.likes.likesCount = userPhoto[indexPath.row].likes
         // Configure the cell

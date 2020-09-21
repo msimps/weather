@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+//import Kingfisher
 import RealmSwift
 
 class UserListController: UIViewController, UITableViewDelegate, UITableViewDataSource, BindRealmToTableView {
@@ -15,7 +15,9 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var letterPicker: LetterPicker!
     @IBOutlet weak var searchBar: UISearchBar!
- 
+    
+    
+    var photoService: PhotoService?
     var userList: Results<User> = Repository.realm._load()
     var sectionList: [String: [User]] = [:]
     
@@ -52,6 +54,7 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         service.getFriend()
+        photoService = PhotoService(container: self.tableView)
     }
 
     func updateTable(){
@@ -79,12 +82,14 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
         // Configure the cell...
         //cell.avatarView.avatarImage = UIImage(named: user.avatar)!
         if let imageUrl = user.avatar, let url = URL(string: imageUrl) {
-            cell.avatarView.imageView.kf.setImage(with: ImageResource(downloadURL: url), placeholder: nil, options: nil, progressBlock: nil) {
+            cell.avatarView.imageView.image = photoService?.photo(atIndexpath: indexPath, byUrl: imageUrl)
+            /*cell.avatarView.imageView.kf.setImage(with: ImageResource(downloadURL: url), placeholder: nil, options: nil, progressBlock: nil) {
                    (image, error, cacheType, URL) in
                    cell.setNeedsLayout()
-               }
+               }*/
+              
            } else {
-               cell.imageView?.image = UIImage(named: "default_user_avatar")
+               cell.avatarView.imageView.image = UIImage(named: "default_user_avatar")
            }
         cell.alpha = 0
         UIView.animate(
