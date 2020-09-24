@@ -29,6 +29,7 @@ class PostViewCell: UITableViewCell {
     private var post: Post!
     private var user: HeaderStruct!
     private var screenWidth: CGFloat = 0
+    private var formattedTime: String = ""
     
     
     override func awakeFromNib() {
@@ -54,7 +55,7 @@ class PostViewCell: UITableViewCell {
         }
 
         userName.text = user.name
-        postCreatedAt.text = String(post.date)
+        postCreatedAt.text = formattedTime
         likesBtn.likesCount = post.likesCount
         commentsBtn.titleLabel?.text = String(post.commentsCount)
         viewsCountBtn.titleLabel?.text = String(post.viewsCount)
@@ -68,7 +69,6 @@ class PostViewCell: UITableViewCell {
         }
         
         if post.type == .photo{
-            
             //postImage.isHidden = false
             //postImage.image = UIImage(named: (post.content as! PhotoPostContent).image.first!.image!)!
             //postImage.image = resizeImage(image: image, targetWidth: screenWidth)
@@ -82,10 +82,7 @@ class PostViewCell: UITableViewCell {
             postText.text = ""
             postText.isHidden = true
             postImage.isHidden = false
-            
         }
-        
-
     }
 
     override func prepareForReuse() {
@@ -111,10 +108,11 @@ class PostViewCell: UITableViewCell {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    func set(post: Post, user: HeaderStruct, screenWidth: CGFloat){
+    func set(post: Post, user: HeaderStruct, formattedTime: String, screenWidth: CGFloat){
         self.post = post
         self.user = user
         self.screenWidth = screenWidth
+        self.formattedTime = formattedTime
         updateComponent()
     }
     

@@ -11,30 +11,43 @@ import UIKit
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var newsfeed: VkNewsfeed!
-       
+    var formattedDates: [Int: String] = [:]
     
+    let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "dd.MM.yyyy HH:mm"
+        return df
+    }()
+       
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsfeed.posts.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as! PostViewCell
         let post = newsfeed.posts[indexPath.row]
         
         if post.source_id > 0 {
-            cell.set(post: post, user: newsfeed.users[post.source_id]!, screenWidth: tableView.frame.width)
+            cell.set(post: post, user: newsfeed.users[post.source_id]!, formattedTime: getCellDateText(post.date), screenWidth: tableView.frame.width)
         } else {
-            cell.set(post: post, user: newsfeed.groups[abs(post.source_id)]!, screenWidth: tableView.frame.width)
+            cell.set(post: post, user: newsfeed.groups[abs(post.source_id)]!, formattedTime: getCellDateText(post.date), screenWidth: tableView.frame.width)
         }
-        
         
         return cell
     }
-   
     
-
+    func getCellDateText(_ date: Int) -> String{
+        if let dateText = formattedDates[date] {
+            return dateText
+        } else {
+            let dateText = dateFormatter.string(from: Date(timeIntervalSince1970: Double(date)))
+            formattedDates[date] = dateText
+            return dateText
+        }
+    }
+   
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "PostViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
@@ -46,19 +59,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableView.delegate = self
             self.tableView.reloadData()
         }
-        
-        
-        
     }
     
     
     
-    func showHelloMessage() {
-        let alter = UIAlertController(title: "Wow!", message: "Hi, \(Session.currentUser.name)! How are you?", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Great!", style: .cancel, handler: nil)
-        alter.addAction(action)
-        present(alter, animated: true, completion: nil)
-    }
+
     
 
     /*
