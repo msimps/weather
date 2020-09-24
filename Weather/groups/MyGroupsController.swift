@@ -49,6 +49,7 @@ class MyGroupsController: UITableViewController, BindRealmToTableView {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserGroupCell", for: indexPath) as! UserGroupCell
         cell.textLabel?.text = myGroups[indexPath.row].name
+        cell.textLabel?.backgroundColor = .systemBackground
         if let imageUrl = myGroups[indexPath.row].avatar, let url = URL(string: imageUrl) {
             cell.imageView?.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
                 cell.setNeedsLayout()

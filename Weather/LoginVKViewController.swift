@@ -11,7 +11,6 @@ import WebKit
 
 class LoginVKViewController: UINavigationController {
     
-    
     //@IBOutlet weak
     var webview: WKWebView?{
         didSet{
@@ -25,13 +24,11 @@ class LoginVKViewController: UINavigationController {
     }
     
     @objc func successLogin(_ notification: Notification){
-        
         DispatchQueue.main.async {
             self.webview?.removeFromSuperview()
-            Repository.firebase.setUserRef(Session.currentUser.userId)
+            //Repository.firebase.setUserRef(Session.currentUser.userId)
             self.performSegue(withIdentifier: "LoginSegue", sender: nil)
         }
-        
     }
     
     func cleanWebViewCookies()  {

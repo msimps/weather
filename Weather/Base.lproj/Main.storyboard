@@ -268,23 +268,22 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="IdAllGroupCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserGroupCell" id="FHf-2C-6pR" customClass="UserGroupCell" customModule="Weather" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FHf-2C-6pR" id="e1a-wd-K77">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FHf-2C-6pR" id="e1a-wd-K77" customClass="UserGroupCell" customModule="Weather" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="groupName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xo-gt-f8i">
-                                            <rect key="frame" x="91" y="0.0" width="323" height="70"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="groupName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xo-gt-f8i">
+                                            <rect key="frame" x="91" y="0.0" width="90" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abZ-bL-rmb" customClass="AvatarView" customModule="Weather" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abZ-bL-rmb" customClass="AvatarView" customModule="Weather" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="abZ-bL-rmb" secondAttribute="height" multiplier="1:1" id="vpv-zU-rpI"/>
-                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="avatarImage" value="How to get to Mars"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
@@ -299,15 +298,6 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="abZ-bL-rmb" firstAttribute="top" secondItem="e1a-wd-K77" secondAttribute="top" id="Afn-f7-vzL"/>
-                                        <constraint firstAttribute="trailing" secondItem="1xo-gt-f8i" secondAttribute="trailing" id="HAc-aK-Skh"/>
-                                        <constraint firstItem="1xo-gt-f8i" firstAttribute="leading" secondItem="abZ-bL-rmb" secondAttribute="trailing" constant="21" id="RFm-Ne-ag2"/>
-                                        <constraint firstItem="1xo-gt-f8i" firstAttribute="top" secondItem="e1a-wd-K77" secondAttribute="top" id="T4d-tN-mxD"/>
-                                        <constraint firstItem="abZ-bL-rmb" firstAttribute="leading" secondItem="e1a-wd-K77" secondAttribute="leading" id="bCD-xw-dkH"/>
-                                        <constraint firstAttribute="bottom" secondItem="1xo-gt-f8i" secondAttribute="bottom" id="rkx-ME-LVr"/>
-                                        <constraint firstAttribute="bottom" secondItem="abZ-bL-rmb" secondAttribute="bottom" id="xtW-4f-6Ad"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="groupAvatar" destination="abZ-bL-rmb" id="bnD-ds-4LE"/>
