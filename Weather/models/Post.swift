@@ -73,7 +73,7 @@ class TextPostContent: PostContent{
 }
 
 class PhotoPostContent: PostContent{
-    var image: [Photo] = []
+    var image: [FeedPhoto] = []
     
     enum CodingKeys: String, CodingKey {
       //case items
@@ -87,11 +87,10 @@ class PhotoPostContent: PostContent{
 
     }
     convenience required init(from decoder: Decoder) throws {
-        
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let photos = try values.nestedContainer(keyedBy: PhotoKeys.self, forKey: .photos)
-        self.image = try photos.decode([Photo].self, forKey: .items)
+        self.image = try photos.decode([FeedPhoto].self, forKey: .items)
     }
 }
 

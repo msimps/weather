@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ostagram Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
 
 final class Photo: Object, Decodable {
@@ -43,6 +43,53 @@ final class Photo: Object, Decodable {
         self.image = try values.decode(String.self, forKey: .image)
         self.id = try values.decode(Int.self, forKey: .id)
         self.userId = try values.decode(Int.self, forKey: .userId)
+        let likesValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likes)
+        self.likes = try likesValues.decode(Int.self, forKey: .likes)
+    }
+}
+
+final class FeedPhoto: Object, Decodable {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var image: String?
+    @objc dynamic var likes: Int = 0
+    @objc dynamic var userId: Int = 0
+    @objc dynamic var width: Int = 0
+    @objc dynamic var height: Int = 0
+    
+    var aspectRatio: CGFloat { return CGFloat(height)/CGFloat(width) }
+    
+    //@objc dynamic var user: List<User>()
+    //let users = LinkingObjects(fromType: User.self, property: "photos")
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case image = "photo_604"
+        case likes
+        case userId = "owner_id"
+        case width
+        case height
+    }
+    
+    enum LikesKeys: String, CodingKey {
+        case likes = "count"
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    override static func indexedProperties() -> [String] {
+        return ["userId"]
+    }
+    
+    convenience required init(from decoder: Decoder) throws {
+        self.init()
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.image = try values.decode(String.self, forKey: .image)
+        self.id = try values.decode(Int.self, forKey: .id)
+        self.userId = try values.decode(Int.self, forKey: .userId)
+        self.width = try values.decode(Int.self, forKey: .width)
+        self.height = try values.decode(Int.self, forKey: .height)
         let likesValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likes)
         self.likes = try likesValues.decode(Int.self, forKey: .likes)
     }

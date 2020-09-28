@@ -9,18 +9,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PostViewCell" selectionStyle="default" indentationWidth="10" rowHeight="594" id="KGk-i7-Jjw" customClass="PostViewCell" customModule="Weather" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="461" height="594"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PostViewCell" selectionStyle="default" indentationWidth="10" rowHeight="561" id="KGk-i7-Jjw" customClass="PostViewCell" customModule="Weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="476" height="561"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="461" height="594"/>
+                <rect key="frame" x="0.0" y="0.0" width="476" height="561"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7vw-qc-FKc">
-                        <rect key="frame" x="20" y="11" width="421" height="520"/>
+                        <rect key="frame" x="20" y="11" width="436" height="539"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKB-4z-cGK">
-                                <rect key="frame" x="0.0" y="0.0" width="421" height="66"/>
+                                <rect key="frame" x="0.0" y="0.0" width="436" height="66"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7my-KK-e5c" customClass="AvatarView" customModule="Weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="68" height="66"/>
@@ -40,18 +40,18 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUL-wQ-7VJ">
-                                        <rect key="frame" x="76" y="1" width="345" height="65"/>
+                                        <rect key="frame" x="76" y="1" width="360" height="65"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bill Gates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImM-Ed-Gd0">
-                                                <rect key="frame" x="0.0" y="8" width="345" height="25"/>
+                                                <rect key="frame" x="0.0" y="8" width="360" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.26121568680000001" green="0.3931820989" blue="0.54689431190000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8 minutes ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIx-fM-DGf">
-                                                <rect key="frame" x="0.0" y="33" width="345" height="24"/>
+                                                <rect key="frame" x="0.0" y="33" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.38688671590000001" green="0.42660838369999998" blue="0.48070365189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,10 +67,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h29-1h-d35">
-                                <rect key="frame" x="0.0" y="71" width="421" height="421"/>
+                                <rect key="frame" x="0.0" y="71" width="436" height="440"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-ZG-wQh">
-                                        <rect key="frame" x="0.0" y="0.0" width="421" height="413"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="436" height="314"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -79,17 +79,14 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-z2-gMH">
-                                        <rect key="frame" x="0.0" y="0.0" width="421" height="413"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="436" height="432"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="h29-1h-d35" secondAttribute="height" multiplier="1:1" id="JsI-Lj-P6S"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpr-Vf-x5q">
-                                <rect key="frame" x="0.0" y="497" width="421" height="23"/>
+                                <rect key="frame" x="0.0" y="516" width="436" height="23"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kVe-1v-ANX" customClass="LikesView" customModule="Weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="23"/>
@@ -110,7 +107,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-PW-miN">
-                                        <rect key="frame" x="359" y="0.0" width="62" height="21"/>
+                                        <rect key="frame" x="374" y="0.0" width="62" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="8.1K" image="eye.fill" catalog="system">
                                             <color key="titleColor" red="0.38688671590000001" green="0.42660838369999998" blue="0.48070365189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -160,7 +157,7 @@
                 <outlet property="userName" destination="ImM-Ed-Gd0" id="oqZ-M8-U3A"/>
                 <outlet property="viewsCountBtn" destination="C2w-PW-miN" id="5b9-Lk-A6d"/>
             </connections>
-            <point key="canvasLocation" x="-389.13043478260875" y="138.61607142857142"/>
+            <point key="canvasLocation" x="-378.26086956521743" y="127.56696428571428"/>
         </tableViewCell>
     </objects>
     <resources>

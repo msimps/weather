@@ -26,6 +26,7 @@ class PostViewCell: UITableViewCell {
     @IBOutlet weak var postText: UITextView!
 
     
+    
     private var post: Post!
     private var user: HeaderStruct!
     private var screenWidth: CGFloat = 0
@@ -66,6 +67,8 @@ class PostViewCell: UITableViewCell {
             postImage.image = nil
             postText.isHidden = false
             postImage.isHidden = true
+            
+
         }
         
         if post.type == .photo{
@@ -73,16 +76,25 @@ class PostViewCell: UITableViewCell {
             //postImage.image = UIImage(named: (post.content as! PhotoPostContent).image.first!.image!)!
             //postImage.image = resizeImage(image: image, targetWidth: screenWidth)
             //postImage.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-            if let imageUrl = (post.content as! PhotoPostContent).image.first!.image, let url = URL(string: imageUrl) {
+            let content = post.content as! PhotoPostContent
+            if let imageUrl = content.image.first!.image, let url = URL(string: imageUrl) {
                 postImage.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
                     self.setNeedsLayout()
+                    
                 }
             }
 
             postText.text = ""
             postText.isHidden = true
             postImage.isHidden = false
+            /*let imageSize = CGSize(width: ceil(bounds.width), height: ceil(bounds.width))content.image.first!.aspectRatio))
+            let imageCoordinates = CGPoint(x: 0, y: 0)
+            postImage.bounds = CGRect(origin: imageCoordinates, size: imageSize)
+           */
+            
         }
+
+        
     }
 
     override func prepareForReuse() {

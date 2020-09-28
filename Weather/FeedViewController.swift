@@ -36,6 +36,24 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // Вычисляем высоту
+        let tableWidth = tableView.bounds.width
+        let post = self.newsfeed.posts[indexPath.row]
+        var cellHeight = 0
+        if post.type == .text{
+            let content = post.content as! TextPostContent
+            cellHeight = 200 + 66 + 23
+        }else{
+            let content = post.content as! PhotoPostContent
+            cellHeight = Int(tableView.frame.width*content.image.first!.aspectRatio + 66 + 23)
+        }
+        return CGFloat(cellHeight)
+        
+
+    }
+    
     func getCellDateText(_ date: Int) -> String{
         if let dateText = formattedDates[date] {
             return dateText

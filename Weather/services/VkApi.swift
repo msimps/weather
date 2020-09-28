@@ -24,7 +24,7 @@ class VkApi {
         ]
         
         /*AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseJSON { response in
-            //print(response)
+            print(response)
         }*/
         
         AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseData { response in
