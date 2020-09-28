@@ -13,6 +13,38 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var newsfeed: VkNewsfeed!
     var formattedDates: [Int: String] = [:]
     
+    //var refreshControl: UIRefreshControl?
+    
+    
+   // Функция настройки контроллера
+   fileprivate func setupRefreshControl() {
+       let refreshControl = UIRefreshControl()
+       refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemBlue])
+       refreshControl.tintColor = .systemBlue
+       refreshControl.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
+       self.tableView.refreshControl = refreshControl
+   }
+    
+    @objc func refreshNews() {
+        self.tableView.refreshControl?.beginRefreshing()
+        let mostFreshNewsDate = Double(self.newsfeed.posts.first!.date) ?? Date().timeIntervalSince1970
+
+        VkApi().getNewsfeed(parameters: ["start_time": mostFreshNewsDate]) { [weak self] (newsfeed: VkNewsfeed) in
+            //print(newsfeed)
+            
+            guard let self = self else { return }
+            self.tableView.refreshControl?.endRefreshing()
+            guard newsfeed.posts.count > 0 else { return }
+            self.newsfeed.merge(newsfeed)
+            // формируем IndexSet свежедобавленных секций и обновляем таблицу
+            let indexSet = IndexSet(integersIn: 0..<newsfeed.posts.count)
+            self.tableView.insertSections(indexSet, with: .automatic)
+
+        }
+    }
+
+    
+    
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "dd.MM.yyyy HH:mm"
@@ -69,14 +101,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "PostViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
-        
+        setupRefreshControl()
         VkApi().getNewsfeed { (newsfeed: VkNewsfeed) in
-            print(newsfeed)
+            //print(newsfeed)
             self.newsfeed = newsfeed
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.reloadData()
         }
+        
     }
     
     

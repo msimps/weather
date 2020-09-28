@@ -46,6 +46,12 @@ struct VkNewsfeed{
     var posts: [Post] = []
     var groups: [Int: Group] = [:]
     var users: [Int: User] = [:]
+    
+    mutating func merge(_ newsFeed: VkNewsfeed){
+        self.posts = newsFeed.posts + self.posts
+        newsFeed.users.forEach { self.users[$1.id] = $1 }
+        newsFeed.groups.forEach { self.groups[$1.id] = $1 }
+    }
 }
 
 enum PostContentType{

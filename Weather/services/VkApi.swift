@@ -16,18 +16,20 @@ class VkApi {
     let apiVersion = "5.52"
     
     
-    func getNewsfeed(completion: ((VkNewsfeed) -> Void)? = nil) {
-        let parameters: Parameters = [
+    func getNewsfeed(parameters: [String: Any] = [:] ,completion: ((VkNewsfeed) -> Void)? = nil) {
+        var defaultParameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
             "filters": "post, wall_photo"
         ]
         
-        /*AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseJSON { response in
-            print(response)
-        }*/
+        defaultParameters.merge(parameters){ (current, _) in current }
         
-        AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseData { response in
+        AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseJSON { response in
+            print(response)
+        }
+        
+        AF.request(vkEndpoint + "/newsfeed.get", parameters: defaultParameters).responseData { response in
         
             if let data = response.value {
     
