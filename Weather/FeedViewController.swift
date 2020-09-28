@@ -29,16 +29,19 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.refreshControl?.beginRefreshing()
         let mostFreshNewsDate = Double(self.newsfeed.posts.first!.date) ?? Date().timeIntervalSince1970
 
-        VkApi().getNewsfeed(parameters: ["start_time": mostFreshNewsDate]) { [weak self] (newsfeed: VkNewsfeed) in
+        VkApi().getNewsfeed(parameters: ["start_time": mostFreshNewsDate+1]) { [weak self] (newsfeed: VkNewsfeed) in
             //print(newsfeed)
             
             guard let self = self else { return }
             self.tableView.refreshControl?.endRefreshing()
             guard newsfeed.posts.count > 0 else { return }
-            self.newsfeed.merge(newsfeed)
+            
             // формируем IndexSet свежедобавленных секций и обновляем таблицу
-            let indexSet = IndexSet(integersIn: 0..<newsfeed.posts.count)
+            
+            self.newsfeed.merge(newsfeed)
+            let indexSet = IndexSet(integersIn: 0..<(newsfeed.posts.count-1))
             self.tableView.insertSections(indexSet, with: .automatic)
+            self.tableView.reloadData()
 
         }
     }
@@ -76,10 +79,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var cellHeight = 0
         if post.type == .text{
             let content = post.content as! TextPostContent
-            cellHeight = 200 + 66 + 23
+            cellHeight = 200 + 66 + 23+5*3
         }else{
             let content = post.content as! PhotoPostContent
-            cellHeight = Int(tableView.frame.width*content.image.first!.aspectRatio + 66 + 23)
+            cellHeight = Int(tableView.frame.width*content.image.first!.aspectRatio + 66 + 23+5*3)
         }
         return CGFloat(cellHeight)
         

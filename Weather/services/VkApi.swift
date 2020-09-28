@@ -25,9 +25,9 @@ class VkApi {
         
         defaultParameters.merge(parameters){ (current, _) in current }
         
-        AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseJSON { response in
+        /*AF.request(vkEndpoint + "/newsfeed.get", parameters: parameters).responseJSON { response in
             print(response)
-        }
+        }*/
         
         AF.request(vkEndpoint + "/newsfeed.get", parameters: defaultParameters).responseData { response in
         

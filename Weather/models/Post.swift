@@ -48,7 +48,9 @@ struct VkNewsfeed{
     var users: [Int: User] = [:]
     
     mutating func merge(_ newsFeed: VkNewsfeed){
+        print("\(self.posts.count) \(newsFeed.posts.count)")
         self.posts = newsFeed.posts + self.posts
+        print("\(self.posts.count)")
         newsFeed.users.forEach { self.users[$1.id] = $1 }
         newsFeed.groups.forEach { self.groups[$1.id] = $1 }
     }
