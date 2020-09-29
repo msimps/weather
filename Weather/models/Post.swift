@@ -46,10 +46,19 @@ struct VkNewsfeed{
     var posts: [Post] = []
     var groups: [Int: Group] = [:]
     var users: [Int: User] = [:]
+    var next_from: String = ""
     
-    mutating func merge(_ newsFeed: VkNewsfeed){
+    mutating func merge(_ newsFeed: VkNewsfeed, toEnd: Bool = true){
         print("\(self.posts.count) \(newsFeed.posts.count)")
-        self.posts = newsFeed.posts + self.posts
+        if toEnd {
+            self.posts = self.posts + newsFeed.posts
+            self.next_from = newsFeed.next_from
+        } else {
+            self.posts = newsFeed.posts + self.posts
+        }
+        
+        print("Next from = \(newsFeed.next_from)")
+        
         print("\(self.posts.count)")
         newsFeed.users.forEach { self.users[$1.id] = $1 }
         newsFeed.groups.forEach { self.groups[$1.id] = $1 }
@@ -92,7 +101,6 @@ class PhotoPostContent: PostContent{
     enum PhotoKeys: String, CodingKey {
       case items
       //case photos
-
     }
     convenience required init(from decoder: Decoder) throws {
         self.init()
@@ -158,7 +166,7 @@ class Post: Decodable{
 
         
         let contentType = try values.decode(String.self, forKey: .type)
-        print(contentType)
+        //print(contentType)
         if contentType == "post" {
             self.type = .text
             self.content = try TextPostContent(from: decoder)

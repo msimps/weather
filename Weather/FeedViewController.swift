@@ -8,19 +8,15 @@
 
 import UIKit
 
-class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PostViewCellDelegate {
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var newsfeed: VkNewsfeed!
     var formattedDates: [Int: String] = [:]
+    var isLoading = false
 
-    func didTapShowMore(cell: PostViewCell) {
-        tableView.beginUpdates()
-        cell.isExpanded.toggle()
-        tableView.endUpdates()
-        
-    }
+
     
    // Функция настройки контроллера
    fileprivate func setupRefreshControl() {
@@ -44,7 +40,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             // формируем IndexSet свежедобавленных секций и обновляем таблицу
             
-            self.newsfeed.merge(newsfeed)
+            self.newsfeed.merge(newsfeed, toEnd: false)
             //let indexSet = IndexSet(integersIn: 0..<(newsfeed.posts.count))
             //self.tableView.insertSections(indexSet, with: .automatic)
             self.tableView.reloadData()
@@ -116,6 +112,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableView.delegate = self
             self.tableView.reloadData()
         }
+        tableView.prefetchDataSource = self
         
     }
     
@@ -134,4 +131,40 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     */
 
+}
+
+extension FeedViewController: PostViewCellDelegate{
+    func didTapShowMore(cell: PostViewCell) {
+        tableView.beginUpdates()
+        cell.isExpanded.toggle()
+        tableView.endUpdates()
+    }
+}
+
+extension FeedViewController: UITableViewDataSourcePrefetching{
+
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        guard
+            isLoading == false,
+            let maxSection = indexPaths.map({ $0.row }).max(),
+            maxSection > newsfeed.posts.count - 3
+        else {
+            return
+        }
+        
+        isLoading = true
+        VkApi().getNewsfeed(parameters: ["start_from": newsfeed.next_from]) { [weak self] (newsfeed: VkNewsfeed) in
+            
+            guard
+                let self = self,
+                newsfeed.posts.count > 0
+            else { return }
+            
+            self.newsfeed.merge(newsfeed)
+            self.tableView.reloadData()
+            self.isLoading = false
+        }
+    }
 }

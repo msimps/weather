@@ -50,8 +50,9 @@ class VkApi {
                 
                 
                 DispatchQueue.global().async(group: dispatchGroup){
-                    let posts = try? JSONDecoder().decode(VkResponse<Post>.self, from: data).items
-                    newsfeed.posts = posts ?? []
+                    let response = try? JSONDecoder().decode(VkResponse<Post>.self, from: data)
+                    newsfeed.posts = response?.items ?? []
+                    newsfeed.next_from = response?.next_from ?? ""
                 }
         
                 dispatchGroup.notify(queue: DispatchQueue.main) {
@@ -82,7 +83,7 @@ class VkApi {
             case .success(let json):
                 let error = json as? [String: Any]
                 //print(error)
-                print(error?["error"] )
+                //print(error?["error"] )
                 if error?["error"] == nil {
                     clousure(true)
                 } else {
