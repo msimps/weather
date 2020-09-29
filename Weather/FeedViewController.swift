@@ -8,13 +8,19 @@
 
 import UIKit
 
-class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PostViewCellDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var newsfeed: VkNewsfeed!
     var formattedDates: [Int: String] = [:]
-    
-    //var refreshControl: UIRefreshControl?
-    
+
+    func didTapShowMore(cell: PostViewCell) {
+        tableView.beginUpdates()
+        cell.isExpanded.toggle()
+        tableView.endUpdates()
+        
+    }
     
    // Функция настройки контроллера
    fileprivate func setupRefreshControl() {
@@ -39,15 +45,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // формируем IndexSet свежедобавленных секций и обновляем таблицу
             
             self.newsfeed.merge(newsfeed)
-            let indexSet = IndexSet(integersIn: 0..<(newsfeed.posts.count-1))
-            self.tableView.insertSections(indexSet, with: .automatic)
+            //let indexSet = IndexSet(integersIn: 0..<(newsfeed.posts.count))
+            //self.tableView.insertSections(indexSet, with: .automatic)
             self.tableView.reloadData()
-
         }
     }
 
-    
-    
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "dd.MM.yyyy HH:mm"
@@ -60,6 +63,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as! PostViewCell
+        
+        cell.delegate = self
+       
         let post = newsfeed.posts[indexPath.row]
         
         if post.source_id > 0 {
@@ -72,23 +78,21 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        // Вычисляем высоту
         let tableWidth = tableView.bounds.width
         let post = self.newsfeed.posts[indexPath.row]
-        var cellHeight = 0
-        if post.type == .text{
-            let content = post.content as! TextPostContent
-            cellHeight = 200 + 66 + 23+5*3
-        }else{
-            let content = post.content as! PhotoPostContent
-            cellHeight = Int(tableView.frame.width*content.image.first!.aspectRatio + 66 + 23+5*3)
-        }
-        return CGFloat(cellHeight)
-        
 
+        if post.type == .photo{
+            let content = post.content as! PhotoPostContent
+            let cellHeight = Int(tableWidth * content.image.first!.aspectRatio) +
+                PostViewCell.headerHeight +
+                PostViewCell.footerHeight + 5*3
+            return CGFloat(cellHeight)
+        }
+        
+        return UITableView.automaticDimension
     }
     
+
     func getCellDateText(_ date: Int) -> String{
         if let dateText = formattedDates[date] {
             return dateText
@@ -99,7 +103,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
    
-    @IBOutlet weak var tableView: UITableView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

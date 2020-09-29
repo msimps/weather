@@ -9,15 +9,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PostViewCell" selectionStyle="default" indentationWidth="10" rowHeight="561" id="KGk-i7-Jjw" customClass="PostViewCell" customModule="Weather" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="476" height="561"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PostViewCell" selectionStyle="default" indentationWidth="10" rowHeight="636" id="KGk-i7-Jjw" customClass="PostViewCell" customModule="Weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="476" height="636"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="476" height="561"/>
+                <rect key="frame" x="0.0" y="0.0" width="476" height="636"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7vw-qc-FKc">
-                        <rect key="frame" x="20" y="11" width="436" height="539"/>
+                        <rect key="frame" x="20" y="11" width="436" height="614"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKB-4z-cGK">
                                 <rect key="frame" x="0.0" y="0.0" width="436" height="66"/>
@@ -67,26 +67,43 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h29-1h-d35">
-                                <rect key="frame" x="0.0" y="71" width="436" height="440"/>
+                                <rect key="frame" x="0.0" y="71" width="436" height="515"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-ZG-wQh">
-                                        <rect key="frame" x="0.0" y="0.0" width="436" height="314"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-z2-gMH">
-                                        <rect key="frame" x="0.0" y="0.0" width="436" height="432"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hcJ-tC-wuM">
+                                        <rect key="frame" x="0.0" y="0.0" width="436" height="515"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S4r-f3-Pj6">
+                                                <rect key="frame" x="0.0" y="0.0" width="436" height="470.5"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NB9-Nn-MN9">
+                                                <rect key="frame" x="0.0" y="472.5" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iO4-bz-QzC">
+                                                <rect key="frame" x="0.0" y="495" width="90" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="pnZ-Tc-2wl"/>
+                                                </constraints>
+                                                <state key="normal" title="Show more..."/>
+                                                <connections>
+                                                    <action selector="clickShowMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sZ7-s1-kLW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hcJ-tC-wuM" secondAttribute="trailing" id="d4l-Vk-yPx"/>
+                                    <constraint firstAttribute="bottom" secondItem="hcJ-tC-wuM" secondAttribute="bottom" id="pmH-DB-oBC"/>
+                                    <constraint firstItem="hcJ-tC-wuM" firstAttribute="leading" secondItem="h29-1h-d35" secondAttribute="leading" id="uvm-gO-Ve8"/>
+                                    <constraint firstItem="hcJ-tC-wuM" firstAttribute="top" secondItem="h29-1h-d35" secondAttribute="top" id="vt3-iq-kUR"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpr-Vf-x5q">
-                                <rect key="frame" x="0.0" y="516" width="436" height="23"/>
+                                <rect key="frame" x="0.0" y="591" width="436" height="23"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kVe-1v-ANX" customClass="LikesView" customModule="Weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="23"/>
@@ -151,13 +168,14 @@
                 <outlet property="commentsBtn" destination="4rb-8L-zqm" id="Lil-t8-YIh"/>
                 <outlet property="likesBtn" destination="kVe-1v-ANX" id="8YM-nc-hHF"/>
                 <outlet property="postCreatedAt" destination="dIx-fM-DGf" id="WkA-Vl-lza"/>
-                <outlet property="postImage" destination="rA8-z2-gMH" id="gul-ZB-S4r"/>
-                <outlet property="postText" destination="Afb-ZG-wQh" id="Tlq-8S-D9Q"/>
+                <outlet property="postImage" destination="S4r-f3-Pj6" id="Fzg-mb-wZ8"/>
+                <outlet property="postText" destination="NB9-Nn-MN9" id="ftf-ZF-ek9"/>
                 <outlet property="shareBtn" destination="ye7-dy-Xoe" id="XP9-LQ-wcA"/>
+                <outlet property="showMoreButton" destination="iO4-bz-QzC" id="rps-yT-hn0"/>
                 <outlet property="userName" destination="ImM-Ed-Gd0" id="oqZ-M8-U3A"/>
                 <outlet property="viewsCountBtn" destination="C2w-PW-miN" id="5b9-Lk-A6d"/>
             </connections>
-            <point key="canvasLocation" x="-378.26086956521743" y="127.56696428571428"/>
+            <point key="canvasLocation" x="-378.26086956521743" y="152.67857142857142"/>
         </tableViewCell>
     </objects>
     <resources>

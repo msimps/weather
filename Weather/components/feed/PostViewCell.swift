@@ -10,20 +10,25 @@ import UIKit
 import Kingfisher
 
 
+
+protocol PostViewCellDelegate: class{
+    func didTapShowMore(cell: PostViewCell)
+}
+
 class PostViewCell: UITableViewCell {
     @IBOutlet weak var avatar: AvatarView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var postCreatedAt: UILabel!
     
-    //@IBOutlet weak var postText: UILabel!
-    @IBOutlet weak var postImage: UIImageView!
-    
-    
     @IBOutlet weak var likesBtn: LikesView!
     @IBOutlet weak var commentsBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var viewsCountBtn: UIButton!
-    @IBOutlet weak var postText: UITextView!
+    @IBOutlet weak var postText: UILabel!
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var showMoreButton: UIButton!
+    
+    weak var delegate: PostViewCellDelegate?
 
     
     
@@ -32,6 +37,21 @@ class PostViewCell: UITableViewCell {
     private var screenWidth: CGFloat = 0
     private var formattedTime: String = ""
     
+    static let instets: CGFloat = 10.0
+    static let headerHeight: Int = 66
+    static let footerHeight: Int = 23
+    static let maxTextHeight: Int = 200
+    
+    var isExpanded: Bool = false {
+        didSet {
+            updatePostLabel()
+            updateShowMoreButton()
+        }
+    }
+    
+    @IBAction func clickShowMore(_ sender: Any) {
+        delegate?.didTapShowMore(cell: self)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +68,7 @@ class PostViewCell: UITableViewCell {
     }
     
     private func updateComponent(){
+        selectionStyle = .none
         // fill common fields
         if let imageUrl = user.avatar, let url = URL(string: imageUrl) {
             avatar.imageView.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
@@ -62,40 +83,44 @@ class PostViewCell: UITableViewCell {
         viewsCountBtn.titleLabel?.text = String(post.viewsCount)
         
         if post.type == .text{
-            postText.text = (post.content as! TextPostContent).text
-            
+            let content = (post.content as! TextPostContent)
+            postText.text = content.text
             postImage.image = nil
             postText.isHidden = false
             postImage.isHidden = true
             
-
+            let labelSize = getLabelSize(text: content.text, font: postText.font)
+            showMoreButton.isHidden = labelSize.height < 200
+            updatePostLabel()
         }
         
         if post.type == .photo{
-            //postImage.isHidden = false
-            //postImage.image = UIImage(named: (post.content as! PhotoPostContent).image.first!.image!)!
-            //postImage.image = resizeImage(image: image, targetWidth: screenWidth)
-            //postImage.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
             let content = post.content as! PhotoPostContent
             if let imageUrl = content.image.first!.image, let url = URL(string: imageUrl) {
                 postImage.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
                     self.setNeedsLayout()
-                    
                 }
             }
 
             postText.text = ""
             postText.isHidden = true
             postImage.isHidden = false
-            /*let imageSize = CGSize(width: ceil(bounds.width), height: ceil(bounds.width))content.image.first!.aspectRatio))
-            let imageCoordinates = CGPoint(x: 0, y: 0)
-            postImage.bounds = CGRect(origin: imageCoordinates, size: imageSize)
-           */
+            showMoreButton.isHidden = true
             
         }
-
-        
     }
+    
+    func getLabelSize(text: String, font: UIFont) -> CGSize {
+        let maxWidth =  bounds.width - Self.instets * 2
+        let textBlock = CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)
+        let rect = text.boundingRect(with: textBlock, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        
+        let width = Double(rect.size.width)
+        let height = Double(rect.size.height)
+        let size = CGSize(width: ceil(width), height: ceil(height))
+        return size
+    }
+    
 
     override func prepareForReuse() {
         postText.text = ""
@@ -132,6 +157,15 @@ class PostViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func updatePostLabel(){
+        postText.numberOfLines = isExpanded ? 0 : 10
+    }
+    
+    private func updateShowMoreButton(){
+        let title = isExpanded ? "Show less..." : "Show more..."
+        showMoreButton.setTitle(title, for: .normal)
     }
     
 }
