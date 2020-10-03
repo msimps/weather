@@ -112,8 +112,9 @@ class UserListController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let userIndex = tableView.indexPathForSelectedRow else { return }
-        let userPhotosVC = segue.destination as! PhotoSwiperViewController
-        userPhotosVC.user = sectionList[Array(sectionList.keys).sorted()[userIndex.section]]![userIndex.row]
+        let userPhotosVC = segue.destination as! NewPhotoViewController//PhotoSwiperViewController
+        let user = sectionList[Array(sectionList.keys).sorted()[userIndex.section]]![userIndex.row]
+        userPhotosVC.user = user
     }
 
 }

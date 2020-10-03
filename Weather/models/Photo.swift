@@ -14,7 +14,11 @@ final class Photo: Object, Decodable {
     @objc dynamic var image: String?
     @objc dynamic var likes: Int = 0
     @objc dynamic var userId: Int = 0
+    @objc dynamic var albumId: Int = 0
+    @objc dynamic var height: Int = 0
+    @objc dynamic var width: Int = 0
     
+    var aspectRatio: CGFloat { return width == 0 ? CGFloat(1) : CGFloat(height)/CGFloat(width) }
     //@objc dynamic var user: List<User>()
     //let users = LinkingObjects(fromType: User.self, property: "photos")
     
@@ -23,6 +27,9 @@ final class Photo: Object, Decodable {
         case image = "photo_604"
         case likes
         case userId = "owner_id"
+        case albumId = "album_id"
+        case height
+        case width
     }
     
     enum LikesKeys: String, CodingKey {
@@ -43,6 +50,9 @@ final class Photo: Object, Decodable {
         self.image = try values.decode(String.self, forKey: .image)
         self.id = try values.decode(Int.self, forKey: .id)
         self.userId = try values.decode(Int.self, forKey: .userId)
+        self.albumId = try values.decode(Int.self, forKey: .albumId)
+        self.height = try values.decode(Int.self, forKey: .height)
+        self.width = try values.decode(Int.self, forKey: .width)
         let likesValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likes)
         self.likes = try likesValues.decode(Int.self, forKey: .likes)
     }

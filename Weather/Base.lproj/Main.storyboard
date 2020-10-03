@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="1075" y="-592"/>
         </scene>
-        <!--Photo Swiper View Controller-->
+        <!--New Photo View Controller-->
         <scene sceneID="3L6-KR-TND">
             <objects>
-                <viewController id="f92-M7-xAI" customClass="PhotoSwiperViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f92-M7-xAI" customClass="NewPhotoViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iZh-WE-Ndy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -22,7 +22,8 @@ struct VkResponse<T: Decodable>: Decodable{
         let topContainer = try decoder.container(keyedBy: CodingKeys.self)
         
         let container = try topContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .response)
-        self.next_from = try container.decode(String.self, forKey: .next_from)
+        
+        self.next_from = try? container.decode(String.self, forKey: .next_from)
         self.items = try container.decode([T].self, forKey: .items)
         
     }

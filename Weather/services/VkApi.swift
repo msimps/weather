@@ -135,9 +135,9 @@ class VkApi {
             .map{ data in
                 return  try JSONDecoder().decode(VkResponse<User>.self, from: data).items
         }
-            .tap {
-                print($0)
-        }
+            //.tap {
+                //print($0)
+        //}
             .get { users in
                 Repository.realm.save(users)
         }
@@ -164,6 +164,35 @@ class VkApi {
         
     }
     
+    
+    /*func getAlbums(userId: Int, completion: (([Album]) -> Void)? = nil){
+        let parameters: Parameters = [
+             "v": apiVersion ,
+             "access_token": Session.currentUser.token,
+             "owner_id": userId,
+             "need_covers": 1
+         ]
+         
+         AF.request(vkEndpoint + "/photos.getAlbums", parameters: parameters).responseJSON { response in
+             print(response)
+         }
+         
+        
+         
+         AF.request(vkEndpoint + "/photos.getAlbums", parameters: parameters).responseData { response in
+             if let data = response.value {
+                 do {
+                     let albums = try JSONDecoder().decode(VkResponse<Album>.self, from: data).items
+                     //print(albums)
+                     
+                     completion?(albums)
+                 } catch {
+                     print(error)
+                 }
+             }
+         }
+    }*/
+    
     func getPhotosAll(userId: Int, completion: (([Photo]) -> Void)? = nil ) {
         let parameters: Parameters = [
             "v": apiVersion ,
@@ -172,16 +201,51 @@ class VkApi {
             "extended": 1
         ]
         
-        
-       
+        AF.request(vkEndpoint + "/photos.getAll", parameters: parameters).responseData { response in
+            if let data = response.value {
+                do {
+                    let photos = try JSONDecoder().decode(VkResponse<Photo>.self, from: data).items
+                    //print(photos)
+                    Repository.realm.save(photos)
+                    completion?(photos)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    
+    func getPhotosAllByAlbum(userId: Int, completion: (([Album]) -> Void)? = nil ) {
+        let parameters: Parameters = [
+            "v": apiVersion ,
+            "access_token": Session.currentUser.token,
+            "owner_id": userId,
+            "extended": 1
+        ]
         
         AF.request(vkEndpoint + "/photos.getAll", parameters: parameters).responseData { response in
             if let data = response.value {
                 do {
                     let photos = try JSONDecoder().decode(VkResponse<Photo>.self, from: data).items
-                    print(photos)
-                    Repository.realm.save(photos)
-                    completion?(photos)
+                    //print(photos)
+                    var albumHash: [Int: [Photo]] = [:]
+                    photos.forEach {
+                        if !albumHash.keys.contains($0.albumId){
+                            albumHash[$0.albumId] = []
+                        }
+                        albumHash[$0.albumId]?.append($0)
+                        
+                    }
+                    var albums: [Album] = []
+                    albumHash.forEach {
+                        let album = Album()
+                        album.id = $0
+                        album.photos = $1
+                        albums.append(album)
+                    }
+                    print(albums)
+                    completion?(albums)
                 } catch {
                     print(error)
                 }

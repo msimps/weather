@@ -10,6 +10,8 @@
 		232DD1E494A80960A963AD67 /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF24B6C5E9A70D965BF0DE7 /* Pods_WeatherTests.framework */; };
 		34006627250116420016BA14 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34006625250116420016BA14 /* PostViewCell.swift */; };
 		34006628250116420016BA14 /* PostViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34006626250116420016BA14 /* PostViewCell.xib */; };
+		34068C61252750330021ECBB /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34068C60252750330021ECBB /* Album.swift */; };
+		34068C6325275C520021ECBB /* NewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34068C6225275C520021ECBB /* NewPhotoViewController.swift */; };
 		3414DD9A2517C222000D6D1F /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414DD992517C222000D6D1F /* PhotoService.swift */; };
 		341BF63E24D828F700E3503C /* VkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BF63D24D828F700E3503C /* VkResponse.swift */; };
 		34293B0224EE53B300B593C6 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34293B0124EE53B300B593C6 /* FirebaseRepository.swift */; };
@@ -35,6 +37,8 @@
 		349BA12224B61F6D00A10779 /* PhotoSwiperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BA12124B61F6D00A10779 /* PhotoSwiperViewController.swift */; };
 		34A59E2F2501152E001A2156 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A59E2E2501152E001A2156 /* Feed.swift */; };
 		34A70E4B24A52EDE000D1622 /* LetterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A70E4A24A52EDE000D1622 /* LetterPicker.swift */; };
+		34B1402C252764810038CC0A /* AlbumTableNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1402B252764810038CC0A /* AlbumTableNodeController.swift */; };
+		34B1402E252777E70038CC0A /* PhotoCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1402D252777E70038CC0A /* PhotoCellNode.swift */; };
 		34BD30DD24C30E2900BD22E4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BD30DC24C30E2900BD22E4 /* CustomNavigationController.swift */; };
 		34C6036A24E519A500C6A703 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C6036924E519A500C6A703 /* Repository.swift */; };
 		34C6036E24EDB4A900C6A703 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34C6036D24EDB4A900C6A703 /* GoogleService-Info.plist */; };
@@ -80,6 +84,8 @@
 		28AF3AD492A6233322CF8E05 /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34006625250116420016BA14 /* PostViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewCell.swift; sourceTree = "<group>"; };
 		34006626250116420016BA14 /* PostViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewCell.xib; sourceTree = "<group>"; };
+		34068C60252750330021ECBB /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		34068C6225275C520021ECBB /* NewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhotoViewController.swift; sourceTree = "<group>"; };
 		3414DD992517C222000D6D1F /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		341BF63D24D828F700E3503C /* VkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkResponse.swift; sourceTree = "<group>"; };
 		34293B0124EE53B300B593C6 /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
@@ -103,6 +109,8 @@
 		349BA12124B61F6D00A10779 /* PhotoSwiperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSwiperViewController.swift; sourceTree = "<group>"; };
 		34A59E2E2501152E001A2156 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		34A70E4A24A52EDE000D1622 /* LetterPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterPicker.swift; sourceTree = "<group>"; };
+		34B1402B252764810038CC0A /* AlbumTableNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableNodeController.swift; sourceTree = "<group>"; };
+		34B1402D252777E70038CC0A /* PhotoCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellNode.swift; sourceTree = "<group>"; };
 		34BD30DC24C30E2900BD22E4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		34C6036924E519A500C6A703 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		34C6036D24EDB4A900C6A703 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -192,6 +200,9 @@
 				3489DD59249E8280007CFA6D /* UserPhotosController.swift */,
 				349BA12124B61F6D00A10779 /* PhotoSwiperViewController.swift */,
 				3489DD4F249E5775007CFA6D /* UserTableViewCell.swift */,
+				34068C6225275C520021ECBB /* NewPhotoViewController.swift */,
+				34B1402B252764810038CC0A /* AlbumTableNodeController.swift */,
+				34B1402D252777E70038CC0A /* PhotoCellNode.swift */,
 			);
 			path = users;
 			sourceTree = "<group>";
@@ -204,6 +215,7 @@
 				3489DD56249E6CF2007CFA6D /* Photo.swift */,
 				3491423F24ADD2BA0062BB20 /* Post.swift */,
 				34A59E2E2501152E001A2156 /* Feed.swift */,
+				34068C60252750330021ECBB /* Album.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -592,6 +604,7 @@
 				34D6878924952656009A3B63 /* Weather.xcdatamodeld in Sources */,
 				34DDE03924ABBD5900E11CC5 /* FeedViewCell.swift in Sources */,
 				34C6036A24E519A500C6A703 /* Repository.swift in Sources */,
+				34B1402E252777E70038CC0A /* PhotoCellNode.swift in Sources */,
 				34A70E4B24A52EDE000D1622 /* LetterPicker.swift in Sources */,
 				3493F5F7249F9C2000318A47 /* Group.swift in Sources */,
 				3414DD9A2517C222000D6D1F /* PhotoService.swift in Sources */,
@@ -599,8 +612,10 @@
 				3493F5F9249FA27E00318A47 /* MyGroupsController.swift in Sources */,
 				346D164E24CEE79800523826 /* Session.swift in Sources */,
 				34367E5E24A48DFB00C26CCE /* CustomGradientView.swift in Sources */,
+				34068C61252750330021ECBB /* Album.swift in Sources */,
 				34FBD51224D2098600D64160 /* VkApi.swift in Sources */,
 				34D687B2249529AC009A3B63 /* LoginFormController.swift in Sources */,
+				34068C6325275C520021ECBB /* NewPhotoViewController.swift in Sources */,
 				34BD30DD24C30E2900BD22E4 /* CustomNavigationController.swift in Sources */,
 				3493F60224A0D74B00318A47 /* UserGroupCell.swift in Sources */,
 				3491424024ADD2BA0062BB20 /* Post.swift in Sources */,
@@ -608,6 +623,7 @@
 				3489DD57249E6CF2007CFA6D /* Photo.swift in Sources */,
 				34D6877F24952656009A3B63 /* AppDelegate.swift in Sources */,
 				349BA12224B61F6D00A10779 /* PhotoSwiperViewController.swift in Sources */,
+				34B1402C252764810038CC0A /* AlbumTableNodeController.swift in Sources */,
 				34D6878124952656009A3B63 /* SceneDelegate.swift in Sources */,
 				341BF63E24D828F700E3503C /* VkResponse.swift in Sources */,
 				3489DD50249E5775007CFA6D /* UserTableViewCell.swift in Sources */,
