@@ -10,19 +10,23 @@ import UIKit
 import Kingfisher
 import RealmSwift
 
-class MyGroupsController: UITableViewController, BindRealmToTableView {
+
+class MyGroupsController: UITableViewController{
     
     @IBOutlet var myGroupTableView: UITableView!
-    var myGroups: Results<Group> = Repository.realm._load()
-    lazy var service = VkApi()
-    var notificationToken: NotificationToken?
+    var myGroups: [Group] = []
+    let groupService = GroupService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UserGroupCell.self, forCellReuseIdentifier: "UserGroupCell")
         
-        notificationToken = bindRealmToTableView(tableView: myGroupTableView, results: myGroups)
-        service.getGroups()
+        groupService.getGroups { [weak self] (groups) in
+            DispatchQueue.main.async {
+                self?.myGroups = groups
+                self?.myGroupTableView.reloadData()
+            }
+        }
         
         
     }
