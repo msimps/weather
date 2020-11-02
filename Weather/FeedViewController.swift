@@ -13,7 +13,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     
     var newsfeed: VkNewsfeed!
-    var formattedDates: [Int: String] = [:]
+    var newsfeedViewModels: [PostViewModel] = []
+    
     var isLoading = false
 
 
@@ -41,20 +42,17 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // формируем IndexSet свежедобавленных секций и обновляем таблицу
             
             self.newsfeed.merge(newsfeed, toEnd: false)
+            self.newsfeedViewModels = PostViewModelFactory().constructViewModels(from: self.newsfeed)
             //let indexSet = IndexSet(integersIn: 0..<(newsfeed.posts.count))
             //self.tableView.insertSections(indexSet, with: .automatic)
             self.tableView.reloadData()
         }
     }
 
-    let dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateFormat = "dd.MM.yyyy HH:mm"
-        return df
-    }()
+    
        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsfeed.posts.count
+        return newsfeedViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,14 +60,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.delegate = self
        
-        let post = newsfeed.posts[indexPath.row]
-        
-        if post.source_id > 0 {
-            cell.set(post: post, user: newsfeed.users[post.source_id]!, formattedTime: getCellDateText(post.date), screenWidth: tableView.frame.width)
-        } else {
-            cell.set(post: post, user: newsfeed.groups[abs(post.source_id)]!, formattedTime: getCellDateText(post.date), screenWidth: tableView.frame.width)
-        }
-        
+        let post = newsfeedViewModels[indexPath.row]
+        cell.set(post: post, screenWidth: tableView.frame.width)
         return cell
     }
     
@@ -88,18 +80,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return UITableView.automaticDimension
     }
     
-
-    func getCellDateText(_ date: Int) -> String{
-        if let dateText = formattedDates[date] {
-            return dateText
-        } else {
-            let dateText = dateFormatter.string(from: Date(timeIntervalSince1970: Double(date)))
-            formattedDates[date] = dateText
-            return dateText
-        }
-    }
-   
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +88,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         VkApi().getNewsfeed { (newsfeed: VkNewsfeed) in
             //print(newsfeed)
             self.newsfeed = newsfeed
+            self.newsfeedViewModels = PostViewModelFactory().constructViewModels(from: self.newsfeed)
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.reloadData()

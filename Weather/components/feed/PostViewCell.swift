@@ -32,10 +32,9 @@ class PostViewCell: UITableViewCell {
 
     
     
-    private var post: Post!
-    private var user: HeaderStruct!
+    private var post: PostViewModel!
+
     private var screenWidth: CGFloat = 0
-    private var formattedTime: String = ""
     
     static let instets: CGFloat = 10.0
     static let headerHeight: Int = 66
@@ -70,43 +69,35 @@ class PostViewCell: UITableViewCell {
     private func updateComponent(){
         selectionStyle = .none
         // fill common fields
-        if let imageUrl = user.avatar, let url = URL(string: imageUrl) {
+        if let imageUrl = post.userAvatar, let url = URL(string: imageUrl) {
             avatar.imageView.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
                 self.setNeedsLayout()
             }
         }
 
-        userName.text = user.name
-        postCreatedAt.text = formattedTime
+        userName.text = post.userName
+        postCreatedAt.text = post.createdAt
         likesBtn.likesCount = post.likesCount
-        commentsBtn.titleLabel?.text = String(post.commentsCount)
-        viewsCountBtn.titleLabel?.text = String(post.viewsCount)
+        commentsBtn.titleLabel?.text = post.commentsCount
+        viewsCountBtn.titleLabel?.text = post.viewsCount
         
-        if post.type == .text{
-            let content = (post.content as! TextPostContent)
-            postText.text = content.text
-            postImage.image = nil
-            postText.isHidden = false
-            postImage.isHidden = true
+        postText.text = post.postText
+        postText.isHidden = post.postTextIsHidden
+        postImage.isHidden = post.postImageIsHidden
             
-            let labelSize = getLabelSize(text: content.text, font: postText.font)
+        if let imageUrl = post.postImage, let url = URL(string: imageUrl) {
+            postImage.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
+                self.setNeedsLayout()
+            }
+        } else {
+            postImage.image = nil
+        }
+        if let text = post.postText {
+            let labelSize = getLabelSize(text: text, font: postText.font)
             showMoreButton.isHidden = labelSize.height < 200
             updatePostLabel()
-        }
-        
-        if post.type == .photo{
-            let content = post.content as! PhotoPostContent
-            if let imageUrl = content.image.first!.image, let url = URL(string: imageUrl) {
-                postImage.kf.setImage(with: ImageResource(downloadURL: url)) { _ in
-                    self.setNeedsLayout()
-                }
-            }
-
-            postText.text = ""
-            postText.isHidden = true
-            postImage.isHidden = false
+        } else {
             showMoreButton.isHidden = true
-            
         }
     }
     
@@ -145,11 +136,9 @@ class PostViewCell: UITableViewCell {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    func set(post: Post, user: HeaderStruct, formattedTime: String, screenWidth: CGFloat){
+    func set(post: PostViewModel, screenWidth: CGFloat){
         self.post = post
-        self.user = user
         self.screenWidth = screenWidth
-        self.formattedTime = formattedTime
         updateComponent()
     }
     
