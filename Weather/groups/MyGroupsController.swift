@@ -24,7 +24,7 @@ class MyGroupsController: UITableViewController, BindRealmToTableView {
         notificationToken = bindRealmToTableView(tableView: myGroupTableView, results: myGroups)
         service.getGroups()
         
-        service.getPhotosAllByAlbum(userId: 11884771)
+        
     }
     
     

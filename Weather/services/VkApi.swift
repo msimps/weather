@@ -256,7 +256,7 @@ class VkApi {
 
 
     
-    func getGroups(completion: (([Group]) -> Void)? = nil) {
+    func getGroups() {
         let parameters: Parameters = [
             "v": apiVersion ,
             "access_token": Session.currentUser.token,
@@ -275,7 +275,7 @@ class VkApi {
         parseData.addDependency(getDataOperation)
         opq.addOperation(parseData)
         
-        let saveToRealm = SaveToRealm(completion);
+        let saveToRealm = SaveToRealm();
         saveToRealm.addDependency(parseData)
         OperationQueue.main.addOperation(saveToRealm)
         
@@ -394,18 +394,13 @@ class ParseData: Operation{
 }
 
 class SaveToRealm: Operation{
-    var completion: (([Group]) -> Void)? = nil
     
     override func main() {
         guard
             let parseData = dependencies.first as? ParseData,
             let groups = parseData.outputData else { return }
         Repository.realm.save(groups)
-        completion?(groups)
     }
     
-    init(_ completion: (([Group]) -> Void)?){
-        self.completion = completion
-    }
 }
 
